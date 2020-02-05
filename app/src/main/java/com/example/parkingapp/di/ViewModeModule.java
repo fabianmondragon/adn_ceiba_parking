@@ -1,6 +1,7 @@
 package com.example.parkingapp.di;
 
 import com.example.parkingapp.data.ParkingRepository;
+import com.example.parkingapp.model.ParkingOperations;
 import com.example.parkingapp.viewmodel.ParkingViewModel;
 
 import javax.inject.Singleton;
@@ -17,4 +18,7 @@ public class ViewModeModule {
     @Provides
     ParkingViewModel parkingViewModel (ParkingRepository parkingRepository){return new ParkingViewModel(parkingRepository);}
 
+    @Singleton
+    @Provides
+    ParkingOperations parkingOperations (){return new ParkingOperations();}
 }

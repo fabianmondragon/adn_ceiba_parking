@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     @Inject
     ParkingViewModel parkingViewModel;
 
+
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
 

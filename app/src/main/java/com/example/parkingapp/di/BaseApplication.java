@@ -21,7 +21,6 @@ public class BaseApplication extends Application implements HasAndroidInjector {
         super.onCreate();
         BaseApplication.context = getApplicationContext();
         DaggerCeibaComponent.builder().build().inject(this);
-      //  DaggerCeibaComponent.create().inject(this);
 
     }
     public static Context getAppContext() {

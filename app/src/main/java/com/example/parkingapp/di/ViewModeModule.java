@@ -1,6 +1,6 @@
 package com.example.parkingapp.di;
 
-import com.example.parkingapp.repository.ParkingRepository;
+import com.example.parkingapp.data.ParkingRepository;
 import com.example.parkingapp.viewmodel.ParkingViewModel;
 
 import javax.inject.Singleton;

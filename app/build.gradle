@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'jacoco'
 
 android {
     compileSdkVersion 29
@@ -15,7 +16,50 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            testCoverageEnabled true
         }
+        debug {
+            testCoverageEnabled true
+        }
+    }
+    jacoco {
+        version "0.7.1.201405082137"
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
+}
+jacoco {
+    version "0.7.1.201405082137"
+}
+
+task jacocoTestReport(type:JacocoReport) {
+    group = "Reporting"
+
+    description = "Generate Jacoco coverage reports"
+
+    // exclude auto-generated classes and tests
+    def fileFilter = ['**/R.class', '**/R$*.class',
+                      '**/BuildConfig.*', '**/Manifest*.*',
+                      'android/**/*.*']
+    def debugTree = fileTree(dir:"${project.buildDir}/intermediates/javac/debug/classes",excludes: fileFilter)
+    def mainSrc = "${project.projectDir}/src/main/java"
+
+    sourceDirectories = files([mainSrc])
+    classDirectories = files([debugTree])
+    additionalSourceDirs = files([
+            "${buildDir}/generated/source/buildConfig/debug",
+            "${buildDir}/generated/source/r/debug"
+    ])
+    executionData = fileTree(dir: project.projectDir, includes:
+            ['**/*.exec', '**/*.ec'])
+
+    reports {
+        xml.enabled = true
+        xml.destination file("${project.projectDir}/build/reports/jacoco/testXml/jacocoTestReport.xml")
+        csv.enabled = false
+        html.enabled = true
     }
 }
 

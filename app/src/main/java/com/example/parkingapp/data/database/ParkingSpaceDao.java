@@ -14,4 +14,7 @@ public interface ParkingSpaceDao {
 
     @Insert
     void insertParkingAll(List<ParkingSpace> parkingSpace);
+
+    @Query ("UPDATE parking_space SET state =:stateParman WHERE parking_space_id =:idPaquingSpace")
+    void setUpdateStateParking (boolean stateParman, int idPaquingSpace);
 }

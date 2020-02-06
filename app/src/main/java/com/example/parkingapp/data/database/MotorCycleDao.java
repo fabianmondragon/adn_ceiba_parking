@@ -1,5 +1,6 @@
 package com.example.parkingapp.data.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -12,5 +13,5 @@ public interface MotorCycleDao {
    void insertMotorcycle(Motorcycle motorcycle);
 
     @Query("SELECT * FROM moto")
-    List<Motorcycle> getAll();
+    LiveData<List<Motorcycle>> getAll();
 }

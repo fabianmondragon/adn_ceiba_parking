@@ -31,16 +31,12 @@ public class ParkingViewModel extends AndroidViewModel {
         parkingRepository.fillDataBase();
     }
 
-
     public void onClickRegister (){
         Car car = new Car(plateCar.toString());
         parkingRepository.registerCar(car);
     }
     public void onClickRegisterMotorCycle (){
-        CarCopia carCopia = new CarCopia();
-        parkingRepository.registerCarCopia (carCopia);
-        /*Motorcycle motorcycle =new Motorcycle(plateMoto.toString());
-        parkingRepository.registerMotorcycle(motorcycle);*/
+        parkingRepository.registerMotorcycle(plateMoto.getValue(), cilindrajeMoto.getValue());
 
     }
     public void onClickBillMotorCycle ()
@@ -60,8 +56,11 @@ public class ParkingViewModel extends AndroidViewModel {
         return parkingRepository.getCarCopia();
     }
 
-    public LiveData<List<Parking>> getParking (){
+    public LiveData<List<Parking>> getParkingAll (){
         return parkingRepository.getParking();
+    }
+    public LiveData<List<Motorcycle>> getMotorcicleAll (){
+        return parkingRepository.getMotorcycleAll();
     }
 
 

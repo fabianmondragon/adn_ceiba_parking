@@ -3,6 +3,7 @@ package com.example.parkingapp.data;
 import android.app.Application;
 import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
+import androidx.room.Index;
 import androidx.room.Room;
 import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.database.Car;
@@ -20,12 +21,14 @@ public class ParkingRepository {
 
     LiveData<List<CarCopia>> listCarCopia;
     LiveData<List<Parking>> listPaking;
+    LiveData<List<Motorcycle>> listMotorCycle;
     Application application;
 
     public ParkingRepository(Application application) {
         CeibaDataBase db = CeibaDataBase.getDatabase(application);
         listCarCopia = db.carDaoCopia().getAll();
         listPaking = db.parkingDao().getAll();
+        listMotorCycle = db.motorCycleDao().getAll();
         this.application = application;
     }
 
@@ -33,17 +36,23 @@ public class ParkingRepository {
         CeibaDataBase db = CeibaDataBase.getDatabase(application);
     }
 
-    public void getCar() {
-
-    }
-
-    public void registerMotorcycle(final Motorcycle motorcycle) {
-
-    }
-
-    public CeibaDataBase getInstanceDataBase (){
-        return  Room.databaseBuilder(BaseApplication.getAppContext(),
-                CeibaDataBase.class, "database-parking.db").build();
+    public void registerMotorcycle(String plateMoto, String cilindraje) {
+        final Motorcycle motorcycle = new Motorcycle(plateMoto, Integer.parseInt(cilindraje));
+        final CeibaDataBase db = CeibaDataBase.getDatabase(application);
+        db.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                List<ParkingSpace>parkingSpaceList= db.parkingSpaceDao().getAll();
+                for (ParkingSpace item: parkingSpaceList){
+                    if (item.isState()== false){
+                        motorcycle.setFkParkingSpace(item.getParkingSpaceId());
+                        db.parkingSpaceDao().setUpdateStateParking(true, item.getParkingSpaceId());
+                        break;
+                    }
+                }
+                db.motorCycleDao().insertMotorcycle(motorcycle);
+            }
+        });
     }
 
     public void  fillDataBase (){
@@ -125,5 +134,9 @@ public class ParkingRepository {
 
     public LiveData<List<Parking>> getParking() {
         return listPaking;
+    }
+
+    public LiveData<List<Motorcycle>> getMotorcycleAll() {
+        return listMotorCycle;
     }
 }

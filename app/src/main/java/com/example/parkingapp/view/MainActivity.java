@@ -15,8 +15,10 @@ import android.widget.Toast;
 
 import com.example.parkingapp.R;
 import com.example.parkingapp.data.database.CarCopia;
+import com.example.parkingapp.data.database.Motorcycle;
 import com.example.parkingapp.data.database.Parking;
 import com.example.parkingapp.databinding.ActivityMainBinding;
+import com.example.parkingapp.util.Constant;
 import com.example.parkingapp.viewmodel.ParkingViewModel;
 
 import java.util.List;
@@ -39,18 +41,27 @@ public class MainActivity extends AppCompatActivity {
                 String hola = "";
             }
         });
-        parkingViewModel.getParking().observe(this, new Observer<List<Parking>>() {
-            @Override
-            public void onChanged(List<Parking> parkings) {
-                if (parkings.size()>0){
-                    Toast.makeText(MainActivity.this, "Base de dato creada", Toast.LENGTH_LONG).show();
-                }
-
-            }
-        });
+        setObservers ();
     }
     @Override
     protected void onStart() {
         super.onStart();
+    }
+
+    private void setObservers (){
+        parkingViewModel.getParkingAll().observe(this, new Observer<List<Parking>>() {
+            @Override
+            public void onChanged(List<Parking> parkings) {
+                if (parkings.size()>0){
+                    Toast.makeText(MainActivity.this, Constant.MESSAGUE_DATA_BASE_CREATED, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        parkingViewModel.getMotorcicleAll().observe(this, new Observer<List<Motorcycle>>() {
+            @Override
+            public void onChanged(List<Motorcycle> motorcycles) {
+                Toast.makeText(MainActivity.this, Constant.REGISTER_SUCCESSFULL, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

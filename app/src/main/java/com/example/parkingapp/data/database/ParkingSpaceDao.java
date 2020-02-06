@@ -12,7 +12,6 @@ public interface ParkingSpaceDao {
     @Query("SELECT * FROM parking_space")
     List<ParkingSpace> getAll();
 
-
     @Insert
     void insertParkingAll(List<ParkingSpace> parkingSpace);
 }

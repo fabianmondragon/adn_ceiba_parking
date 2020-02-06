@@ -29,8 +29,6 @@ public class Motorcycle {
     @NotNull
     private int fkParkingSpace;
 
-
-
     @Ignore
     public Motorcycle(String plateID, int cilindraje) {
         this.fkParkingSpace=0;

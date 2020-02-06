@@ -30,8 +30,6 @@ public class ParkingSpace {
     @ColumnInfo (name = "date")
     private Date startOcupation;
 
-
-
     @ColumnInfo (name = "fk_parking")
     public int parking;
 
@@ -64,7 +62,6 @@ public class ParkingSpace {
     public void setStartOcupation(Date startOcupation) {
         this.startOcupation = startOcupation;
     }
-
 
     public int getParking() {
         return parking;

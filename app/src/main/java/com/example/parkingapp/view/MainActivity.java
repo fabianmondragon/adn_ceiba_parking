@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.parkingapp.R;
 import com.example.parkingapp.data.database.CarCopia;
+import com.example.parkingapp.data.database.Parking;
 import com.example.parkingapp.databinding.ActivityMainBinding;
 import com.example.parkingapp.viewmodel.ParkingViewModel;
 
@@ -36,6 +37,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<CarCopia> carCopias) {
                 String hola = "";
+            }
+        });
+        parkingViewModel.getParking().observe(this, new Observer<List<Parking>>() {
+            @Override
+            public void onChanged(List<Parking> parkings) {
+                if (parkings.size()>0){
+                    Toast.makeText(MainActivity.this, "Base de dato creada", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }

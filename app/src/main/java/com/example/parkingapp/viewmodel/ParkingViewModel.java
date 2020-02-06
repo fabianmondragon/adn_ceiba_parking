@@ -12,6 +12,7 @@ import com.example.parkingapp.data.ParkingRepository;
 import com.example.parkingapp.data.database.Car;
 import com.example.parkingapp.data.database.CarCopia;
 import com.example.parkingapp.data.database.Motorcycle;
+import com.example.parkingapp.data.database.Parking;
 
 import java.util.List;
 
@@ -57,6 +58,10 @@ public class ParkingViewModel extends AndroidViewModel {
 
     public LiveData<List<CarCopia>> getCarCopiaList (){
         return parkingRepository.getCarCopia();
+    }
+
+    public LiveData<List<Parking>> getParking (){
+        return parkingRepository.getParking();
     }
 
 

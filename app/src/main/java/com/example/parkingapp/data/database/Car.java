@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
             })
 public class Car {
 
-
     @ColumnInfo(name = "plate_id")
     @PrimaryKey ()
     @NotNull
@@ -26,7 +25,6 @@ public class Car {
     @ColumnInfo(name = "fk_parking_space")
     @NotNull
     private int fkParkingSpace;
-
 
     public Car(String plateID) {
         this.fkParkingSpace =0;

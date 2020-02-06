@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "paking")
 public class Parking {
 
-
     @PrimaryKey
     @ColumnInfo (name = "paking_id")
     private int parkinId;
@@ -19,7 +18,6 @@ public class Parking {
     private int numberMoto;
 
     public Parking(int numberCar, int numberMoto) {
-
         this.numberCar = numberCar;
         this.numberMoto = numberMoto;
     }

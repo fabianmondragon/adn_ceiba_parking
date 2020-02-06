@@ -2,10 +2,8 @@ package com.example.parkingapp.data;
 
 import android.app.Application;
 import android.os.AsyncTask;
-
 import androidx.lifecycle.LiveData;
 import androidx.room.Room;
-
 import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.database.Car;
 import com.example.parkingapp.data.database.CarCopia;
@@ -15,40 +13,29 @@ import com.example.parkingapp.data.database.Parking;
 import com.example.parkingapp.data.database.ParkingSpace;
 import com.example.parkingapp.data.database.PlateRules;
 import com.example.parkingapp.data.database.Tariff;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class ParkingRepository {
 
-
     LiveData<List<CarCopia>> listCarCopia;
+    LiveData<List<Parking>> listPaking;
     Application application;
-
 
     public ParkingRepository(Application application) {
         CeibaDataBase db = CeibaDataBase.getDatabase(application);
         listCarCopia = db.carDaoCopia().getAll();
+        listPaking = db.parkingDao().getAll();
         this.application = application;
     }
 
     public void registerCar (final Car car){
-
-
         CeibaDataBase db = CeibaDataBase.getDatabase(application);
-
-
     }
 
     public void getCar() {
 
     }
-
-    //managment Motorcycle
-
 
     public void registerMotorcycle(final Motorcycle motorcycle) {
 
@@ -102,11 +89,14 @@ public class ParkingRepository {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
-                db.parkingDao().inserParking(parking);
-                db.parkingSpaceDao().insertParkingAll(parkingSpaceList);
-                db.cilindrajeRulesDao().insertCilindrajeRules(cilindrajeRules);
-                db.tariffDao().insertTarif(tariff);
-                db.plateRulesDao().insetPlateRulse(plateRules);
+                if (db.parkingDao().getAllParkinList().size()==0) {
+                    db.parkingDao().inserParking(parking);
+                    db.parkingSpaceDao().insertParkingAll(parkingSpaceList);
+                    db.cilindrajeRulesDao().insertCilindrajeRules(cilindrajeRules);
+                    db.tariffDao().insertTarif(tariff);
+                    db.plateRulesDao().insetPlateRulse(plateRules);
+
+                }
                 return null;
             }
 
@@ -127,11 +117,13 @@ public class ParkingRepository {
                 db.carDaoCopia().insertCarCopia(carCopia);
             }
         });
-
-
     }
 
     public LiveData<List<CarCopia>> getCarCopia(){
         return listCarCopia;
+    }
+
+    public LiveData<List<Parking>> getParking() {
+        return listPaking;
     }
 }

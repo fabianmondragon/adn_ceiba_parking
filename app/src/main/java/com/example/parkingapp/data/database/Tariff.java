@@ -24,7 +24,6 @@ public class Tariff {
     private Double valueDayMoto;
 
     public Tariff( Double valueHorCar, Double valueHorMoto, Double valueDayCar, Double valueDayMoto) {
-
         this.valueHorCar = valueHorCar;
         this.valueHorMoto = valueHorMoto;
         this.valueDayCar = valueDayCar;

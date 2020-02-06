@@ -44,24 +44,14 @@ import static java.time.chrono.ThaiBuddhistChronology.INSTANCE;
 public abstract class CeibaDataBase extends RoomDatabase {
 
     static final int VERSION = 1;
-
     public abstract CarDao carDao();
-
     public abstract CarCopiaDao carDaoCopia();
-
     public abstract MotorCycleDao motorCycleDao();
-
     public abstract ParkingDao parkingDao();
-
     public abstract TariffDao tariffDao();
-
     public abstract PlateRulesDao plateRulesDao();
-
     public abstract ParkingSpaceDao parkingSpaceDao();
-
     public abstract CilindrajeRulesDao cilindrajeRulesDao();
-
-
     private static volatile CeibaDataBase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor =
@@ -82,18 +72,10 @@ public abstract class CeibaDataBase extends RoomDatabase {
         return INSTANCE;
     }
 
-    /**
-     * Override the onOpen method to populate the database.
-     * For this sample, we clear the database every time it is created or opened.
-     *
-     * If you want to populate the database only when the database is created for the 1st time,
-     * override RoomDatabase.Callback()#onCreate
-     */
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
-
             // If you want to keep data through app restarts,
             // comment out the following block
 

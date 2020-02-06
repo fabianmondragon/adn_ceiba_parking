@@ -15,5 +15,4 @@ public interface CilindrajeRulesDao {
     @Insert
     void insertCilindrajeRules(CilindrajeRules cilindrajeRules);
 
-
 }

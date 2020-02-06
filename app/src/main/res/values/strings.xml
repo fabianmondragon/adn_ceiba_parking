@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">ParkingApp</string>
+
+    <string name="title_app_motos">MOTORCYCLE</string>
+    <string name="title_app_car">CAR</string>
+    <string name="title_app">Parking APP</string>
+    <string name="enter_plate">Enter to Plate </string>
+    <string name="enter">Register </string>
+    <string name="bill">Bill </string>
+    <string name ="enter_cilindraje">Enter Cilindraje</string>
+
 </resources>

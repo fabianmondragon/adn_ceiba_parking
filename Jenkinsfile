@@ -15,6 +15,9 @@ pipeline {
     jdk 'JDK8_Centos' //Preinstalada en la Configuración del Master
     gradle 'Gradle4.5_Centos' //Preinstalada en la Configuración del Master
   }
+  tools {
+      jdk 'JDK8_Mac'
+    }
 
   //Aquí comienzan los “items” del Pipeline
   stages{
@@ -38,8 +41,10 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"
-		sh './gradlew --b app/build.gradle'
-        sh 'gradle --b app/build.gradle jacocoTestReport'
+		    sh 'chmod u+x gradlew'
+            sh './gradlew --b ./app/build.gradle test'
+            // sh './gradlew --b ./app/build.gradle androidTest'
+            sh './gradlew --b ./app/build.gradle jacocoTestReport'
       }
     }
 
@@ -55,6 +60,10 @@ sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallat
     stage('Build') {
       steps {
         echo "------------>Build<------------"
+        //Construir sin tarea test que se ejecutó previamente
+        sh 'chmod u+x gradlew'
+        // sh './gradlew clean'
+         sh './gradlew --b ./app/build.gradle build -x test'
       }
     }  
   }

@@ -5,9 +5,9 @@ import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 
+import com.example.parkingapp.data.ModelParking;
 import com.example.parkingapp.data.ParkingRepository;
 import com.example.parkingapp.data.database.Car;
 import com.example.parkingapp.data.database.CarCopia;
@@ -27,13 +27,11 @@ public class ParkingViewModel extends AndroidViewModel {
     public ParkingViewModel(Application application) {
         super(application);
         parkingRepository = new ParkingRepository(application);
-        this.parkingRepository = parkingRepository;
-        parkingRepository.fillDataBase();
     }
 
     public void onClickRegister (){
-        Car car = new Car(plateCar.toString());
-        parkingRepository.registerCar(car);
+       // Car car = new Car(plateCar.toString());
+        //parkingRepository.registerCar(car);
     }
     public void onClickRegisterMotorCycle (){
         parkingRepository.registerMotorcycle(plateMoto.getValue(), cilindrajeMoto.getValue());
@@ -52,9 +50,6 @@ public class ParkingViewModel extends AndroidViewModel {
         //parkingRepository.getCar();
     }
 
-    public LiveData<List<CarCopia>> getCarCopiaList (){
-        return parkingRepository.getCarCopia();
-    }
 
     public LiveData<List<Parking>> getParkingAll (){
         return parkingRepository.getParking();

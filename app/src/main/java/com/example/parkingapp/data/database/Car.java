@@ -26,8 +26,8 @@ public class Car {
     @NotNull
     private int fkParkingSpace;
 
-    public Car(String plateID) {
-        this.fkParkingSpace =0;
+    public Car(String plateID, int fkParkingSpace) {
+        this.fkParkingSpace = fkParkingSpace;
         this.plateID = plateID;
     }
 

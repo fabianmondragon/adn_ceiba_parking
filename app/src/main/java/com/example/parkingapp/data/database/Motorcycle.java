@@ -30,8 +30,8 @@ public class Motorcycle {
     private int fkParkingSpace;
 
     @Ignore
-    public Motorcycle(String plateID, int cilindraje) {
-        this.fkParkingSpace=0;
+    public Motorcycle(String plateID, int cilindraje, int fkParkingSpace) {
+        this.fkParkingSpace=fkParkingSpace;
         this.plateID = plateID;
         this.cilindraje = cilindraje;
     }

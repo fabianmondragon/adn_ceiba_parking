@@ -17,4 +17,7 @@ public interface ParkingSpaceDao {
 
     @Query ("UPDATE parking_space SET state =:stateParman WHERE parking_space_id =:idPaquingSpace")
     void setUpdateStateParking (boolean stateParman, int idPaquingSpace);
+
+    @Query ("Select * FROM parking_space where parking_space.state = 0 LIMIT 1")
+    int getSpaceFree ();
 }

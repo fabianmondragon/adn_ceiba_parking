@@ -14,4 +14,7 @@ public interface MotorCycleDao {
 
     @Query("SELECT * FROM moto")
     LiveData<List<Motorcycle>> getAll();
+
+    @Query("SELECT * FROM moto")
+   List<Motorcycle> getAllMotorcycle();
 }

@@ -14,7 +14,7 @@ import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 
-
+import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.converters.ConvertersDate;
 import com.example.parkingapp.data.database.Car;
 import com.example.parkingapp.data.database.CarCopia;
@@ -58,11 +58,11 @@ public abstract class CeibaDataBase extends RoomDatabase {
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
 
-    static CeibaDataBase getDatabase(final Context context) {
+    public static CeibaDataBase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (CeibaDataBase.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                    INSTANCE = Room.databaseBuilder(context,
                             CeibaDataBase.class, "parking_database")
                             .addCallback(sRoomDatabaseCallback)
                             .build();

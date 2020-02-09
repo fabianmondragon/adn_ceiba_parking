@@ -34,25 +34,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplication(), msg, Toast.LENGTH_LONG).show();
             }
         };
-        // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
         parkingViewModel.getMsg().observe(this, msgObserver);
 
-
-        /*
-        parkingViewModel.getParkingAll().observe(this, new Observer<List<Parking>>() {
-            @Override
-            public void onChanged(List<Parking> parkings) {
-                if (parkings.size()>0){
-                    Toast.makeText(MainActivity.this, Constant.MESSAGUE_DATA_BASE_CREATED, Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-        parkingViewModel.getMotorcicleAll().observe(this, new Observer<List<Motorcycle>>() {
-            @Override
-            public void onChanged(List<Motorcycle> motorcycles) {
-                Toast.makeText(MainActivity.this, Constant.REGISTER_SUCCESSFULL, Toast.LENGTH_LONG).show();
-            }
-        });*/
     }
     private void filldatabase(){
         parkingViewModel.fillDataBase();

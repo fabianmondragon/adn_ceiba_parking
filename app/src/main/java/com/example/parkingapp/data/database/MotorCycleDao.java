@@ -17,4 +17,10 @@ public interface MotorCycleDao {
 
     @Query("SELECT * FROM moto")
    List<Motorcycle> getAllMotorcycle();
+
+    @Query("SELECT * FROM moto WHERE moto.plate_id = :plateId")
+    Motorcycle getMotoCycle(String plateId);
+
+    @Query("DELETE FROM moto WHERE moto.plate_id = :plate")
+    void delete(String plate);
 }

@@ -4,6 +4,7 @@ public class DomainVehicle {
     protected String plate;
     private int type;
     private int cilindraje;
+    private int fk_space;
 
     public DomainVehicle() {
     }
@@ -40,5 +41,13 @@ public class DomainVehicle {
 
     public void setCilindraje(int cilindraje) {
         this.cilindraje = cilindraje;
+    }
+
+    public int getFk_space() {
+        return fk_space;
+    }
+
+    public void setFk_space(int fk_space) {
+        this.fk_space = fk_space;
     }
 }

@@ -15,4 +15,9 @@ public interface CarDao {
     @Insert
     void insertCar(Car cars);
 
+    @Query("SELECT * FROM car WHERE car.plate_id = :id")
+    Car getCar (String id);
+
+    @Query("DELETE FROM car WHERE car.plate_id = :plate")
+    void delete(String plate);
 }

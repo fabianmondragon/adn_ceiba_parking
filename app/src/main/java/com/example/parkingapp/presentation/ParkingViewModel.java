@@ -54,22 +54,19 @@ public class ParkingViewModel extends AndroidViewModel implements RequestListene
     {
         CarPresentation carPresentation = new CarPresentation(carPlate.getValue());
         conversionType.regiterCarFromVMToDomain(carPresentation, domainVehicleOperations);
-
     }
 
-
-    public void onClickBillMotorCycle ()
+    public void onClickCheckOoutMotorCycle ()
     {
-        CarPresentation carPresentation = new CarPresentation(carPlate.getValue());
+        MotorcyclePresentation motorcycle = new MotorcyclePresentation (motoPlate.getValue());
+        conversionType.checkoutMotorCycleFromVMToDomain (motorcycle, domainVehicleOperations );
+
     }
-
-
-    public void onClickBillCar ()
+    public void onClickCheckOutCar ()
     {
-        //parkingRepository.getCar();
+        CarPresentation carPresentation = new CarPresentation (carPlate.getValue());
+        conversionType.checkoutCarFromVMToDomain (carPresentation, domainVehicleOperations );
     }
-
-
 
     public void fillDataBase() {
        domainManageDataBase.fillDataBase();
@@ -78,13 +75,19 @@ public class ParkingViewModel extends AndroidViewModel implements RequestListene
 
     @Override
     public void respond(TransactionResponse repondTransaction) {
-        msg.setValue(repondTransaction.getMsg());
+
         switch ( repondTransaction.getTransactionId()){
             case Constant.SET_CAR:
-
+                msg.setValue(repondTransaction.getMsg());
                 break;
             case Constant.SET_MOTORCYCLE:
-
+                msg.setValue(repondTransaction.getMsg());
+                break;
+            case Constant.SET_COST:
+                msg.setValue(""+repondTransaction.getCost());
+                break;
+            case Constant.SET_MOTORCYCLE_NO_AUTORIZED:
+                msg.setValue(repondTransaction.getMsg());
                 break;
         }
     }

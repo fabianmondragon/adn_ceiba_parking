@@ -9,6 +9,9 @@ public class MotorcyclePresentation {
         this.plate = plate;
         this.cilindraje = cilindraje;
     }
+    public MotorcyclePresentation (String plate){
+        this.plate = plate;
+    }
 
     public String getPlate() {
         return plate;

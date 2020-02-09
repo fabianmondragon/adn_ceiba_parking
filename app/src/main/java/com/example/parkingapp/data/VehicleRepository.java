@@ -4,6 +4,7 @@ import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.database.Car;
 import com.example.parkingapp.data.database.Motorcycle;
 import com.example.parkingapp.data.database.ParkingSpace;
+import com.example.parkingapp.domain.model.DomainVehicle;
 
 import java.util.List;
 
@@ -44,5 +45,54 @@ public class VehicleRepository {
             return false;
         }
         return true;
+    }
+
+    public void checkoutMotorCycletaFromDomainToRepository(DomainVehicle domainVehicle) {
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        try{
+
+        }catch (Exception e){
+
+        }
+
+    }
+
+    public Motorcycle getMotoCycle(String plateId) {
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        try{
+           return db.motorCycleDao().getMotoCycle(plateId);
+        }catch (Exception e){
+
+        }
+        return  null;
+    }
+
+    public void deleteMotorcycle(String plate) {
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        try{
+            db.motorCycleDao().delete (plate);
+        }catch (Exception e){
+
+        }
+
+    }
+
+    public Car getCar(String plate) {
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        try{
+            return db.carDao().getCar(plate);
+        }catch (Exception e){
+
+        }
+        return  null;
+    }
+
+    public void deleteCar(String plate) {
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        try{
+            db.carDao().delete (plate);
+        }catch (Exception e){
+
+        }
     }
 }

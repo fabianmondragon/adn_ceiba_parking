@@ -74,7 +74,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="@string/bill"
-                        android:onClick="@{() -> parkingViewModel.onClickBillMotorCycle()}">
+                        android:onClick="@{() -> parkingViewModel.onClickCheckOoutMotorCycle()}">
                     </Button>
                 </LinearLayout>
 
@@ -127,7 +127,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="@string/bill"
-                        android:onClick="@{() -> parkingViewModel.onClickBillCar()}">
+                        android:onClick="@{() -> parkingViewModel.onClickCheckOutCar()}">
                     </Button>
                 </LinearLayout>
 

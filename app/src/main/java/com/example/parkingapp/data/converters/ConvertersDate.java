@@ -2,7 +2,8 @@ package com.example.parkingapp.data.converters;
 
 import androidx.room.TypeConverter;
 
-import java.sql.Date;
+import java.util.Date;
+
 
 public class ConvertersDate {
     @TypeConverter

@@ -93,6 +93,7 @@ dependencies {
 
     // Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
+    implementation 'org.hamcrest:hamcrest-junit:2.0.0.0'
 
 
     implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0-alpha02'

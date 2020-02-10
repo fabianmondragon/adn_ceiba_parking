@@ -5,7 +5,6 @@ public class DomainDetailParking {
     private long cost;
 
     public DomainDetailParking(  long minuts) {
-
         this.numberMinuts = minuts;
     }
 

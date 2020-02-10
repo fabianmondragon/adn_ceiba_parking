@@ -1,10 +1,12 @@
 package com.example.parkingapp.domain;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 
@@ -18,11 +20,16 @@ public class DomainValidationsParkingTest {
 
     @Test
     public void isValid_FieldWithRule_Test() {
-        assertThat(true, is (equals(domainValidationsParking.isValid("A"))) );
+        Boolean b = domainValidationsParking.isValid("A");
+        Assert.assertEquals (true, domainValidationsParking.isValid("A"));
+
+
+        //assertThat(true, domainValidationsParking.isValid("A"));
+
     }
     @Test
     public void isValid_FieldWithEmptyField_Test() {
-        assertThat(true, is (equals(domainValidationsParking.isValid(""))) );
+        Assert.assertEquals (true, domainValidationsParking.isValid("A"));
     }
 
     /*

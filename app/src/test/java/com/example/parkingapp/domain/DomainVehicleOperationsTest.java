@@ -15,23 +15,23 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-@RunWith(value = Parameterized.class)
+
 public class DomainVehicleOperationsTest {
     private DomainVehicle domainVehicle;
     private DomainVehicleOperations domainVehicleOperations;
     @Before
     public void config (){
 
-        domainVehicle = new DomainVehicle("LMO21", 100, 1);
-        domainVehicleOperations = new DomainVehicleOperations();
+        //domainVehicle = new DomainVehicle("LMO21", 100, 1);
+        //domainVehicleOperations = new DomainVehicleOperations();
     }
 
     @Test
     public void registerVehicle() {
-        DomainRespond domainRespond = new DomainRespond();
+       /* DomainRespond domainRespond = new DomainRespond();
         domainRespond.setMsg(Constant.REGISTER_SUCCESSFULL);
         domainRespond.setState(true);
-        domainRespond.setTipeTransaction(Constant.SET_MOTORCYCLE);
+        domainRespond.setTipeTransaction(Constant.SET_MOTORCYCLE);*/
 
        // Assert.assertEquals(domainRespond, domainVehicleOperations.registerVehicle(domainVehicle));
     }

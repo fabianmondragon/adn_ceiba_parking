@@ -2,8 +2,6 @@ package com.example.parkingapp;
 
 public class TransactionResponse {
 
-
-
     private boolean state;
     private  int transactionId;
     private String msg;
@@ -34,23 +32,11 @@ public class TransactionResponse {
         return transactionId;
     }
 
-    public void setTransactionId(int transactionId) {
-        this.transactionId = transactionId;
-    }
-
     public String getMsg() {
         return msg;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
     public long getCost() {
         return cost;
-    }
-
-    public void setCost(long cost) {
-        this.cost = cost;
     }
 }

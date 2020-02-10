@@ -14,15 +14,8 @@ public class DomainParking {
         return numCars;
     }
 
-    public void setNumCars(int numCars) {
-        this.numCars = numCars;
-    }
-
     public int getNumMotorcycle() {
         return numMotorcycle;
     }
 
-    public void setNumMotorcycle(int numMotorcycle) {
-        this.numMotorcycle = numMotorcycle;
-    }
 }

@@ -8,16 +8,16 @@ import androidx.room.PrimaryKey;
 public class PlateRules {
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo (name = "plate_rules_id")
+    @ColumnInfo(name = "plate_rules_id")
     int plateRulesId;
 
-    @ColumnInfo (name = "letter_plate_rule")
+    @ColumnInfo(name = "letter_plate_rule")
     String letter_plate_rule;
 
-    @ColumnInfo (name ="state")
+    @ColumnInfo(name = "state")
     Boolean state;
 
-    public PlateRules( String letter_plate_rule, Boolean state) {
+    public PlateRules(String letter_plate_rule, Boolean state) {
         this.plateRulesId = plateRulesId;
         this.letter_plate_rule = letter_plate_rule;
         this.state = state;

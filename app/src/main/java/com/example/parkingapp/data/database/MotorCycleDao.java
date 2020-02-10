@@ -4,19 +4,18 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
-
 import java.util.List;
 
 @Dao
 public interface MotorCycleDao {
     @Insert
-   void insertMotorcycle(Motorcycle motorcycle);
+    void insertMotorcycle(Motorcycle motorcycle);
 
     @Query("SELECT * FROM moto")
     LiveData<List<Motorcycle>> getAll();
 
     @Query("SELECT * FROM moto")
-   List<Motorcycle> getAllMotorcycle();
+    List<Motorcycle> getAllMotorcycle();
 
     @Query("SELECT * FROM moto WHERE moto.plate_id = :plateId")
     Motorcycle getMotoCycle(String plateId);

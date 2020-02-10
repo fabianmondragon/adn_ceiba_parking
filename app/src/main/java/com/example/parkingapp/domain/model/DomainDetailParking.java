@@ -4,20 +4,12 @@ public class DomainDetailParking {
     private long numberMinuts;
     private long cost;
 
-    public DomainDetailParking(  long minuts) {
+    public DomainDetailParking(long minuts) {
         this.numberMinuts = minuts;
     }
 
     public long getNumberMinuts() {
         return numberMinuts;
-    }
-
-    public void setNumberMinuts(long numberMinuts) {
-        this.numberMinuts = numberMinuts;
-    }
-
-    public long getCost() {
-        return cost;
     }
 
     public void setCost(long cost) {

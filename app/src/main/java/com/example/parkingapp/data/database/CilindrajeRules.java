@@ -3,10 +3,9 @@ package com.example.parkingapp.data.database;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
 import org.jetbrains.annotations.NotNull;
 
-@Entity (tableName = "cilindraje_rules")
+@Entity(tableName = "cilindraje_rules")
 public class CilindrajeRules {
 
     @NotNull
@@ -17,7 +16,7 @@ public class CilindrajeRules {
     @ColumnInfo(name = "cilindraje_moto")
     private int cilindraje_moto;
 
-    @ColumnInfo (name = "state")
+    @ColumnInfo(name = "state")
     private int state;
 
     public CilindrajeRules(int cilindraje_moto, int state) {

@@ -14,6 +14,6 @@ public interface TariffDao {
     @Insert
     void insertTarif(Tariff tariff);
 
-    @Query ("SELECT * FROM Tariff LIMIT 1")
-    public  Tariff getTariff();
+    @Query("SELECT * FROM Tariff LIMIT 1")
+    public Tariff getTariff();
 }

@@ -8,13 +8,13 @@ import androidx.room.PrimaryKey;
 public class Parking {
 
     @PrimaryKey
-    @ColumnInfo (name = "paking_id")
+    @ColumnInfo(name = "paking_id")
     private int parkinId;
 
-    @ColumnInfo (name="number_car")
+    @ColumnInfo(name = "number_car")
     private int numberCar;
 
-    @ColumnInfo (name="number_moto")
+    @ColumnInfo(name = "number_moto")
     private int numberMoto;
 
     public Parking(int numberCar, int numberMoto) {

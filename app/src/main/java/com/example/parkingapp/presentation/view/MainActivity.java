@@ -2,7 +2,6 @@ package com.example.parkingapp.presentation.view;
 
 import android.os.Bundle;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -22,12 +21,12 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         parkingViewModel = ViewModelProviders.of(this).get(ParkingViewModel.class);
         binding.setParkingViewModel(parkingViewModel);
-        binding.setLifecycleOwner  (this);
-        setObservers ();
+        binding.setLifecycleOwner(this);
+        setObservers();
         filldatabase();
     }
 
-    private void setObservers (){
+    private void setObservers() {
         final Observer<String> msgObserver = new Observer<String>() {
             @Override
             public void onChanged(@Nullable final String msg) {
@@ -37,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         parkingViewModel.getMsg().observe(this, msgObserver);
 
     }
-    private void filldatabase(){
+
+    private void filldatabase() {
         parkingViewModel.fillDataBase();
     }
 }

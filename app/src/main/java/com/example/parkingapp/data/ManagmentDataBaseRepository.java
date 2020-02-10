@@ -1,6 +1,5 @@
 package com.example.parkingapp.data;
 
-import android.app.Application;
 import android.os.AsyncTask;
 
 import com.example.parkingapp.BaseApplication;
@@ -14,18 +13,16 @@ import java.util.List;
 
 public class ManagmentDataBaseRepository {
 
-
-
     public ManagmentDataBaseRepository() {
 
     }
 
-    public void fillDataBase(final Parking parking, final List<ParkingSpace> parkingSpaceList, final CilindrajeRules cilindrajeRules, final Tariff tariff, final PlateRules plateRules){
+    public void fillDataBase(final Parking parking, final List<ParkingSpace> parkingSpaceList, final CilindrajeRules cilindrajeRules, final Tariff tariff, final PlateRules plateRules) {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
-                if (db.parkingDao().getAllParkinList().size()==0) {
+                if (db.parkingDao().getAllParkinList().size() == 0) {
                     db.parkingDao().inserParking(parking);
                     db.parkingSpaceDao().insertParkingAll(parkingSpaceList);
                     db.cilindrajeRulesDao().insertCilindrajeRules(cilindrajeRules);

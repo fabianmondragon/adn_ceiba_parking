@@ -5,12 +5,12 @@ import com.example.parkingapp.data.database.CilindrajeRules;
 
 public class CilindrajeRepository {
 
-    public CilindrajeRules getActiveCilindraje (){
+    public CilindrajeRules getActiveCilindraje() {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
-        try{
+        try {
             return db.cilindrajeRulesDao().getActivo();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }

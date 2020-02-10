@@ -4,17 +4,16 @@ package com.example.parkingapp.domain;
 import com.example.parkingapp.domain.model.DomainCilindrajeRules;
 import com.example.parkingapp.domain.model.DomainDetailParking;
 import com.example.parkingapp.domain.model.DomainTariff;
-
-import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertThat;
 
 
 public class DomainBillTest {

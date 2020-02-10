@@ -5,20 +5,19 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-
 import org.jetbrains.annotations.NotNull;
 
 
-@Entity (indices = {@Index("fk_parking_space")}, tableName = "car",
+@Entity(indices = {@Index("fk_parking_space")}, tableName = "car",
         foreignKeys = {
-            @ForeignKey(entity = ParkingSpace.class,
-                    parentColumns = "parking_space_id",
-                    childColumns = "fk_parking_space")
-            })
+                @ForeignKey(entity = ParkingSpace.class,
+                        parentColumns = "parking_space_id",
+                        childColumns = "fk_parking_space")
+        })
 public class Car {
 
     @ColumnInfo(name = "plate_id")
-    @PrimaryKey ()
+    @PrimaryKey()
     @NotNull
     private String plateID;
 

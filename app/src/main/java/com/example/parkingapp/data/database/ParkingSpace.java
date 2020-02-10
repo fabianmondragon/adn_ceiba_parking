@@ -6,13 +6,9 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-
 import java.util.Date;
 
-import static androidx.room.ForeignKey.CASCADE;
-
-
-@Entity(indices = {@Index("fk_parking")},tableName = "parking_space", foreignKeys = {
+@Entity(indices = {@Index("fk_parking")}, tableName = "parking_space", foreignKeys = {
 
         @ForeignKey(entity = Parking.class,
                 parentColumns = "paking_id",
@@ -21,20 +17,20 @@ import static androidx.room.ForeignKey.CASCADE;
         )
 })
 public class ParkingSpace {
-    @PrimaryKey (autoGenerate =  true)
-    @ColumnInfo (name = "parking_space_id")
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "parking_space_id")
     private int parkingSpaceId;
 
-    @ColumnInfo (name = "state")
+    @ColumnInfo(name = "state")
     private boolean state;
 
-    @ColumnInfo (name = "date")
+    @ColumnInfo(name = "date")
     private Date startOcupation;
 
-    @ColumnInfo (name = "fk_parking")
+    @ColumnInfo(name = "fk_parking")
     public int parking;
 
-    public ParkingSpace( boolean state, Date startOcupation, int parking) {
+    public ParkingSpace(boolean state, Date startOcupation, int parking) {
         this.state = state;
         this.startOcupation = startOcupation;
         this.parking = parking;

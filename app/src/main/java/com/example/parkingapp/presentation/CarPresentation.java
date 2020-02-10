@@ -1,12 +1,11 @@
 package com.example.parkingapp.presentation;
 
 public class CarPresentation {
-    private String plate;
 
+    private String plate;
 
     public CarPresentation(String plate) {
         this.plate = plate;
-
     }
 
     public String getPlate() {

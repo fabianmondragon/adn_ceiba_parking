@@ -6,10 +6,9 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-
 import org.jetbrains.annotations.NotNull;
 
-@Entity (tableName = "moto", indices = {@Index("fk_parking_space")},
+@Entity(tableName = "moto", indices = {@Index("fk_parking_space")},
         foreignKeys = {
                 @ForeignKey(entity = ParkingSpace.class,
                         parentColumns = "parking_space_id",
@@ -18,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 public class Motorcycle {
 
     @ColumnInfo(name = "plate_id")
-    @PrimaryKey ()
+    @PrimaryKey()
     @NotNull
     private String plateID;
 
@@ -31,14 +30,14 @@ public class Motorcycle {
 
     @Ignore
     public Motorcycle(String plateID, int cilindraje, int fkParkingSpace) {
-        this.fkParkingSpace=fkParkingSpace;
+        this.fkParkingSpace = fkParkingSpace;
         this.plateID = plateID;
         this.cilindraje = cilindraje;
     }
+
     public Motorcycle(String plateID) {
         this.plateID = plateID;
     }
-
 
     public String getPlateID() {
         return plateID;

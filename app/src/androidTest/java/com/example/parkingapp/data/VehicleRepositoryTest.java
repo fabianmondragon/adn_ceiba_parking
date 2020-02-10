@@ -50,9 +50,9 @@ public class VehicleRepositoryTest {
 
     @Test
     public void getCarsDataBase_shoudGetOneCar_IfTable_isHasONe () throws  InterruptedException {
-        vehicleRepository.setCar(new Car("LM025", 7));
+        vehicleRepository.setCar(new Car("LM025", 0));
         int num = vehicleRepository.getListCar().size();
-        assertTrue(vehicleRepository.getListCar().size() == 7);
+        assertTrue(vehicleRepository.getListCar().size() == 1);
     }
 
 

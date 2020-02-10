@@ -21,6 +21,7 @@ public class ParkingViewModel extends AndroidViewModel implements RequestListene
     public MutableLiveData<String> motoCilindraje = new MutableLiveData();
     private RequestListener listener;
     private DomainVehicleOperations domainVehicleOperations;
+    private ValidationPresentation validationPresentation;
 
     MutableLiveData<String> msg = new MutableLiveData<>();
 
@@ -30,22 +31,30 @@ public class ParkingViewModel extends AndroidViewModel implements RequestListene
         domainVehicleOperations.setRegisterListener(this);
         conversionType = ConversionType.getInstance();
         domainManageDataBase = new DomainManageDataBase();
+        validationPresentation = new ValidationPresentation();
     }
 
     public void onClickRegisterMotorCycle() {
-        MotorcyclePresentation motorcyclePresentation = new MotorcyclePresentation(motoPlate.getValue(), Integer.parseInt(motoCilindraje.getValue()));
-        conversionType.regiterMotoFromVMToDomain(motorcyclePresentation, domainVehicleOperations);
+        if (validationPresentation.validateFieldMotorcycle(motoPlate.getValue(), motoCilindraje.getValue())) {
+            MotorcyclePresentation motorcyclePresentation = new MotorcyclePresentation(motoPlate.getValue(), Integer.parseInt(motoCilindraje.getValue()));
+            conversionType.regiterMotoFromVMToDomain(motorcyclePresentation, domainVehicleOperations);
+        }else {
+            msg.setValue(Constant.INCOMPLETED_INFORMATION);
+        }
     }
 
     public void onClickRegisterCar() {
-        CarPresentation carPresentation = new CarPresentation(carPlate.getValue());
-        conversionType.regiterCarFromVMToDomain(carPresentation, domainVehicleOperations);
+        if (validationPresentation.validateFieldCar(carPlate.getValue())) {
+            CarPresentation carPresentation = new CarPresentation(carPlate.getValue());
+            conversionType.regiterCarFromVMToDomain(carPresentation, domainVehicleOperations);
+        }else {
+            msg.setValue(Constant.INCOMPLETED_INFORMATION);
+        }
     }
 
     public void onClickCheckOoutMotorCycle() {
         MotorcyclePresentation motorcycle = new MotorcyclePresentation(motoPlate.getValue());
         conversionType.checkoutMotorCycleFromVMToDomain(motorcycle, domainVehicleOperations);
-
     }
 
     public void onClickCheckOutCar() {

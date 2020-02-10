@@ -6,6 +6,7 @@ public abstract class Constant {
     final public static String REGISTER_UNSUCCEFULL = "Ocurrio un problema, intente nuevamente";
     final public static String COSTO_TOTAL = "Su costo total es de: ";
     final public static String NO_AUTORIZED = "No está autorizado para ingresar";
+    final public static String INCOMPLETED_INFORMATION = "Información incompleta";
 
     //Transacciones
     final public static int SET_CAR =1;

@@ -111,9 +111,9 @@ public class DomainVehicleOperations implements Register, RequestListener {
                         requestListener.respond(new TransactionResponse(true, Constant.SET_MOTORCYCLE, Constant.REGISTER_SUCCESSFULL));
                     }
                 } else if (respond.getTipeTransaction() == SET_CAR || respond.getTipeTransaction() == SET_MOTORCYCLE) {
-                    requestListener.respond(new TransactionResponse(true, Constant.SET_MOTORCYCLE, Constant.REGISTER_SUCCESSFULL));
+                    requestListener.respond(new TransactionResponse(false, Constant.SET_MOTORCYCLE, Constant.REGISTER_UNSUCCEFULL));
                 } else if (respond.getTipeTransaction() == SET_MOTORCYCLE_NO_AUTORIZED) {
-                    requestListener.respond(new TransactionResponse(true, SET_MOTORCYCLE_NO_AUTORIZED, Constant.NO_AUTORIZED));
+                    requestListener.respond(new TransactionResponse(false, SET_MOTORCYCLE_NO_AUTORIZED, Constant.NO_AUTORIZED));
                 }
             }
         }.execute();

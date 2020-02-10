@@ -25,7 +25,7 @@ import com.example.parkingapp.data.database.Tariff;
 import com.example.parkingapp.data.database.TariffDao;
 
 
-@Database(entities = { Car.class, CilindrajeRules.class, Motorcycle.class, Parking.class, ParkingSpace.class, PlateRules.class, Tariff.class,}, version = CeibaDataBase.VERSION)
+@Database(entities = { Car.class, CilindrajeRules.class, Motorcycle.class, Parking.class, ParkingSpace.class, PlateRules.class, Tariff.class,}, version = CeibaDataBase.VERSION, exportSchema = false)
 @TypeConverters({ConvertersDate.class})
 public abstract class CeibaDataBase extends RoomDatabase {
 

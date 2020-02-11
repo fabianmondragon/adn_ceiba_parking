@@ -22,4 +22,7 @@ public interface MotorCycleDao {
 
     @Query("DELETE FROM moto WHERE moto.plate_id = :plate")
     void delete(String plate);
+
+    @Query("DELETE FROM moto")
+    void deleteAll();
 }

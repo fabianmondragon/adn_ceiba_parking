@@ -38,6 +38,7 @@ public class VehicleRepositoryTest {
 
     @Test
     public void getCarsDataBase_shouldGetEmptyList_IfTable_IsEmpty() throws InterruptedException {
+        domainManageDataBase.freeSpaceDataBase();
         List<Car> noteList = carDao.getAll();
         assertTrue(noteList.isEmpty());
     }

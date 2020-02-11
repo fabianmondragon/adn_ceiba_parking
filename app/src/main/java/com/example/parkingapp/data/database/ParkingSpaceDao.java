@@ -26,4 +26,7 @@ public interface ParkingSpaceDao {
 
     @Query("Select parking_space_id, date, state, fk_parking From parking_space LEFT JOIN car ON parking_space_id = car.fk_parking_space WHERE car.plate_id =:plate")
     ParkingSpace getTimeCar(String plate);
+
+    @Query ("UPDATE parking_space set state = :b, fk_parking = null")
+    void setUpdateAllStateParking(boolean b);
 }

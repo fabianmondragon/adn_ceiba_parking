@@ -19,4 +19,7 @@ public interface CarDao {
 
     @Query("DELETE FROM car WHERE car.plate_id = :plate")
     void delete(String plate);
+
+    @Query("DELETE FROM car" )
+    void deleteAll();
 }

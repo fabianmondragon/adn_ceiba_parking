@@ -58,4 +58,9 @@ public class DomainManageDataBase {
         managmentDataBaseRepository.fillDataBase(parking, parkingSpaceList, cilindrajeRules, tariff, plateRules);
 
     }
+
+    public void freeSpaceDataBase() {
+        managmentDataBaseRepository.freeUpSpace();
+
+    }
 }

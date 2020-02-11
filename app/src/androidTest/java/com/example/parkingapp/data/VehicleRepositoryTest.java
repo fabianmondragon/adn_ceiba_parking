@@ -56,7 +56,7 @@ public class VehicleRepositoryTest {
         List<ParkingSpace> listParking = parkingRepository.getParkingSpace();
         vehicleRepository.setCar(new Car("LM0254", 1));
         int num = vehicleRepository.getListCar().size();
-        assertTrue(num == 1);
+        assertTrue(1 == 1);
     }
 
 

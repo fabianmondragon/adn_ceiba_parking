@@ -15,7 +15,6 @@ import com.example.parkingapp.domain.model.DomainParking;
 import com.example.parkingapp.domain.model.DomainRespond;
 import com.example.parkingapp.domain.model.DomainTariff;
 import com.example.parkingapp.domain.model.DomainVehicle;
-import com.example.parkingapp.util.CalendarParking;
 import com.example.parkingapp.util.Constant;
 import java.util.Calendar;
 import java.util.Date;
@@ -56,8 +55,7 @@ public class DomainVehicleOperations implements Register, RequestListener {
                 DomainRespond domainRespond = new DomainRespond();
                 DomainParking domainParking;
                 TransactionResponse transactionResponse;
-                CalendarParking calendarParking = new CalendarParking();
-                Date date = calendarParking.getDateToday();
+                Date date = Calendar.getInstance().getTime();
                 int parkingSpaceFree = -1;
                 int size;
                 DomainValidationsParking domainValidationsParking = new DomainValidationsParking();

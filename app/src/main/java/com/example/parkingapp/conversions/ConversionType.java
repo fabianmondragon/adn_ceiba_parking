@@ -28,18 +28,12 @@ import java.util.List;
 
 public class ConversionType {
 
-    public static int IS_A_MOTO = 1;
-    public static int IS_A_CAR = 2;
+    public static final int IS_A_MOTO = 1;
+    public static final int IS_A_CAR = 2;
     private static final ConversionType instanceConversionType = new ConversionType();
-    private Application application;
-    private ParkingRepository parkingRepository;
 
     public static ConversionType getInstance() {
         return instanceConversionType;
-    }
-
-    public ConversionType() {
-
     }
 
     public List<DomainParking> getParkingFromDomainToRepository(ParkingRepository parkingRepository) {
@@ -85,6 +79,7 @@ public class ConversionType {
 
 
     public Date getTimeFromDomainToRepository(DomainVehicle domainVehicle, SpaceParkingRepository spaceParkingRepository) {
+        Date startOcupation;
         ParkingSpace parkingSpace = null;
         if (domainVehicle.getType() == IS_A_CAR) {
             parkingSpace = spaceParkingRepository.getTimeCar(domainVehicle.getPlate());
@@ -92,7 +87,10 @@ public class ConversionType {
             parkingSpace = spaceParkingRepository.getTime(domainVehicle.getPlate());
         }
         try {
-            return parkingSpace.getStartOcupation();
+            if (parkingSpace.getStartOcupation()!= null){
+                return parkingSpace.getStartOcupation();
+            }
+            return null;
         } catch (NullPointerException exception) {
             return null;
         }

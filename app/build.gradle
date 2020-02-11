@@ -70,6 +70,7 @@ task jacocoTestReport(type:JacocoReport, dependsOn: ['testDebugUnitTest', 'creat
 
     reports {
         xml.enabled = true
+        xml.destination file("${project.projectDir}/build/reports/jacoco/testXml/jacocoTestReport.xml")
         csv.enabled = false
         html.enabled = true
     }

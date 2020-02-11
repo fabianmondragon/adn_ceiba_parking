@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.CheckForNull;
+
 public class ConversionType {
 
     public static final int IS_A_MOTO = 1;
@@ -78,6 +80,7 @@ public class ConversionType {
     }
 
 
+    @CheckForNull
     public Date getTimeFromDomainToRepository(DomainVehicle domainVehicle, SpaceParkingRepository spaceParkingRepository) {
         Date startOcupation;
         ParkingSpace parkingSpace = null;

@@ -37,15 +37,7 @@ pipeline {
                 ])
       }
     }
-	stage('Build') {
-      steps {
-        echo "------------>Build<------------"
-        //Construir sin tarea test que se ejecutó previamente
-		sh 'chmod u+x gradlew'
-        sh './gradlew --b ./app/build.gradle build -x test'
-      }
-    }  
-    
+
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"

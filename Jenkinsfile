@@ -42,7 +42,7 @@ pipeline {
           steps{
             echo "------------>Unit Tests<------------"
              sh 'chmod u+x gradlew'
-             sh './gradlew clean jacocoTestReport '
+             sh './gradlew clean jacocoTestReport'
             //sh './gradlew --b ./app/build.gradle jacocoTestReport'
             sh './gradlew --b ./app/build.gradle test'
            // sh './gradlew --b ./app/build.gradle androidTest'

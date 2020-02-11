@@ -30,16 +30,17 @@ public class ValidationPresentationTest {
 
     @Test
     public void validateFieldMotorcycle_WithInvalidField_Test() {
-        assertFalse(validationPresentation.validateFieldCar(""));
+        assertFalse(validationPresentation.validateFieldMotorcycle("", ""));
     }
 
     @Test
     public void validateFieldMotorcycle_WithValidField_Test() {
-        assertTrue(validationPresentation.validateFieldCar("A"));
+        assertTrue(validationPresentation.validateFieldMotorcycle("lmo", "100"));
     }
 
     @Test
     public void validateFieldMotorcycle_WithNullField_Test() {
-        assertFalse(validationPresentation.validateFieldCar(null));
+        assertFalse(validationPresentation.validateFieldMotorcycle(null, null));
     }
+
 }

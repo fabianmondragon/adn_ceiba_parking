@@ -15,4 +15,6 @@ public class DomainDetailParking {
     public void setCost(long cost) {
         this.cost = cost;
     }
+
+    public long getCost (){return cost;}
 }

@@ -17,6 +17,7 @@ public class DomainVehicle {
     public DomainVehicle(String plate, int cilindraje, int type) {
         this.plate = plate;
         this.type = type;
+        this.cilindraje = cilindraje;
     }
 
     public String getPlate() {

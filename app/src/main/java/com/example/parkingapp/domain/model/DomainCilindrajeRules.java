@@ -23,4 +23,6 @@ public class DomainCilindrajeRules {
         this.state = state;
     }
 
+    public int getCilindrage (){return cilindraje_moto;}
+
 }

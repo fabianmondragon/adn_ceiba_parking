@@ -41,8 +41,8 @@ pipeline {
     stage('Compile & Unit Tests') {
           steps{
             echo "------------>Unit Tests<------------"
+             sh 'chmod u+x gradlew'
             sh './gradlew --b ./app/build.gradle jacocoTestReport'
-            sh 'chmod u+x gradlew'
             sh './gradlew --b ./app/build.gradle test'
            // sh './gradlew --b ./app/build.gradle androidTest'
 

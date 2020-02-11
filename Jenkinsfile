@@ -52,6 +52,8 @@ pipeline {
 		    sh 'chmod u+x gradlew'
             sh './gradlew --b ./app/build.gradle test'
             sh './gradlew --b ./app/build.gradle connectedAndroidTest'
+
+            // sh './gradlew --b ./app/build.gradle androidTest'
             sh './gradlew --b ./app/build.gradle jacocoTestReport'
       }
     }
@@ -65,7 +67,15 @@ sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallat
       }
     }
 
-    
+    stage('Build') {
+      steps {
+        echo "------------>Build<------------"
+        //Construir sin tarea test que se ejecutó previamente
+        sh 'chmod u+x gradlew'
+        // sh './gradlew clean'
+         sh './gradlew --b ./app/build.gradle build -x test'
+      }
+    }
   }
 
   post {

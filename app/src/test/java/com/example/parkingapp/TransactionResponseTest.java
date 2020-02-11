@@ -25,4 +25,12 @@ public class TransactionResponseTest {
 
     }
 
+    @Test
+    public void validate_SetCost_Success (){
+        TransactionResponse transactionResponse = new TransactionResponse(false, 1, "Success", 1000);
+        transactionResponse.setState(true);
+        assertTrue(transactionResponse.isState());
+
+    }
+
 }

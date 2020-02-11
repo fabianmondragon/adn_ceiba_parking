@@ -100,14 +100,14 @@ public class ConversionType {
         Motorcycle motorcycle = vehicleRepository.getMotoCycle(domainVehicle.getPlate());
         domainVehicle.setPlate(motorcycle.getPlateID());
         domainVehicle.setCilindraje(motorcycle.getCilindraje());
-        domainVehicle.setFk_space(motorcycle.getFkParkingSpace());
+        domainVehicle.setFsetFkSpace(motorcycle.getFkParkingSpace());
         return domainVehicle;
     }
 
     public DomainVehicle getCarFromDomainToRepository(DomainVehicle domainVehicle, VehicleRepository vehicleRepository) {
         Car car = vehicleRepository.getCar(domainVehicle.getPlate());
         domainVehicle.setPlate(car.getPlateID());
-        domainVehicle.setFk_space(car.getFkParkingSpace());
+        domainVehicle.setFsetFkSpace(car.getFkParkingSpace());
         return domainVehicle;
     }
 

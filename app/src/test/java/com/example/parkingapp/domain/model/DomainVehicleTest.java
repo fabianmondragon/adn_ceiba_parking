@@ -24,12 +24,12 @@ public class DomainVehicleTest {
         DomainVehicle domainVehicle = new DomainVehicle("100", 160, 1);
         domainVehicle.setCilindraje(100);
         domainVehicle.setPlate("lmo21");
-        domainVehicle.setFk_space(1);
+        domainVehicle.setFsetFkSpace(1);
 
 
         assertTrue(domainVehicle.getPlate().equals("lmo21") );
         assertTrue(domainVehicle.getCilindraje() == 100);
-        assertTrue(domainVehicle.getFk_space() == 1);
+        assertTrue(domainVehicle.getFkSpace() == 1);
     }
 
 

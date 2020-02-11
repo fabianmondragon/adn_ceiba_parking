@@ -5,7 +5,6 @@ import com.example.parkingapp.TransactionResponse;
 import com.example.parkingapp.conversions.ConversionType;
 import com.example.parkingapp.data.CilindrajeRepository;
 import com.example.parkingapp.data.ParkingRepository;
-import com.example.parkingapp.data.RegisterRepository;
 import com.example.parkingapp.data.RequestListener;
 import com.example.parkingapp.data.SpaceParkingRepository;
 import com.example.parkingapp.data.TariffRepository;
@@ -157,7 +156,7 @@ public class DomainVehicleOperations implements Register, RequestListener {
                     vehicleRepository.deleteCar(domainVehicleCost.getPlate());
                     domainDetailParking.setCost(cost);
                 }
-                spaceParkingRepository.freeSpace(domainVehicleCost.getFk_space());
+                spaceParkingRepository.freeSpace(domainVehicleCost.getFkSpace());
                 return cost;
             }
 

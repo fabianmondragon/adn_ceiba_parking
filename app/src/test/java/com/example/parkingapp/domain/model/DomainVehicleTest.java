@@ -25,8 +25,6 @@ public class DomainVehicleTest {
         domainVehicle.setCilindraje(100);
         domainVehicle.setPlate("lmo21");
         domainVehicle.setFsetFkSpace(1);
-
-
         assertTrue(domainVehicle.getPlate().equals("lmo21") );
         assertTrue(domainVehicle.getCilindraje() == 100);
         assertTrue(domainVehicle.getFkSpace() == 1);

@@ -23,10 +23,7 @@ public class ValidationPresentationTest {
         assertTrue(validationPresentation.validateFieldCar("A"));
     }
 
-    @Test
-    public void validateFieldCar_WithNullField_Test() {
-        assertFalse(validationPresentation.validateFieldCar(null));
-    }
+
 
     @Test
     public void validateFieldMotorcycle_WithInvalidField_Test() {
@@ -38,9 +35,6 @@ public class ValidationPresentationTest {
         assertTrue(validationPresentation.validateFieldMotorcycle("lmo", "100"));
     }
 
-    @Test
-    public void validateFieldMotorcycle_WithNullField_Test() {
-        assertFalse(validationPresentation.validateFieldMotorcycle(null, null));
-    }
+
 
 }

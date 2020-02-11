@@ -24,10 +24,6 @@ public class TransactionResponse {
         return state;
     }
 
-    public void setState(boolean state) {
-        this.state = state;
-    }
-
     public int getTransactionId() {
         return transactionId;
     }

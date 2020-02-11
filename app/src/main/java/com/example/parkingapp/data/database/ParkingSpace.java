@@ -8,6 +8,8 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
+import javax.annotation.CheckForNull;
+
 @Entity(indices = {@Index("fk_parking")}, tableName = "parking_space", foreignKeys = {
 
         @ForeignKey(entity = Parking.class,
@@ -52,6 +54,7 @@ public class ParkingSpace {
         this.state = state;
     }
 
+    @CheckForNull
     public Date getStartOcupation() {
         return startOcupation;
     }

@@ -23,17 +23,19 @@ public class VehicleRepositoryTest {
     private CeibaDataBase mDatabase;
     private CarDao carDao;
     private VehicleRepository vehicleRepository;
+    private SpaceParkingRepository parkingRepository;
     private DomainManageDataBase domainManageDataBase;
     @Before
     public void initDb() throws Exception {
         domainManageDataBase = new DomainManageDataBase();
+        parkingRepository = new SpaceParkingRepository();
         vehicleRepository = new VehicleRepository();
         mDatabase = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(),
                 CeibaDataBase.class)
                 .allowMainThreadQueries()
                 .build();
-
         carDao = mDatabase.carDao();
+        domainManageDataBase.fillDataBase();
     }
 
     @Test
@@ -45,13 +47,14 @@ public class VehicleRepositoryTest {
 
     @Test
     public void getCarsDataBase_shoudGetEmptyList_IfDataB_isFill () throws  InterruptedException {
-        domainManageDataBase.fillDataBase();
         assertTrue(vehicleRepository.getListCar().isEmpty());
     }
 
     @Test
     public void getCarsDataBase_shoudGetOneCar_IfTable_isHasONe () throws  InterruptedException {
-        vehicleRepository.setCar(new Car("LM025", 0));
+        domainManageDataBase.freeSpaceDataBase();
+        List<ParkingSpace> listParking = parkingRepository.getParkingSpace();
+        vehicleRepository.setCar(new Car("LM0254", 1));
         int num = vehicleRepository.getListCar().size();
         assertTrue(vehicleRepository.getListCar().size() == 1);
     }

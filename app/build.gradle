@@ -63,8 +63,10 @@ task jacocoTestReport(type:JacocoReport, dependsOn: ['testDebugUnitTest', 'creat
             "${buildDir}/generated/source/buildConfig/debug",
             "${buildDir}/generated/source/r/debug"
     ])
-    executionData = fileTree(dir: project.projectDir, includes:
-            ['**/*.exec', '**/*.ec'])
+    executionData = fileTree(dir: "$buildDir", includes: [
+            "jacoco/testDebugUnitTest.exec",
+            "outputs/code-coverage/connected/*coverage.ec"
+    ])
 
     reports {
         xml.enabled = true

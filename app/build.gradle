@@ -45,24 +45,37 @@ jacoco {
     version "0.7.1.201405082137"
 }
 
-task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+task jacocoTestReport(type:JacocoReport,  dependsOn: 'testDebugUnitTest') {
+    group = "Reporting"
 
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
+    description = "Generate Jacoco coverage reports"
 
-    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
-    def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", excludes: fileFilter)
+    // exclude auto-generated classes and tests
+    def fileFilter = ['**/R.class', '**/R$*.class',
+                      '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*',
+                      'android/**/*.*']
+    def debugTree = fileTree(dir:"${project.buildDir}/intermediates/classes/debug",excludes: fileFilter)
     def mainSrc = "${project.projectDir}/src/main/java"
 
     sourceDirectories = files([mainSrc])
     classDirectories = files([debugTree])
-    executionData = fileTree(dir: "$buildDir", includes: [
-            "jacoco/testDebugUnitTest.exec",
-            "outputs/code-coverage/debugAndroidTest/connected/*coverage.ec"
+    additionalSourceDirs = files([
+            "${buildDir}/generated/source/buildConfig/debug",
+            "${buildDir}/generated/source/r/debug"
     ])
+    executionData = fileTree(dir: project.projectDir, includes: [
+            "jacoco/testDebugUnitTest.exec",
+            "outputs/code-coverage/connected/*coverage.ec"
+    ])
+
+    reports {
+        xml.enabled = true
+        xml.destination file("${project.projectDir}/build/reports/jacoco/testXml/jacocoTestReport.xml")
+        csv.enabled = false
+        html.enabled = true
+    }
 }
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'

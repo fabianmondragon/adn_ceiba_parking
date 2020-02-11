@@ -1,8 +1,5 @@
 package com.example.parkingapp.conversions;
 
-
-import android.app.Application;
-
 import com.example.parkingapp.data.CilindrajeRepository;
 import com.example.parkingapp.data.ParkingRepository;
 import com.example.parkingapp.data.SpaceParkingRepository;
@@ -21,7 +18,6 @@ import com.example.parkingapp.domain.model.DomainTariff;
 import com.example.parkingapp.domain.model.DomainVehicle;
 import com.example.parkingapp.presentation.CarPresentation;
 import com.example.parkingapp.presentation.MotorcyclePresentation;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -82,16 +78,17 @@ public class ConversionType {
 
     @CheckForNull
     public Date getTimeFromDomainToRepository(DomainVehicle domainVehicle, SpaceParkingRepository spaceParkingRepository) {
-        Date startOcupation;
         ParkingSpace parkingSpace = null;
         if (domainVehicle.getType() == IS_A_CAR) {
             parkingSpace = spaceParkingRepository.getTimeCar(domainVehicle.getPlate());
-        } else if (domainVehicle.getType() == IS_A_MOTO) {
+        } else {
             parkingSpace = spaceParkingRepository.getTime(domainVehicle.getPlate());
         }
         try {
-            if (parkingSpace.getStartOcupation()!= null){
-                return parkingSpace.getStartOcupation();
+            if (parkingSpace != null) {
+                if (parkingSpace.getStartOcupation() != null) {
+                    return parkingSpace.getStartOcupation();
+                }
             }
             return null;
         } catch (NullPointerException exception) {

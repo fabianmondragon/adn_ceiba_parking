@@ -21,7 +21,7 @@ public class TransactionResponseTest {
         assertEquals(transactionResponse.getMsg(), "Success");
         assertEquals(transactionResponse.isState(), true);
         assertEquals(transactionResponse.getTransactionId(), 1);
-        assertEquals(transactionResponse.getTransactionId(), 1000);
+        assertEquals(transactionResponse.getCost(), 1000);
 
     }
 

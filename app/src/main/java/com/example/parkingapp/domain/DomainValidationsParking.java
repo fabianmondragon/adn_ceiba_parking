@@ -7,7 +7,7 @@ public class DomainValidationsParking {
     public boolean isValid(String plateId) {
         int day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
         if (plateId.startsWith("A")) {
-            if (day == 1 || day == 2) {
+            if (day == 1 || day == 3) {
                 return true;
             }else {
                 return false;

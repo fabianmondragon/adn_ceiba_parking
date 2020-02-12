@@ -37,6 +37,16 @@ pipeline {
                 ])
       }
     }
+     stage('Build') {
+              steps {
+                echo "------------>Build<------------"
+                //Construir sin tarea test que se ejecutó previamente
+                sh 'chmod u+x gradlew'
+               // sh './gradlew clean'
+                sh './gradlew --b ./app/build.gradle build -x test'
+
+              }
+            }
 
     stage('Compile & Unit Tests') {
           steps{
@@ -44,7 +54,7 @@ pipeline {
             sh 'chmod u+x gradlew'
             sh './gradlew --b ./app/build.gradle test'
            // sh './gradlew --b ./app/build.gradle androidTest'
-            sh './gradlew --b ./app/build.gradle jacocoTestReport'
+            //sh './gradlew --b ./app/build.gradle jacocoTestReport'
           }
         }
 
@@ -57,16 +67,7 @@ pipeline {
           }
         }
 
-        stage('Build') {
-          steps {
-            echo "------------>Build<------------"
-            //Construir sin tarea test que se ejecutó previamente
-            sh 'chmod u+x gradlew'
-           // sh './gradlew clean'
-            sh './gradlew --b ./app/build.gradle build -x test'
 
-          }
-        }
       }
 
       post {

@@ -9,7 +9,7 @@ public class DomainValidationsParking {
         if (plateId.startsWith("A")) {
             if (day == 1 || day == 4) {
                 return true;
-            }else {
+            } else {
                 return false;
             }
         }

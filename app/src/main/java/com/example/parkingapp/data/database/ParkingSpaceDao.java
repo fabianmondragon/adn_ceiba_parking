@@ -3,6 +3,7 @@ package com.example.parkingapp.data.database;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+
 import java.util.Date;
 import java.util.List;
 
@@ -27,9 +28,9 @@ public interface ParkingSpaceDao {
     @Query("Select parking_space_id, date, state, fk_parking From parking_space LEFT JOIN car ON parking_space_id = car.fk_parking_space WHERE car.plate_id =:plate")
     ParkingSpace getTimeCar(String plate);
 
-    @Query ("UPDATE parking_space set state = :b")
+    @Query("UPDATE parking_space set state = :b")
     void setUpdateAllStateParking(boolean b);
 
-    @Query ("Select * FROM parking_space WHERE parking_space_id = :id")
+    @Query("Select * FROM parking_space WHERE parking_space_id = :id")
     ParkingSpace getOneParkingSpace(int id);
 }

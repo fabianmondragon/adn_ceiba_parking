@@ -6,6 +6,7 @@ import com.example.parkingapp.data.database.Parking;
 import com.example.parkingapp.data.database.ParkingSpace;
 import com.example.parkingapp.data.database.PlateRules;
 import com.example.parkingapp.data.database.Tariff;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +51,8 @@ public class DomainManageDataBase {
             add(new ParkingSpace(false, null, 0));
             add(new ParkingSpace(false, null, 0));
             add(new ParkingSpace(false, null, 0));
-            add(new ParkingSpace(false, null, 0)); }};
+            add(new ParkingSpace(false, null, 0));
+        }};
 
         final Tariff tariff = new Tariff(1000.0, 500.0, 8000.0, 4000.0, 2000.0);
         final PlateRules plateRules = new PlateRules("b", true);

@@ -2,12 +2,12 @@ package com.example.parkingapp;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class TransactionResponseTest {
 
     @Test
-    public void ConstructTransactionRepsonse_THreeParams_Success (){
+    public void ConstructTransactionRepsonse_THreeParams_Success() {
         TransactionResponse transactionResponse = new TransactionResponse(true, 1, "Success");
         assertEquals(transactionResponse.getMsg(), "Success");
         assertEquals(transactionResponse.isState(), true);
@@ -16,7 +16,7 @@ public class TransactionResponseTest {
 
 
     @Test
-    public void ConstructTransactionRepsonse_FourtParams_Success (){
+    public void ConstructTransactionRepsonse_FourtParams_Success() {
         TransactionResponse transactionResponse = new TransactionResponse(true, 1, "Success", 1000);
         assertEquals(transactionResponse.getMsg(), "Success");
         assertEquals(transactionResponse.isState(), true);

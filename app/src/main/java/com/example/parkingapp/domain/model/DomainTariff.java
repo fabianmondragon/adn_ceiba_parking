@@ -17,7 +17,9 @@ public class DomainTariff {
         this.valueCilindrajeMoto = valueCilindrajeMoto;
     }
 
-    public Double getValueHorCar() { return valueHorCar; }
+    public Double getValueHorCar() {
+        return valueHorCar;
+    }
 
     public Double getValueHorMoto() {
         return valueHorMoto;

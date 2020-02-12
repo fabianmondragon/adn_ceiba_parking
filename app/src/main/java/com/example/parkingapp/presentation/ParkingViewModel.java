@@ -1,11 +1,12 @@
 package com.example.parkingapp.presentation;
 
 import android.app.Application;
+
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
+
 import com.example.parkingapp.TransactionResponse;
 import com.example.parkingapp.conversions.ConversionType;
-import com.example.parkingapp.data.ParkingRepository;
 import com.example.parkingapp.data.RequestListener;
 import com.example.parkingapp.domain.DomainManageDataBase;
 import com.example.parkingapp.domain.DomainVehicleOperations;
@@ -38,7 +39,7 @@ public class ParkingViewModel extends AndroidViewModel implements RequestListene
         if (validationPresentation.validateFieldMotorcycle(motoPlate.getValue(), motoCilindraje.getValue())) {
             MotorcyclePresentation motorcyclePresentation = new MotorcyclePresentation(motoPlate.getValue(), Integer.parseInt(motoCilindraje.getValue()));
             conversionType.regiterMotoFromVMToDomain(motorcyclePresentation, domainVehicleOperations);
-        }else {
+        } else {
             msg.setValue(Constant.INCOMPLETED_INFORMATION);
         }
     }
@@ -47,7 +48,7 @@ public class ParkingViewModel extends AndroidViewModel implements RequestListene
         if (validationPresentation.validateFieldCar(carPlate.getValue())) {
             CarPresentation carPresentation = new CarPresentation(carPlate.getValue());
             conversionType.regiterCarFromVMToDomain(carPresentation, domainVehicleOperations);
-        }else {
+        } else {
             msg.setValue(Constant.INCOMPLETED_INFORMATION);
         }
     }

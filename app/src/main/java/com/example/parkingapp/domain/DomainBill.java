@@ -3,6 +3,7 @@ package com.example.parkingapp.domain;
 import com.example.parkingapp.domain.model.DomainCilindrajeRules;
 import com.example.parkingapp.domain.model.DomainDetailParking;
 import com.example.parkingapp.domain.model.DomainTariff;
+
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 

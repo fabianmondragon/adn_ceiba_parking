@@ -2,6 +2,7 @@ package com.example.parkingapp.data;
 
 import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.database.ParkingSpace;
+
 import java.util.Date;
 import java.util.List;
 
@@ -41,12 +42,12 @@ public class SpaceParkingRepository {
         db.parkingSpaceDao().setUpdateStateParking(false, fk_space, null);
     }
 
-    public List<ParkingSpace> getParkingSpace (){
+    public List<ParkingSpace> getParkingSpace() {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
         return db.parkingSpaceDao().getAll();
     }
 
-    public ParkingSpace getOneParkingSpace (int id){
+    public ParkingSpace getOneParkingSpace(int id) {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
         return db.parkingSpaceDao().getOneParkingSpace(id);
     }

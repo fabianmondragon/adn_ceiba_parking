@@ -6,6 +6,7 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+
 import org.jetbrains.annotations.NotNull;
 
 @Entity(tableName = "moto", indices = {@Index("fk_parking_space")},

@@ -3,6 +3,7 @@ package com.example.parkingapp.data;
 
 import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.database.Parking;
+
 import java.util.List;
 
 public class ParkingRepository {

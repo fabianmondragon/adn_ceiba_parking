@@ -1,6 +1,7 @@
 package com.example.parkingapp.domain;
 
 import android.os.AsyncTask;
+
 import com.example.parkingapp.TransactionResponse;
 import com.example.parkingapp.conversions.ConversionType;
 import com.example.parkingapp.data.CilindrajeRepository;
@@ -16,6 +17,7 @@ import com.example.parkingapp.domain.model.DomainRespond;
 import com.example.parkingapp.domain.model.DomainTariff;
 import com.example.parkingapp.domain.model.DomainVehicle;
 import com.example.parkingapp.util.Constant;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -132,6 +134,7 @@ public class DomainVehicleOperations implements Register, RequestListener {
             DomainTariff domainTariff;
             Long cost;
             DomainBill domainBill = new DomainBill();
+
             @Override
             protected Long doInBackground(Void... voids) {
                 Date date = conversionType.getTimeFromDomainToRepository(domainVehicle, spaceParkingRepository);

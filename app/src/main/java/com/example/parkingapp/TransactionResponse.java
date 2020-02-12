@@ -3,7 +3,7 @@ package com.example.parkingapp;
 public class TransactionResponse {
 
     private boolean state;
-    private  int transactionId;
+    private int transactionId;
     private String msg;
     private long cost;
 

@@ -16,5 +16,7 @@ public class DomainDetailParking {
         this.cost = cost;
     }
 
-    public long getCost (){return cost;}
+    public long getCost() {
+        return cost;
+    }
 }

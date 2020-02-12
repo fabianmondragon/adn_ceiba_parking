@@ -9,7 +9,8 @@ public class MotorcyclePresentation {
         this.plate = plate;
         this.cilindraje = cilindraje;
     }
-    public MotorcyclePresentation (String plate){
+
+    public MotorcyclePresentation(String plate) {
         this.plate = plate;
     }
 

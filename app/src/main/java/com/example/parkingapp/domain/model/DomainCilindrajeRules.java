@@ -2,7 +2,6 @@ package com.example.parkingapp.domain.model;
 
 public class DomainCilindrajeRules {
 
-    private int cilindraje_rulesId;
     private int cilindraje_moto;
     private int state;
 
@@ -23,6 +22,8 @@ public class DomainCilindrajeRules {
         this.state = state;
     }
 
-    public int getCilindrage (){return cilindraje_moto;}
+    public int getCilindrage() {
+        return cilindraje_moto;
+    }
 
 }

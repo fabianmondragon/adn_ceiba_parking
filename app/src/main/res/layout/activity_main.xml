@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
 
-        <variable name="parkingViewModel" type="com.example.parkingapp.presentation.ParkingViewModel"/>
+        <variable
+            name="parkingViewModel"
+            type="com.example.parkingapp.presentation.ParkingViewModel" />
     </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
 
         android:padding="10dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,8 +29,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            >
+            android:padding="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -35,6 +38,7 @@
                 android:padding="10dp"
 
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -48,8 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@={parkingViewModel.motoPlate}"
-                    android:hint="@string/enter_plate">
-                </EditText>
+                    android:hint="@string/enter_plate"></EditText>
 
                 <EditText
                     android:layout_width="match_parent"
@@ -57,25 +60,25 @@
                     android:hint="@string/enter_cilindraje"
                     android:inputType="number"
                     android:text="@={parkingViewModel.motoCilindraje}"></EditText>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
+
                     <Button
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="@string/enter"
-                        android:onClick="@{() -> parkingViewModel.onClickRegisterMotorCycle()}">
-                    </Button>
+                        android:onClick="@{() -> parkingViewModel.onClickRegisterMotorCycle()}"></Button>
+
                     <Button
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="@string/bill"
-                        android:onClick="@{() -> parkingViewModel.onClickCheckOoutMotorCycle()}">
-                    </Button>
+                        android:onClick="@{() -> parkingViewModel.onClickCheckOoutMotorCycle()}"></Button>
                 </LinearLayout>
 
             </LinearLayout>
@@ -85,8 +88,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:padding="10dp"
-            >
+            android:padding="10dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -108,27 +111,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@={parkingViewModel.carPlate}"
-                    android:hint="@string/enter_plate">
-                </EditText>
+                    android:hint="@string/enter_plate"></EditText>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
+
                     <Button
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="@string/enter"
-                        android:onClick="@{() -> parkingViewModel.onClickRegisterCar()}">
-                    </Button>
+                        android:onClick="@{() -> parkingViewModel.onClickRegisterCar()}"></Button>
+
                     <Button
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="@string/bill"
-                        android:onClick="@{() -> parkingViewModel.onClickCheckOutCar()}">
-                    </Button>
+                        android:onClick="@{() -> parkingViewModel.onClickCheckOutCar()}"></Button>
                 </LinearLayout>
 
             </LinearLayout>

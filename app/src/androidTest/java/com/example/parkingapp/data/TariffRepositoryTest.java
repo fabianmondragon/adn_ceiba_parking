@@ -5,12 +5,12 @@ import com.example.parkingapp.domain.DomainManageDataBase;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 public class TariffRepositoryTest {
 
     @Test
-    public void getTariff_shouldreturnONE (){
+    public void getTariff_shouldreturnONE() {
         DomainManageDataBase domainManageDataBase = new DomainManageDataBase();
         domainManageDataBase.fillDataBase();
         TariffRepository tariff = new TariffRepository();

@@ -7,6 +7,6 @@
     <string name="enter_plate">Ingrese la Placa </string>
     <string name="enter">Registrar </string>
     <string name="bill">Facturar </string>
-    <string name ="enter_cilindraje">Ingrese el cilindraje</string>
+    <string name="enter_cilindraje">Ingrese el cilindraje</string>
 
 </resources>

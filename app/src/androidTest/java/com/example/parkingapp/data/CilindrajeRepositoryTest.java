@@ -12,14 +12,14 @@ public class CilindrajeRepositoryTest {
     CilindrajeRepository cilindrajeRepository;
 
     @Before
-    public void config(){
+    public void config() {
         domainManageDataBase = new DomainManageDataBase();
         cilindrajeRepository = new CilindrajeRepository();
         domainManageDataBase.fillDataBase();
     }
 
     @Test
-    public void getActiviteCilindraje_shouldreturn_theActive (){
+    public void getActiviteCilindraje_shouldreturn_theActive() {
         CilindrajeRules cilindrajeRules = cilindrajeRepository.getActiveCilindraje();
         Assert.assertTrue(cilindrajeRules.getState() == 1);
 

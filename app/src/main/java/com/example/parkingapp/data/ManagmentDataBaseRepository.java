@@ -50,6 +50,7 @@ public class ManagmentDataBaseRepository {
                 db.motorCycleDao().deleteAll();
                 return null;
             }
+
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);

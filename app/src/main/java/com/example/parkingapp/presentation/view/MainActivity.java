@@ -2,11 +2,13 @@ package com.example.parkingapp.presentation.view;
 
 import android.os.Bundle;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+
 import com.example.parkingapp.R;
 import com.example.parkingapp.databinding.ActivityMainBinding;
 import com.example.parkingapp.presentation.ParkingViewModel;

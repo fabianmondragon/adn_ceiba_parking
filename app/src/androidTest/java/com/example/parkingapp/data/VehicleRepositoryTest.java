@@ -7,7 +7,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.example.parkingapp.data.database.Car;
 import com.example.parkingapp.data.database.CarDao;
 import com.example.parkingapp.data.database.Motorcycle;
-import com.example.parkingapp.data.database.Parking;
 import com.example.parkingapp.data.database.ParkingSpace;
 import com.example.parkingapp.domain.DomainManageDataBase;
 
@@ -17,7 +16,7 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 public class VehicleRepositoryTest {
@@ -41,18 +40,19 @@ public class VehicleRepositoryTest {
     }
 
     @Test
-    public void getLIstMotorCycle_With_TableCar_Emtpy_ResultSuccess (){
+    public void getLIstMotorCycle_With_TableCar_Emtpy_ResultSuccess() {
         domainManageDataBase.freeSpaceDataBase();
         assertTrue(vehicleRepository.getListCar().isEmpty());
     }
+
     @Test
-    public void getLIstMotorCycle_With_TableMOtorcycle_Emtpy_ResultSuccess (){
+    public void getLIstMotorCycle_With_TableMOtorcycle_Emtpy_ResultSuccess() {
         domainManageDataBase.freeSpaceDataBase();
         assertTrue(vehicleRepository.getListMotorCycle().isEmpty());
     }
 
     @Test
-    public void getCarsDataBase_shoudGetOneCar_IfTable_isHasONe () throws  InterruptedException {
+    public void getCarsDataBase_shoudGetOneCar_IfTable_isHasONe() throws InterruptedException {
         domainManageDataBase.freeSpaceDataBase();
         List<ParkingSpace> listParking = parkingRepository.getParkingSpace();
         vehicleRepository.setCar(new Car("LM0254", 1));
@@ -61,7 +61,7 @@ public class VehicleRepositoryTest {
     }
 
     @Test
-    public void setMotorcycle_shoudGetRretunrONe_ifTable_isHasONe (){
+    public void setMotorcycle_shoudGetRretunrONe_ifTable_isHasONe() {
         domainManageDataBase.fillDataBase();
         domainManageDataBase.freeSpaceDataBase();
         vehicleRepository.setMotorcycle(new Motorcycle("lkj", 100, 1));
@@ -70,7 +70,7 @@ public class VehicleRepositoryTest {
     }
 
     @Test
-    public void getMotorcycle_shoudGetRretunrThis (){
+    public void getMotorcycle_shoudGetRretunrThis() {
         domainManageDataBase.fillDataBase();
         domainManageDataBase.freeSpaceDataBase();
         vehicleRepository.setMotorcycle(new Motorcycle("lkj", 100, 1));
@@ -79,7 +79,7 @@ public class VehicleRepositoryTest {
     }
 
     @Test
-    public void deleteMotorcyle_shouldRetunr_noFound (){
+    public void deleteMotorcyle_shouldRetunr_noFound() {
         domainManageDataBase.freeSpaceDataBase();
         vehicleRepository.setMotorcycle(new Motorcycle("lkj", 100, 1));
         vehicleRepository.deleteMotorcycle("lkj");
@@ -88,7 +88,7 @@ public class VehicleRepositoryTest {
     }
 
     @Test
-    public void deleteCar_shouldRetunr_noFound (){
+    public void deleteCar_shouldRetunr_noFound() {
         domainManageDataBase.fillDataBase();
         domainManageDataBase.freeSpaceDataBase();
         vehicleRepository.setCar(new Car("lkj", 0));
@@ -105,7 +105,7 @@ public class VehicleRepositoryTest {
     }
 
     @Test
-    public void getCarsDataBase_shoudGetEmptyList_IfDataB_isFill () throws  InterruptedException {
+    public void getCarsDataBase_shoudGetEmptyList_IfDataB_isFill() throws InterruptedException {
         assertTrue(vehicleRepository.getListCar().isEmpty());
     }
 }

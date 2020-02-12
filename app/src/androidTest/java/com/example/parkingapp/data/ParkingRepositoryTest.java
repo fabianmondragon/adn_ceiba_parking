@@ -8,22 +8,23 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 public class ParkingRepositoryTest {
 
     ParkingRepository parkingRepository;
     DomainManageDataBase domainManageDataBase;
+
     @Before
-    public void config(){
+    public void config() {
         parkingRepository = new ParkingRepository();
         domainManageDataBase = new DomainManageDataBase();
     }
 
     @Test
-    public void getParking_getAllParkingLinst_ShouldRetunr_oneParking(){
+    public void getParking_getAllParkingLinst_ShouldRetunr_oneParking() {
         domainManageDataBase.fillDataBase();
-        List<Parking> parkingList =parkingRepository.getParking();
+        List<Parking> parkingList = parkingRepository.getParking();
         assertTrue(parkingList.size() == 1);
 
     }

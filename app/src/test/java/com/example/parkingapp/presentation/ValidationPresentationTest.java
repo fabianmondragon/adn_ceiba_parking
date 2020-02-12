@@ -3,13 +3,14 @@ package com.example.parkingapp.presentation;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class ValidationPresentationTest {
     ValidationPresentation validationPresentation;
 
     @Before
-    public void config(){
+    public void config() {
         validationPresentation = new ValidationPresentation();
     }
 
@@ -24,7 +25,6 @@ public class ValidationPresentationTest {
     }
 
 
-
     @Test
     public void validateFieldMotorcycle_WithInvalidField_Test() {
         assertFalse(validationPresentation.validateFieldMotorcycle("", ""));
@@ -34,7 +34,6 @@ public class ValidationPresentationTest {
     public void validateFieldMotorcycle_WithValidField_Test() {
         assertTrue(validationPresentation.validateFieldMotorcycle("lmo", "100"));
     }
-
 
 
 }

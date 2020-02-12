@@ -54,7 +54,7 @@ pipeline {
             sh 'chmod u+x gradlew'
             sh './gradlew --b ./app/build.gradle test'
            // sh './gradlew --b ./app/build.gradle androidTest'
-            //sh './gradlew --b ./app/build.gradle jacocoTestReport'
+            sh './gradlew --b ./app/build.gradle jacocoTestReport'
           }
         }
 
@@ -80,7 +80,7 @@ pipeline {
         }
         failure {
           echo 'This will run only if failed'
-          mail (to: 'wandyl.diaz@ceiba.com.co',subject: "Failed Pipeline:${currentBuild.fullDisplayName}",body: "Something is wrong with ${env.BUILD_URL}")
+          mail (to: 'fabian.mondragon@ceiba.com.co',subject: "Failed Pipeline:${currentBuild.fullDisplayName}",body: "Something is wrong with ${env.BUILD_URL}")
          }
         unstable {
           echo 'This will run only if the run was marked as unstable'

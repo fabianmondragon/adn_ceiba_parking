@@ -7,11 +7,6 @@ public class TariffRepository {
 
     public Tariff getTariff() {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
-        try {
-            return db.tariffDao().getTariff();
-        } catch (Exception e) {
-
-        }
-        return null;
+        return db.tariffDao().getTariff();
     }
 }

@@ -29,4 +29,7 @@ public interface ParkingSpaceDao {
 
     @Query ("UPDATE parking_space set state = :b")
     void setUpdateAllStateParking(boolean b);
+
+    @Query ("Select * FROM parking_space WHERE parking_space_id = :id")
+    ParkingSpace getOneParkingSpace(int id);
 }

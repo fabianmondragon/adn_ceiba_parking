@@ -31,6 +31,7 @@ public class Tariff {
         this.valueHorMoto = valueHorMoto;
         this.valueDayCar = valueDayCar;
         this.valueDayMoto = valueDayMoto;
+        this.valueCilindrajeMoto = valueCilindrajeMoto;
     }
 
     public int getTariffId() {

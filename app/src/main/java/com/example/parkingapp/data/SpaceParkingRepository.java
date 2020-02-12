@@ -45,4 +45,9 @@ public class SpaceParkingRepository {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
         return db.parkingSpaceDao().getAll();
     }
+
+    public ParkingSpace getOneParkingSpace (int id){
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        return db.parkingSpaceDao().getOneParkingSpace(id);
+    }
 }

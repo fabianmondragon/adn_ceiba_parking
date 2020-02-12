@@ -80,7 +80,6 @@ public class VehicleRepositoryTest {
 
     @Test
     public void deleteMotorcyle_shouldRetunr_noFound (){
-        domainManageDataBase.fillDataBase();
         domainManageDataBase.freeSpaceDataBase();
         vehicleRepository.setMotorcycle(new Motorcycle("lkj", 100, 1));
         vehicleRepository.deleteMotorcycle("lkj");

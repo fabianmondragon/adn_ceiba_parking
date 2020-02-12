@@ -23,9 +23,6 @@ public class DomainValidationsParkingTest {
         Boolean b = domainValidationsParking.isValid("A");
         Assert.assertEquals (true, domainValidationsParking.isValid("A"));
 
-
-        //assertThat(true, domainValidationsParking.isValid("A"));
-
     }
     @Test
     public void isValid_FieldWithEmptyField_Test() {

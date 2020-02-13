@@ -37,7 +37,7 @@ public class SpaceParkingRepositoryTest {
 
     @Test
     public void getFreeShould_return_one() {
-
+        domainManageDataBase.freeSpaceDataBase();
         assertTrue(spaceParkingRepository.getFree() == 1);
     }
 

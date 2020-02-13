@@ -62,7 +62,6 @@ public class VehicleRepositoryTest {
 
     @Test
     public void setMotorcycle_shoudGetRretunrONe_ifTable_isHasONe() {
-        domainManageDataBase.fillDataBase();
         domainManageDataBase.freeSpaceDataBase();
         vehicleRepository.setMotorcycle(new Motorcycle("lkj", 100, 1));
         Motorcycle motorcycle = vehicleRepository.getListMotorCycle().get(0);
@@ -71,7 +70,6 @@ public class VehicleRepositoryTest {
 
     @Test
     public void getMotorcycle_shoudGetRretunrThis() {
-        domainManageDataBase.fillDataBase();
         domainManageDataBase.freeSpaceDataBase();
         vehicleRepository.setMotorcycle(new Motorcycle("lkj", 100, 1));
         Motorcycle motorcycle = vehicleRepository.getMotoCycle("lkj");

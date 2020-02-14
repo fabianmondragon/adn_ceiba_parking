@@ -7,11 +7,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.parkingapp.R;
 import com.example.parkingapp.databinding.ActivityMainBinding;
-import com.example.parkingapp.presentation.ParkingViewModel;
+import com.example.parkingapp.presentation.viewmodel.ParkingViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setObservers() {
+
         final Observer<String> msgObserver = new Observer<String>() {
             @Override
             public void onChanged(@Nullable final String msg) {

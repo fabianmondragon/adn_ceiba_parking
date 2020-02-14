@@ -1,23 +1,23 @@
 package com.example.parkingapp.conversions;
 
-import com.example.parkingapp.data.CilindrajeRepository;
-import com.example.parkingapp.data.ParkingRepository;
-import com.example.parkingapp.data.SpaceParkingRepository;
-import com.example.parkingapp.data.TariffRepository;
-import com.example.parkingapp.data.VehicleRepository;
-import com.example.parkingapp.data.database.Car;
-import com.example.parkingapp.data.database.CilindrajeRules;
-import com.example.parkingapp.data.database.Motorcycle;
-import com.example.parkingapp.data.database.Parking;
-import com.example.parkingapp.data.database.ParkingSpace;
-import com.example.parkingapp.data.database.Tariff;
-import com.example.parkingapp.domain.DomainVehicleOperations;
-import com.example.parkingapp.domain.model.DomainCilindrajeRules;
-import com.example.parkingapp.domain.model.DomainParking;
-import com.example.parkingapp.domain.model.DomainTariff;
-import com.example.parkingapp.domain.model.DomainVehicle;
-import com.example.parkingapp.presentation.CarPresentation;
-import com.example.parkingapp.presentation.MotorcyclePresentation;
+import com.example.parkingapp.data.database.entity.CarEntity;
+import com.example.parkingapp.data.database.entity.MotorcycleEntity;
+import com.example.parkingapp.data.database.entity.ParkingEntity;
+import com.example.parkingapp.data.database.entity.ParkingSpaceEntitiy;
+import com.example.parkingapp.data.database.entity.TariffEntity;
+import com.example.parkingapp.data.repository.CilindrajeImpl;
+import com.example.parkingapp.data.repository.ParkingImpl;
+import com.example.parkingapp.data.repository.ParkingSpaceImpl;
+import com.example.parkingapp.data.repository.TariffRepositoryImpl;
+import com.example.parkingapp.data.repository.VehicleRepositoryImpl;
+import com.example.parkingapp.data.database.entity.CilindrajeRulesEntity;
+import com.example.parkingapp.domain.model.Domain;
+import com.example.parkingapp.domain.services.VehicleOperations;
+import com.example.parkingapp.domain.model.CylindricalRules;
+import com.example.parkingapp.domain.model.Parking;
+import com.example.parkingapp.domain.model.Tariff;
+import com.example.parkingapp.domain.model.Car;
+import com.example.parkingapp.domain.model.Motorcycle;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,60 +35,60 @@ public class ConversionType {
         return instanceConversionType;
     }
 
-    public List<DomainParking> getParkingFromDomainToRepository(ParkingRepository parkingRepository) {
-        List<Parking> parkingList = parkingRepository.getParking();
-        List<DomainParking> listDomainParking = new ArrayList<>();
-        for (Parking item : parkingList) {
-            listDomainParking.add(new DomainParking(item.getNumberCar(), item.getNumberMoto()));
+    public List<Parking> getParkingFromDomainToRepository(ParkingImpl parkingImpl) {
+        List<ParkingEntity> parkingEntityList = parkingImpl.getParking();
+        List<Parking> listParking = new ArrayList<>();
+        for (ParkingEntity item : parkingEntityList) {
+            listParking.add(new Parking(item.getNumberCar(), item.getNumberMoto()));
         }
-        return listDomainParking;
+        return listParking;
     }
 
-    public void regiterMotoFromVMToDomain(MotorcyclePresentation motorcyclePresentation, DomainVehicleOperations domainVehicleOperations) {
-        com.example.parkingapp.domain.model.DomainVehicle domainVehicle = new com.example.parkingapp.domain.model.DomainVehicle(motorcyclePresentation.getPlate(), motorcyclePresentation.getCilindraje(), 1);
-        domainVehicleOperations.registerVehicle(domainVehicle);
+    public void regiterMotoFromVMToDomain(Motorcycle motorcyclePresentation, VehicleOperations vehicleOperations) {
+        Domain domain = new Domain(motorcyclePresentation.getPlate(), motorcyclePresentation.getCilindraje(), 1);
+        vehicleOperations.registerVehicle(domain);
     }
 
-    public void regiterCarFromVMToDomain(CarPresentation motorcyclePresentation, DomainVehicleOperations domainVehicleOperations) {
-        com.example.parkingapp.domain.model.DomainVehicle domainVehicle = new com.example.parkingapp.domain.model.DomainVehicle(motorcyclePresentation.getPlate(), 2);
-        domainVehicleOperations.registerVehicle(domainVehicle);
-    }
-
-
-    public boolean registerMotoFromDomainToRepository(DomainVehicle vehicle, VehicleRepository vehicleRepository, int space) {
-        Motorcycle motorcycle = new Motorcycle(vehicle.getPlate(), vehicle.getCilindraje(), space);
-        return vehicleRepository.setMotorcycle(motorcycle);
-    }
-
-    public boolean registerCarFromDomainToRepository(DomainVehicle vehicle, VehicleRepository vehicleRepository, int space) {
-        Car car = new Car(vehicle.getPlate(), space);
-        return vehicleRepository.setCar(car);
+    public void regiterCarFromVMToDomain(Car motorcyclePresentation, VehicleOperations vehicleOperations) {
+        Domain domain = new Domain(motorcyclePresentation.getPlate(), 2);
+        vehicleOperations.registerVehicle(domain);
     }
 
 
-    public void checkoutMotorCycleFromVMToDomain(MotorcyclePresentation motorcycle, DomainVehicleOperations domainVehicleOperations) {
-        DomainVehicle domainVehicle = new DomainVehicle(motorcycle.getPlate(), 1);
-        domainVehicleOperations.checkoutVehicle(domainVehicle);
+    public boolean registerMotoFromDomainToRepository(Domain vehicle, VehicleRepositoryImpl vehicleRepositoryImpl, int space) {
+        MotorcycleEntity motorcycleEntity = new MotorcycleEntity(vehicle.getPlate(), vehicle.getCilindraje(), space);
+        return vehicleRepositoryImpl.setMotorcycle(motorcycleEntity);
     }
 
-    public void checkoutCarFromVMToDomain(CarPresentation carPresentation, DomainVehicleOperations domainVehicleOperations) {
-        DomainVehicle domainVehicle = new DomainVehicle(carPresentation.getPlate(), 2);
-        domainVehicleOperations.checkoutVehicle(domainVehicle);
+    public boolean registerCarFromDomainToRepository(Domain vehicle, VehicleRepositoryImpl vehicleRepositoryImpl, int space) {
+        CarEntity carEntity = new CarEntity(vehicle.getPlate(), space);
+        return vehicleRepositoryImpl.setCar(carEntity);
+    }
+
+
+    public void checkoutMotorCycleFromVMToDomain(Motorcycle motorcycle, VehicleOperations vehicleOperations) {
+        Domain domain = new Domain(motorcycle.getPlate(), 1);
+        vehicleOperations.checkoutVehicle(domain);
+    }
+
+    public void checkoutCarFromVMToDomain(Car carPresentation, VehicleOperations vehicleOperations) {
+        Domain domain = new Domain(carPresentation.getPlate(), 2);
+        vehicleOperations.checkoutVehicle(domain);
     }
 
 
     @CheckForNull
-    public Date getTimeFromDomainToRepository(DomainVehicle domainVehicle, SpaceParkingRepository spaceParkingRepository) {
-        ParkingSpace parkingSpace = null;
-        if (domainVehicle.getType() == IS_A_CAR) {
-            parkingSpace = spaceParkingRepository.getTimeCar(domainVehicle.getPlate());
+    public Date getTimeFromDomainToRepository(Domain domain, ParkingSpaceImpl parkingSpaceImpl) {
+        ParkingSpaceEntitiy parkingSpaceEntitiy = null;
+        if (domain.getType() == IS_A_CAR) {
+           // parkingSpaceEntitiy = parkingSpaceImpl.getTimeCar(domain.getPlate());
         } else {
-            parkingSpace = spaceParkingRepository.getTime(domainVehicle.getPlate());
+           // parkingSpaceEntitiy = parkingSpaceImpl.getTime(domain.getPlate());
         }
         try {
-            if (parkingSpace != null) {
-                if (parkingSpace.getStartOcupation() != null) {
-                    return parkingSpace.getStartOcupation();
+            if (parkingSpaceEntitiy != null) {
+                if (parkingSpaceEntitiy.getStartOcupation() != null) {
+                    return parkingSpaceEntitiy.getStartOcupation();
                 }
             }
             return null;
@@ -97,32 +97,32 @@ public class ConversionType {
         }
     }
 
-    public DomainVehicle getMotoFromDomainToRepository(DomainVehicle domainVehicle, VehicleRepository vehicleRepository) {
-        Motorcycle motorcycle = vehicleRepository.getMotoCycle(domainVehicle.getPlate());
-        domainVehicle.setPlate(motorcycle.getPlateID());
-        domainVehicle.setCilindraje(motorcycle.getCilindraje());
-        domainVehicle.setFsetFkSpace(motorcycle.getFkParkingSpace());
-        return domainVehicle;
+    public Domain getMotoFromDomainToRepository(Domain domain, VehicleRepositoryImpl vehicleRepositoryImpl) {
+        MotorcycleEntity motorcycleEntity = vehicleRepositoryImpl.getMotoCycle(domain.getPlate());
+        domain.setPlate(motorcycleEntity.getPlateID());
+        domain.setCilindraje(motorcycleEntity.getCilindraje());
+        domain.setFsetFkSpace(motorcycleEntity.getFkParkingSpace());
+        return domain;
     }
 
-    public DomainVehicle getCarFromDomainToRepository(DomainVehicle domainVehicle, VehicleRepository vehicleRepository) {
-        Car car = vehicleRepository.getCar(domainVehicle.getPlate());
-        domainVehicle.setPlate(car.getPlateID());
-        domainVehicle.setFsetFkSpace(car.getFkParkingSpace());
-        return domainVehicle;
+    public Domain getCarFromDomainToRepository(Domain domain, VehicleRepositoryImpl vehicleRepositoryImpl) {
+        CarEntity carEntity = vehicleRepositoryImpl.getCar(domain.getPlate());
+        domain.setPlate(carEntity.getPlateID());
+        domain.setFsetFkSpace(carEntity.getFkParkingSpace());
+        return domain;
     }
 
-    public DomainCilindrajeRules getRuleCilindrajeFromDomaitnToRespository(CilindrajeRepository cilindrajeRepository) {
-        DomainCilindrajeRules domainCilindrajeRules;
-        CilindrajeRules cilindrajeRules = cilindrajeRepository.getActiveCilindraje();
-        domainCilindrajeRules = new DomainCilindrajeRules(cilindrajeRules.getCilindraje_moto());
-        return domainCilindrajeRules;
+    public CylindricalRules getRuleCilindrajeFromDomaitnToRespository(CilindrajeImpl cilindrajeImpl) {
+        CylindricalRules cylindricalRules;
+        CilindrajeRulesEntity cilindrajeRulesEntity = cilindrajeImpl.getActiveCilindraje();
+        cylindricalRules = new CylindricalRules(cilindrajeRulesEntity.getCilindraje_moto());
+        return cylindricalRules;
     }
 
-    public DomainTariff getTariffFromDomaintToRepository(TariffRepository tariffRepository) {
-        DomainTariff domainTariff;
-        Tariff tariff = tariffRepository.getTariff();
-        domainTariff = new DomainTariff(tariff.getValueHorCar(), tariff.getValueHorMoto(), tariff.getValueDayCar(), tariff.getValueDayMoto(), tariff.getValueCilindrajeMoto());
+    public Tariff getTariffFromDomaintToRepository(TariffRepositoryImpl tariffRepositoryImpl) {
+        Tariff domainTariff;
+        TariffEntity tariffEntity = tariffRepositoryImpl.getTariff();
+        domainTariff = new Tariff(tariffEntity.getValueHorCar(), tariffEntity.getValueHorMoto(), tariffEntity.getValueDayCar(), tariffEntity.getValueDayMoto(), tariffEntity.getValueCilindrajeMoto());
         return domainTariff;
     }
 }

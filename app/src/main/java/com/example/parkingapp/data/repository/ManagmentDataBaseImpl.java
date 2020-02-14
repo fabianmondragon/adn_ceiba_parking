@@ -1,0 +1,61 @@
+package com.example.parkingapp.data.repository;
+
+import android.os.AsyncTask;
+
+import com.example.parkingapp.BaseApplication;
+import com.example.parkingapp.data.database.entity.CilindrajeRulesEntity;
+import com.example.parkingapp.data.database.entity.ParkingEntity;
+import com.example.parkingapp.data.database.entity.ParkingSpaceEntitiy;
+import com.example.parkingapp.data.database.entity.PlateRulesEntity;
+import com.example.parkingapp.data.database.entity.TariffEntity;
+
+import java.util.List;
+
+public class ManagmentDataBaseImpl implements ManagmentDataBaseRepository {
+
+    public ManagmentDataBaseImpl() {
+
+    }
+
+    public void fillDataBase(final ParkingEntity parkingEntity, final List<ParkingSpaceEntitiy> parkingSpaceEntitiyList, final CilindrajeRulesEntity cilindrajeRulesEntity, final TariffEntity tariffEntity, final PlateRulesEntity plateRulesEntity) {
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                if (db.parkingDao().getAllParkinList().size() == 0) {
+                    db.parkingDao().inserParking(parkingEntity);
+                    db.parkingSpaceDao().insertParkingAll(parkingSpaceEntitiyList);
+                    db.cilindrajeRulesDao().insertCilindrajeRules(cilindrajeRulesEntity);
+                    db.tariffDao().insertTarif(tariffEntity);
+                    db.plateRulesDao().insetPlateRulse(plateRulesEntity);
+
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+            }
+        }.execute();
+    }
+
+    public void freeUpSpace() {
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                db.parkingSpaceDao().setUpdateAllStateParking(false);
+                db.carDao().deleteAll();
+                db.motorCycleDao().deleteAll();
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+            }
+        }.execute();
+
+    }
+}

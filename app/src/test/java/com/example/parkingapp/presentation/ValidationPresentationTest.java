@@ -1,5 +1,7 @@
 package com.example.parkingapp.presentation;
 
+import com.example.parkingapp.domain.model.Validation;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,11 +9,11 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class ValidationPresentationTest {
-    ValidationPresentation validationPresentation;
+    Validation validationPresentation;
 
     @Before
     public void config() {
-        validationPresentation = new ValidationPresentation();
+        validationPresentation = new Validation();
     }
 
     @Test

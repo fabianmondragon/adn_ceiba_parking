@@ -8,27 +8,27 @@ public class DomainVehicleTest {
 
     @Test
     public void valid_Constructor_With2Params() {
-        DomainVehicle domainVehicle = new DomainVehicle("100", 2);
-        assertTrue(domainVehicle.getType() == 2);
+        Domain domain = new Domain("100", 2);
+        assertTrue(domain.getType() == 2);
     }
 
     @Test
     public void valid_Constructor_With3Params() {
-        DomainVehicle domainVehicle = new DomainVehicle("100", 160, 1);
-        assertTrue(domainVehicle.getPlate().equals("100"));
-        assertTrue(domainVehicle.getCilindraje() == 160);
-        assertTrue(domainVehicle.getType() == 1);
+        Domain domain = new Domain("100", 160, 1);
+        assertTrue(domain.getPlate().equals("100"));
+        assertTrue(domain.getCilindraje() == 160);
+        assertTrue(domain.getType() == 1);
     }
 
     @Test
     public void valid_Setter_With3Params() {
-        DomainVehicle domainVehicle = new DomainVehicle("100", 160, 1);
-        domainVehicle.setCilindraje(100);
-        domainVehicle.setPlate("lmo21");
-        domainVehicle.setFsetFkSpace(1);
-        assertTrue(domainVehicle.getPlate().equals("lmo21"));
-        assertTrue(domainVehicle.getCilindraje() == 100);
-        assertTrue(domainVehicle.getFkSpace() == 1);
+        Domain domain = new Domain("100", 160, 1);
+        domain.setCilindraje(100);
+        domain.setPlate("lmo21");
+        domain.setFsetFkSpace(1);
+        assertTrue(domain.getPlate().equals("lmo21"));
+        assertTrue(domain.getCilindraje() == 100);
+        assertTrue(domain.getFkSpace() == 1);
     }
 
 

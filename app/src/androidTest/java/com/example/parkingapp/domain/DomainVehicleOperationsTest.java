@@ -1,10 +1,12 @@
 package com.example.parkingapp.domain;
 
 import com.example.parkingapp.TransactionResponse;
-import com.example.parkingapp.data.ManagmentDataBaseRepository;
-import com.example.parkingapp.data.RequestListener;
-import com.example.parkingapp.data.VehicleRepository;
-import com.example.parkingapp.domain.model.DomainVehicle;
+import com.example.parkingapp.data.repository.ManagmentDataBaseImpl;
+import com.example.parkingapp.data.repository.RequestListener;
+import com.example.parkingapp.data.repository.VehicleRepositoryImpl;
+import com.example.parkingapp.domain.model.Domain;
+import com.example.parkingapp.domain.services.DataBaseAdministration;
+import com.example.parkingapp.domain.services.VehicleOperations;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,28 +14,28 @@ import org.junit.Test;
 
 public class DomainVehicleOperationsTest implements RequestListener {
 
-    DomainVehicleOperations domainVehicleOperations;
-    DomainVehicle domainVehicle;
-    VehicleRepository vehicleRepository;
-    DomainManageDataBase domainManageDataBase;
-    ManagmentDataBaseRepository managmentDataBaseRepository;
+    VehicleOperations vehicleOperations;
+    Domain domain;
+    VehicleRepositoryImpl vehicleRepositoryImpl;
+    DataBaseAdministration dataBaseAdministration;
+    ManagmentDataBaseImpl managmentDataBaseImpl;
 
 
     @Before
     public void config() {
-        domainManageDataBase = new DomainManageDataBase();
-        vehicleRepository = new VehicleRepository();
-        domainVehicleOperations = new DomainVehicleOperations();
+        dataBaseAdministration = new DataBaseAdministration();
+        vehicleRepositoryImpl = new VehicleRepositoryImpl();
+        vehicleOperations = new VehicleOperations();
 
-        domainVehicle = new DomainVehicle("lmo21", 100, 1);
-        domainManageDataBase.fillDataBase();
+        domain = new Domain("lmo21", 100, 1);
+        dataBaseAdministration.fillDataBase();
 
     }
 
     @Test
     public void registerVehicule_Success() {
-        domainVehicleOperations.setRegisterListener(this);
-        domainVehicleOperations.registerVehicle(domainVehicle);
+        vehicleOperations.setRegisterListener(this);
+        vehicleOperations.registerVehicle(domain);
     }
 
     @Override

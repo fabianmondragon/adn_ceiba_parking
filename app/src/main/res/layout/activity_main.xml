@@ -5,7 +5,7 @@
 
         <variable
             name="parkingViewModel"
-            type="com.example.parkingapp.presentation.ParkingViewModel" />
+            type="com.example.parkingapp.presentation.viewmodel.ParkingViewModel" />
     </data>
 
     <LinearLayout
@@ -78,7 +78,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="@string/bill"
-                        android:onClick="@{() -> parkingViewModel.onClickCheckOoutMotorCycle()}"></Button>
+                        android:onClick="@{() -> parkingViewModel.onClickCheckOutMotorCycle()}"></Button>
                 </LinearLayout>
 
             </LinearLayout>

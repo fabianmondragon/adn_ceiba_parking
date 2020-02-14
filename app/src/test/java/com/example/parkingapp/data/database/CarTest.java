@@ -1,31 +1,33 @@
 package com.example.parkingapp.data.database;
 
+import com.example.parkingapp.data.database.entity.CarEntity;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
 public class CarTest {
 
-    private Car car;
+    private CarEntity carEntity;
 
     @Test
     public void validateConstruct_withTwoParams() {
-        Car car = new Car("lmo21", 1);
-        assertTrue(car.getPlateID().equals("lmo21"));
+        CarEntity carEntity = new CarEntity("lmo21", 1);
+        assertTrue(carEntity.getPlateID().equals("lmo21"));
     }
 
     @Test
     public void validateSet_Plate() {
-        Car car = new Car("lmo21", 1);
-        car.setPlateID("l");
-        assertTrue(car.getPlateID().equals("l"));
+        CarEntity carEntity = new CarEntity("lmo21", 1);
+        carEntity.setPlateID("l");
+        assertTrue(carEntity.getPlateID().equals("l"));
     }
 
     @Test
     public void validateSet_FKParkingSpace() {
-        Car car = new Car("lmo21", 1);
-        car.setFkParkingSpace(1);
-        assertTrue(car.getFkParkingSpace() == 1);
+        CarEntity carEntity = new CarEntity("lmo21", 1);
+        carEntity.setFkParkingSpace(1);
+        assertTrue(carEntity.getFkParkingSpace() == 1);
     }
 
 }

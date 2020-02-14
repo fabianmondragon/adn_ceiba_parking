@@ -1,0 +1,114 @@
+package com.example.parkingapp.data.repository;
+
+import com.example.parkingapp.BaseApplication;
+import com.example.parkingapp.data.database.entity.CarEntity;
+import com.example.parkingapp.data.database.entity.MotorcycleEntity;
+import com.example.parkingapp.domain.model.Car;
+import com.example.parkingapp.domain.model.Motorcycle;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class VehicleRepositoryImpl implements VehicleRepository {
+
+    List<Motorcycle> motorcycleList;
+    List<MotorcycleEntity> entityMotorcycleList;
+    List<Car> carList;
+    List<CarEntity> entityListCar;
+    CarEntity carEntity;
+    MotorcycleEntity motorcycleEntity;
+    Motorcycle motorcycle;
+    Car car;
+
+
+    public List<Motorcycle> getListMotorCycle() {
+        motorcycleList = new ArrayList<>();
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        try {
+            entityMotorcycleList = db.motorCycleDao().getAllMotorcycle();
+            for (MotorcycleEntity motorcycleEntity : entityMotorcycleList) {
+                motorcycleList.add(new Motorcycle(motorcycleEntity.getPlateID(), motorcycleEntity.getCilindraje()));
+            }
+            return motorcycleList;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public List<Car> getListCar() {
+        carList = new ArrayList<>();
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        try {
+            entityListCar = db.carDao().getAll();
+            for (CarEntity carItem : entityListCar) {
+                carList.add(new Car(carItem.getPlateID()));
+            }
+            return carList;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public boolean setCar(Car car, int space) {
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        CarEntity carEntity = new CarEntity(car.getPlate(), space);
+        try {
+            db.carDao().insertCar(carEntity);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean setMotorcycle(Motorcycle motorcycle, int space) {
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        motorcycleEntity = new MotorcycleEntity(motorcycle.getPlate(), motorcycle.getCilindraje(), space);
+        try {
+            db.motorCycleDao().insertMotorcycle(motorcycleEntity);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public Motorcycle getMotoCycle(String plateId) {
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        try {
+            db.motorCycleDao().getMotoCycle(plateId);
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+
+    public void deleteMotorcycle(String plate) {
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        try {
+            db.motorCycleDao().delete(plate);
+        } catch (Exception e) {
+
+        }
+    }
+
+    public Car getCar(String plate) {
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        try {
+            carEntity = db.carDao().getCar(plate);
+            car = new Car(carEntity.getPlateID());
+            return car;
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+
+    public void deleteCar(String plate) {
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        try {
+            db.carDao().delete(plate);
+        } catch (Exception e) {
+
+        }
+    }
+
+}

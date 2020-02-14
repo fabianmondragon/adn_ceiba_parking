@@ -1,20 +1,21 @@
 package com.example.parkingapp.domain;
 
-import com.example.parkingapp.domain.model.DomainVehicle;
+import com.example.parkingapp.domain.model.Domain;
+import com.example.parkingapp.domain.services.VehicleOperations;
 
 import org.junit.Before;
 import org.junit.Test;
 
 
 public class DomainVehicleOperationsTest {
-    private DomainVehicle domainVehicle;
-    private DomainVehicleOperations domainVehicleOperations;
+    private Domain domain;
+    private VehicleOperations vehicleOperations;
 
     @Before
     public void config() {
 
-        //domainVehicle = new DomainVehicle("LMO21", 100, 1);
-        //domainVehicleOperations = new DomainVehicleOperations();
+        //domain = new Domain("LMO21", 100, 1);
+        //vehicleOperations = new VehicleOperations();
     }
 
     @Test
@@ -24,7 +25,7 @@ public class DomainVehicleOperationsTest {
         domainRespond.setState(true);
         domainRespond.setTipeTransaction(Constant.SET_MOTORCYCLE);*/
 
-        // Assert.assertEquals(domainRespond, domainVehicleOperations.registerVehicle(domainVehicle));
+        // Assert.assertEquals(domainRespond, vehicleOperations.registerVehicle(domain));
     }
 
     @Test

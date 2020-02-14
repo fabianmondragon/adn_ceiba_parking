@@ -1,8 +1,8 @@
 package com.example.parkingapp.domain;
 
-import com.example.parkingapp.domain.model.DomainVehicle;
+import com.example.parkingapp.domain.model.Domain;
 
 public interface Register {
-    void registerVehicle(DomainVehicle vehicle);
+    void registerVehicle(Domain vehicle);
 
 }

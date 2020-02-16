@@ -2,14 +2,19 @@ package com.example.parkingapp.data.repository;
 
 import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.database.entity.CilindrajeRulesEntity;
+import com.example.parkingapp.domain.model.CylindricalRules;
 
 public class CilindrajeImpl implements CilindrajeRepository {
 
-    public CilindrajeRulesEntity getActiveCilindraje() {
+    CilindrajeRulesEntity cilindrajeRulesEntity;
+    CylindricalRules cilindricalRules;
+
+    public CylindricalRules getActiveCilindraje() {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
         try {
-            return db.cilindrajeRulesDao().getActivo();
-
+            cilindrajeRulesEntity =  db.cilindrajeRulesDao().getActivo();
+            cilindricalRules = new CylindricalRules (cilindrajeRulesEntity.getCilindraje_moto());
+           return  cilindricalRules;
         } catch (Exception e) {
             return null;
         }

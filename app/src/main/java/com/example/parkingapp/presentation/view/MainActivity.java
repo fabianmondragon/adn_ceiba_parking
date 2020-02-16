@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.parkingapp.R;
@@ -42,6 +41,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void filldatabase() {
-        parkingViewModel.fillDataBase();
+        parkingViewModel.fillDataBaseWithInfo();
     }
 }

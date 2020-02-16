@@ -1,7 +1,7 @@
 package com.example.parkingapp.data;
 
 import com.example.parkingapp.data.database.entity.ParkingSpaceEntitiy;
-import com.example.parkingapp.data.repository.ParkingSpaceImpl;
+import com.example.parkingapp.data.repository.ParkingSpaceRepositoryImpl;
 import com.example.parkingapp.domain.services.DataBaseAdministration;
 
 import org.junit.Before;
@@ -14,13 +14,13 @@ import static org.junit.Assert.assertTrue;
 
 public class ParkingEntitySpaceImplTest {
 
-    private ParkingSpaceImpl parkingSpaceImpl;
+    private ParkingSpaceRepositoryImpl parkingSpaceImpl;
     private DataBaseAdministration dataBaseAdministration;
 
 
     @Before
     public void config() {
-        parkingSpaceImpl = new ParkingSpaceImpl();
+        parkingSpaceImpl = new ParkingSpaceRepositoryImpl();
         dataBaseAdministration = new DataBaseAdministration();
         dataBaseAdministration.fillDataBase();
 
@@ -52,7 +52,7 @@ public class ParkingEntitySpaceImplTest {
 
     @Test
     public void getParkingSpace_Should_return_30() {
-        ParkingSpaceImpl parkingSpaceImpl = new ParkingSpaceImpl();
+        ParkingSpaceRepositoryImpl parkingSpaceImpl = new ParkingSpaceRepositoryImpl();
         DataBaseAdministration dataBaseAdministration = new DataBaseAdministration();
         dataBaseAdministration.fillDataBase();
         ;
@@ -61,7 +61,7 @@ public class ParkingEntitySpaceImplTest {
 
     @Test
     public void getOneParkingSpace_Should_return_first() {
-        ParkingSpaceImpl parkingSpaceImpl = new ParkingSpaceImpl();
+        ParkingSpaceRepositoryImpl parkingSpaceImpl = new ParkingSpaceRepositoryImpl();
         DataBaseAdministration dataBaseAdministration = new DataBaseAdministration();
         dataBaseAdministration.fillDataBase();
 

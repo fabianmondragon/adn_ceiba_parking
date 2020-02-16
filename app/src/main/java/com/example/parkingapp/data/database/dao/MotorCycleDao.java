@@ -14,18 +14,18 @@ public interface MotorCycleDao {
     @Insert
     void insertMotorcycle(MotorcycleEntity motorcycleEntity);
 
-    @Query("SELECT * FROM MotorcycleEntity")
+    @Query("SELECT * FROM moto")
     LiveData<List<MotorcycleEntity>> getAll();
 
-    @Query("SELECT * FROM MotorcycleEntity")
+    @Query("SELECT * FROM moto")
     List<MotorcycleEntity> getAllMotorcycle();
 
-    @Query("SELECT * FROM MotorcycleEntity WHERE MotorcycleEntity.plate_id = :plateId")
+    @Query("SELECT * FROM moto WHERE moto.plate_id = :plateId")
     MotorcycleEntity getMotoCycle(String plateId);
 
-    @Query("DELETE FROM MotorcycleEntity WHERE MotorcycleEntity.plate_id = :plate")
+    @Query("DELETE FROM moto WHERE moto.plate_id = :plate")
     void delete(String plate);
 
-    @Query("DELETE FROM MotorcycleEntity")
+    @Query("DELETE FROM moto")
     void deleteAll();
 }

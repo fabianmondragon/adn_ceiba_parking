@@ -10,7 +10,7 @@ import java.util.List;
 
 @Dao
 public interface TariffDao {
-    @Query("SELECT * FROM TariffEntity")
+    @Query("SELECT * FROM tariffentity")
     List<TariffEntity> getAll();
 
     @Insert

@@ -11,20 +11,20 @@ import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.parkingapp.data.converters.ConvertersDate;
-import com.example.parkingapp.data.database.entity.CarEntity;
 import com.example.parkingapp.data.database.dao.CarDao;
-import com.example.parkingapp.data.database.entity.CilindrajeRulesEntity;
 import com.example.parkingapp.data.database.dao.CilindrajeRulesDao;
 import com.example.parkingapp.data.database.dao.MotorCycleDao;
+import com.example.parkingapp.data.database.dao.ParkingDao;
+import com.example.parkingapp.data.database.dao.ParkingSpaceDao;
+import com.example.parkingapp.data.database.dao.PlateRulesDao;
+import com.example.parkingapp.data.database.dao.TariffDao;
+import com.example.parkingapp.data.database.entity.CarEntity;
+import com.example.parkingapp.data.database.entity.CilindrajeRulesEntity;
 import com.example.parkingapp.data.database.entity.MotorcycleEntity;
 import com.example.parkingapp.data.database.entity.ParkingEntity;
-import com.example.parkingapp.data.database.dao.ParkingDao;
 import com.example.parkingapp.data.database.entity.ParkingSpaceEntitiy;
-import com.example.parkingapp.data.database.dao.ParkingSpaceDao;
 import com.example.parkingapp.data.database.entity.PlateRulesEntity;
-import com.example.parkingapp.data.database.dao.PlateRulesDao;
 import com.example.parkingapp.data.database.entity.TariffEntity;
-import com.example.parkingapp.data.database.dao.TariffDao;
 
 
 @Database(entities = {CarEntity.class, CilindrajeRulesEntity.class, MotorcycleEntity.class, ParkingEntity.class, ParkingSpaceEntitiy.class, PlateRulesEntity.class, TariffEntity.class,}, version = CeibaDataBase.VERSION, exportSchema = false)

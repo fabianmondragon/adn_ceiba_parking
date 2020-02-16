@@ -12,27 +12,27 @@ import java.util.List;
 @Dao
 public interface ParkingSpaceDao {
 
-    @Query("SELECT * FROM ParkingSpaceEntitiy")
+    @Query("SELECT * FROM parking_space")
     List<ParkingSpaceEntitiy> getAll();
 
     @Insert
     void insertParkingAll(List<ParkingSpaceEntitiy> parkingSpaceEntitiy);
 
-    @Query("UPDATE ParkingSpaceEntitiy SET state =:stateParman, date =:date WHERE parking_space_id =:idPaquingSpace")
+    @Query("UPDATE parking_space SET state =:stateParman, date =:date WHERE parking_space_id =:idPaquingSpace")
     void setUpdateStateParking(boolean stateParman, int idPaquingSpace, Date date);
 
-    @Query("Select * FROM ParkingSpaceEntitiy where ParkingSpaceEntitiy.state = 0 LIMIT 1")
-    int getSpaceFree();
+    @Query("Select * FROM parking_space where parking_space.state = 0 LIMIT 1")
+    int getFreeSpace();
 
-    @Query("Select parking_space_id, date, state, fk_parking From ParkingSpaceEntitiy LEFT JOIN MotorcycleEntity ON parking_space_id = MotorcycleEntity.fk_parking_space WHERE MotorcycleEntity.plate_id =:plate")
+    @Query("Select parking_space_id, date, state, fk_parking From parking_space LEFT JOIN moto ON parking_space_id = moto.fk_parking_space WHERE moto.plate_id =:plate")
     ParkingSpaceEntitiy getTime(String plate);
 
-    @Query("Select parking_space_id, date, state, fk_parking From ParkingSpaceEntitiy LEFT JOIN CarEntity ON parking_space_id = CarEntity.fk_parking_space WHERE CarEntity.plate_id =:plate")
+    @Query("Select parking_space_id, date, state, fk_parking From parking_space LEFT JOIN car ON parking_space_id = car.fk_parking_space WHERE car.plate_id =:plate")
     ParkingSpaceEntitiy getTimeCar(String plate);
 
-    @Query("UPDATE ParkingSpaceEntitiy set state = :b")
+    @Query("UPDATE parking_space set state = :b")
     void setUpdateAllStateParking(boolean b);
 
-    @Query("Select * FROM ParkingSpaceEntitiy WHERE parking_space_id = :id")
+    @Query("Select * FROM parking_space WHERE parking_space_id = :id")
     ParkingSpaceEntitiy getOneParkingSpace(int id);
 }

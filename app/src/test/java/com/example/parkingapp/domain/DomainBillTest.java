@@ -2,8 +2,8 @@ package com.example.parkingapp.domain;
 
 
 import com.example.parkingapp.domain.model.CylindricalRules;
-import com.example.parkingapp.domain.model.lParkingDetail;
 import com.example.parkingapp.domain.model.Tariff;
+import com.example.parkingapp.domain.model.lParkingDetail;
 import com.example.parkingapp.domain.services.Bill;
 
 import org.junit.Before;

@@ -8,6 +8,7 @@ import com.example.parkingapp.data.database.entity.ParkingEntity;
 import com.example.parkingapp.data.database.entity.ParkingSpaceEntitiy;
 import com.example.parkingapp.data.database.entity.PlateRulesEntity;
 import com.example.parkingapp.data.database.entity.TariffEntity;
+import com.example.parkingapp.domain.model.Response;
 
 import java.util.List;
 
@@ -17,27 +18,25 @@ public class ManagmentDataBaseImpl implements ManagmentDataBaseRepository {
 
     }
 
-    public void fillDataBase(final ParkingEntity parkingEntity, final List<ParkingSpaceEntitiy> parkingSpaceEntitiyList, final CilindrajeRulesEntity cilindrajeRulesEntity, final TariffEntity tariffEntity, final PlateRulesEntity plateRulesEntity) {
+    public Response fillDataBase(final ParkingEntity parkingEntity, final List<ParkingSpaceEntitiy> parkingSpaceEntitiyList, final CilindrajeRulesEntity cilindrajeRulesEntity, final TariffEntity tariffEntity, final PlateRulesEntity plateRulesEntity) {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                if (db.parkingDao().getAllParkinList().size() == 0) {
-                    db.parkingDao().inserParking(parkingEntity);
-                    db.parkingSpaceDao().insertParkingAll(parkingSpaceEntitiyList);
-                    db.cilindrajeRulesDao().insertCilindrajeRules(cilindrajeRulesEntity);
-                    db.tariffDao().insertTarif(tariffEntity);
-                    db.plateRulesDao().insetPlateRulse(plateRulesEntity);
+        try {
+            if (db.parkingDao().getAllParkinList().size() == 0) {
+                db.parkingDao().inserParking(parkingEntity);
+                db.parkingSpaceDao().insertParkingAll(parkingSpaceEntitiyList);
+                db.cilindrajeRulesDao().insertCilindrajeRules(cilindrajeRulesEntity);
+                db.tariffDao().insertTarif(tariffEntity);
+                db.plateRulesDao().insetPlateRulse(plateRulesEntity);
 
-                }
-                return null;
             }
+        } catch (NullPointerException e) {
+            return null;
+        }
+        Response response = new Response();
+        response.state = true;
+        return response;
 
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-            }
-        }.execute();
+
     }
 
     public void freeUpSpace() {

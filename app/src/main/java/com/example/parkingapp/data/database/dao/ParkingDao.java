@@ -12,12 +12,12 @@ import java.util.List;
 
 @Dao
 public interface ParkingDao {
-    @Query("SELECT * FROM ParkingEntity")
+    @Query("SELECT * FROM paking")
     LiveData<List<ParkingEntity>> getAll();
 
     @Insert
     void inserParking(ParkingEntity parkingEntity);
 
-    @Query("SELECT * FROM ParkingEntity")
+    @Query("SELECT * FROM paking")
     List<ParkingEntity> getAllParkinList();
 }

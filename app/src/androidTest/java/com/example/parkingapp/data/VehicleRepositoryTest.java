@@ -4,12 +4,12 @@ import androidx.room.Room;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.example.parkingapp.data.database.entity.CarEntity;
 import com.example.parkingapp.data.database.dao.CarDao;
+import com.example.parkingapp.data.database.entity.CarEntity;
 import com.example.parkingapp.data.database.entity.MotorcycleEntity;
 import com.example.parkingapp.data.database.entity.ParkingSpaceEntitiy;
 import com.example.parkingapp.data.repository.CeibaDataBase;
-import com.example.parkingapp.data.repository.ParkingSpaceImpl;
+import com.example.parkingapp.data.repository.ParkingSpaceRepositoryImpl;
 import com.example.parkingapp.data.repository.VehicleRepositoryImpl;
 import com.example.parkingapp.domain.services.DataBaseAdministration;
 
@@ -26,13 +26,13 @@ public class VehicleRepositoryTest {
     private CeibaDataBase mDatabase;
     private CarDao carDao;
     private VehicleRepositoryImpl vehicleRepositoryImpl;
-    private ParkingSpaceImpl parkingRepository;
+    private ParkingSpaceRepositoryImpl parkingRepository;
     private DataBaseAdministration dataBaseAdministration;
 
     @Before
     public void initDb() throws Exception {
         dataBaseAdministration = new DataBaseAdministration();
-        parkingRepository = new ParkingSpaceImpl();
+        parkingRepository = new ParkingSpaceRepositoryImpl();
         vehicleRepositoryImpl = new VehicleRepositoryImpl();
         mDatabase = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(),
                 CeibaDataBase.class)

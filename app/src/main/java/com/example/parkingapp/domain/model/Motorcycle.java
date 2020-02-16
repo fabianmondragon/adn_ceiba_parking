@@ -4,6 +4,13 @@ public class Motorcycle {
 
     private String plate;
     private int cilindraje;
+    private int fkParkingSpace;
+
+    public Motorcycle(String plate, int cilindraje, int fkParkingSpace) {
+        this.plate = plate;
+        this.cilindraje = cilindraje;
+        this.fkParkingSpace = fkParkingSpace;
+    }
 
     public Motorcycle(String plate, int cilindraje) {
         this.plate = plate;
@@ -28,5 +35,13 @@ public class Motorcycle {
 
     public void setCilindraje(int cilindraje) {
         this.cilindraje = cilindraje;
+    }
+
+    public int getFkParkingSpace() {
+        return fkParkingSpace;
+    }
+
+    public void setFkParkingSpace(int fkParkingSpace) {
+        this.fkParkingSpace = fkParkingSpace;
     }
 }

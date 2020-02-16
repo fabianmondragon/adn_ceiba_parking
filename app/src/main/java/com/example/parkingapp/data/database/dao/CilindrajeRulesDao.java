@@ -11,13 +11,13 @@ import java.util.List;
 @Dao
 public interface CilindrajeRulesDao {
 
-    @Query("SELECT * FROM CilindrajeRulesEntity")
+    @Query("SELECT * FROM cilindraje_rules")
     List<CilindrajeRulesEntity> getAll();
 
     @Insert
     void insertCilindrajeRules(CilindrajeRulesEntity cilindrajeRulesEntity);
 
-    @Query("SELECT * FROM CilindrajeRulesEntity WHERE CilindrajeRulesEntity.state = 1")
+    @Query("SELECT * FROM cilindraje_rules WHERE cilindraje_rules.state = 1")
     CilindrajeRulesEntity getActivo();
 
 }

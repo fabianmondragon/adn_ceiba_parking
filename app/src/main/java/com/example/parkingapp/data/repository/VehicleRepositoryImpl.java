@@ -72,21 +72,26 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     }
 
     public Motorcycle getMotoCycle(String plateId) {
+        MotorcycleEntity motorcycleEntity;
+        Motorcycle motorcycle;
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
         try {
-            db.motorCycleDao().getMotoCycle(plateId);
+            motorcycleEntity = db.motorCycleDao().getMotoCycle(plateId);
+            motorcycle = new Motorcycle(motorcycleEntity.getPlateID(), motorcycleEntity.getCilindraje(), motorcycleEntity.getFkParkingSpace() );
+            return motorcycle;
         } catch (Exception e) {
-
+            return null;
         }
-        return null;
+        //return null;
     }
 
-    public void deleteMotorcycle(String plate) {
+    public boolean deleteMotorcycle(String plate) {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
         try {
             db.motorCycleDao().delete(plate);
+            return true;
         } catch (Exception e) {
-
+            return false;
         }
     }
 
@@ -102,12 +107,13 @@ public class VehicleRepositoryImpl implements VehicleRepository {
         return null;
     }
 
-    public void deleteCar(String plate) {
+    public boolean deleteCar(String plate) {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
         try {
             db.carDao().delete(plate);
+            return true;
         } catch (Exception e) {
-
+            return false;
         }
     }
 

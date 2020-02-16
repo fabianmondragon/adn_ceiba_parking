@@ -1,7 +1,5 @@
 package com.example.parkingapp.domain.services;
 
-import android.os.AsyncTask;
-
 import com.example.parkingapp.TransactionResponse;
 import com.example.parkingapp.conversions.ConversionType;
 import com.example.parkingapp.data.repository.CilindrajeImpl;
@@ -9,19 +7,16 @@ import com.example.parkingapp.data.repository.CilindrajeRepository;
 import com.example.parkingapp.data.repository.ParkingImpl;
 import com.example.parkingapp.data.repository.ParkingRepository;
 import com.example.parkingapp.data.repository.RequestListener;
-import com.example.parkingapp.data.repository.ParkingSpaceImpl;
 import com.example.parkingapp.data.repository.TariffRepository;
 import com.example.parkingapp.data.repository.TariffRepositoryImpl;
 import com.example.parkingapp.data.repository.VehicleRepository;
 import com.example.parkingapp.data.repository.VehicleRepositoryImpl;
 import com.example.parkingapp.domain.Register;
 import com.example.parkingapp.domain.model.Car;
-import com.example.parkingapp.domain.model.Domain;
 import com.example.parkingapp.domain.model.CylindricalRules;
+import com.example.parkingapp.domain.model.Domain;
 import com.example.parkingapp.domain.model.Motorcycle;
-import com.example.parkingapp.domain.model.lParkingDetail;
-import com.example.parkingapp.domain.model.Parking;
-import com.example.parkingapp.domain.model.DomainRespond;
+import com.example.parkingapp.domain.model.Response;
 import com.example.parkingapp.domain.model.Tariff;
 import com.example.parkingapp.util.Constant;
 
@@ -30,23 +25,35 @@ import java.util.Date;
 
 import static com.example.parkingapp.util.Constant.SET_CAR;
 import static com.example.parkingapp.util.Constant.SET_MOTORCYCLE;
-import static com.example.parkingapp.util.Constant.SET_MOTORCYCLE_NO_AUTORIZED;
 
 public class VehicleOperations implements Register, RequestListener {
 
+
+    private ParkingSpaceOperations parkingSpaceOperations;
+    private Validation validation;
     private DataBaseAdministration dataBaseAdministration;
     private TariffRepository tariffRepository;
     private ParkingRepository parkingRepository;
     private VehicleRepository vehicleRepository;
     private CilindrajeRepository cilindrajeRepository;
+    private Bill bill;
+    private CilindrajeRulesOperations cilindrajeRulesOperations;
+    private CylindricalRules cilindricalRules;
+    private TariffOperations tariffOperations;
+    private Tariff tariff;
 
     private ConversionType conversionType;
     private RequestListener requestListener;
     final private static int IS_A_MOTORCYCLE = 1;
     final private static int IS_A_CAR = 2;
 
+    Long numberMinuts;
+
+    int idSpaceParking;
+
     public VehicleOperations() {
 
+        validation = new Validation();
         tariffRepository = new TariffRepositoryImpl();
         parkingRepository = new ParkingImpl();
         vehicleRepository = new VehicleRepositoryImpl();
@@ -54,17 +61,23 @@ public class VehicleOperations implements Register, RequestListener {
         dataBaseAdministration = new DataBaseAdministration();
         conversionType = ConversionType.getInstance();
         vehicleRepository = new VehicleRepositoryImpl();
+        parkingSpaceOperations = new ParkingSpaceOperations();
+        bill =new Bill();
+        cilindrajeRulesOperations = new CilindrajeRulesOperations();
+        tariffOperations = new TariffOperations();
+        //parkingSpaceImpl = new ParkingSpaceRepositoryImpl();
+
        /* parkingImpl = new ParkingImpl();
-        parkingSpaceImpl = new ParkingSpaceImpl();
+
         cilindrajeImpl = new CilindrajeImpl();
         tariffRepositoryImpl = new TariffRepositoryImpl();*/
     }
 
-    public void fillDataBase (){
-        dataBaseAdministration.fillDataBase();
+    public Response fillDataBase() {
+        return dataBaseAdministration.fillDataBase();
     }
 
-    public void freeUpSpace (){
+    public void freeUpSpace() {
         dataBaseAdministration.freeUpDataBaseSpace();
     }
 
@@ -197,20 +210,84 @@ public class VehicleOperations implements Register, RequestListener {
     }
 
 
-    public void registerMotorCycle(Motorcycle motorcycle) {
-        vehicleRepository.setMotorcycle(motorcycle, 1);
+    public Response registerMotorCycle(Motorcycle motorcycle) {
+        Response response = new Response();
+        Date currentDate = Calendar.getInstance().getTime();
+        response.typeTransaction = SET_MOTORCYCLE;
+        if (validation.isValid(motorcycle.getPlate()) == true || validation.isLessThanMotorCycleLimit()) {
+            idSpaceParking = parkingSpaceOperations.getFreeSpace();
+            if (vehicleRepository.setMotorcycle(motorcycle, idSpaceParking)) {
+                parkingSpaceOperations.occupySpace(idSpaceParking, currentDate);
+                response.state = true;
+                response.msg = Constant.REGISTER_SUCCESSFULL;
+            }else{
+                response.state = false;
+                response.msg = Constant.REGISTER_UNSUCCEFULL;
+            }
+        } else {
+            response.state = false;
+            response.msg = Constant.REGISTER_UNSUCCEFULL;
+        }
+        return response;
     }
 
-    public void registerCar(Car car) {
-        vehicleRepository.setCar(car, 1);
+    public Response registerCar(Car car) {
+        Response response = new Response();
+        Date currentDate = Calendar.getInstance().getTime();
+        response.typeTransaction = SET_CAR;
+        if (validation.isLessThanCarLimit()) {
+            idSpaceParking = parkingSpaceOperations.getFreeSpace();
+            if (vehicleRepository.setCar(car, idSpaceParking)) {
+                parkingSpaceOperations.occupySpace(idSpaceParking, currentDate);
+                response.state = true;
+                response.msg = Constant.REGISTER_SUCCESSFULL;
+                response.typeTransaction = SET_CAR;
+            }
+        } else {
+            response.state = false;
+            response.msg = Constant.REGISTER_SUCCESSFULL;
+        }
+        return response;
     }
 
-    public void checkoutCar(Car car) {
-        vehicleRepository.deleteCar(car.getPlate());
+    public Response checkoutCar(Car car) {
+        Response response = new Response();
+        car = vehicleRepository.getCar(car.getPlate());
+        Date currentDate = Calendar.getInstance().getTime();
+        Date previosDate = parkingSpaceOperations.getTimeCar (car.getPlate());
+        numberMinuts = bill.calculateTime(currentDate, previosDate);
+        tariff = tariffOperations.getTariff();
+        response.cost = bill.calculateCost(numberMinuts, tariff, null, 0);
+        if (vehicleRepository.deleteCar(car.getPlate()) == true && parkingSpaceOperations.freeUpSpace(car.getFkParkingSpace()) == true)
+        {
+            response.state = true;
+            response.typeTransaction = Constant.CHECKOUT_CAR_MOTORCYCLE;
+            response.msg = Constant.COSTO_TOTAL + ": $ " + response.cost;
+        }
+        return response;
+
     }
 
 
-    public void checkOutMotorcycle(Motorcycle motorcycle) {
-        vehicleRepository.deleteMotorcycle(motorcycle.getPlate());
+    public Response checkOutMotorcycle(Motorcycle motorcycle) {
+        Response response = new Response();
+        motorcycle = vehicleRepository.getMotoCycle(motorcycle.getPlate());
+        Date currentDate = Calendar.getInstance().getTime();
+        Date previosDate = parkingSpaceOperations.getTimeMotorcycle (motorcycle.getPlate());
+        numberMinuts = bill.calculateTime(currentDate, previosDate);
+        tariff = tariffOperations.getTariff();
+        cilindricalRules = cilindrajeRulesOperations.getRules();
+        response.cost = bill.calculateCost(numberMinuts, tariff, cilindricalRules,motorcycle.getCilindraje());
+        if (vehicleRepository.deleteMotorcycle(motorcycle.getPlate()) == true && parkingSpaceOperations.freeUpSpace(motorcycle.getFkParkingSpace()) == true)
+        {
+            response.state = true;
+            response.typeTransaction = Constant.CHECKOUT_CAR_MOTORCYCLE;
+            response.msg = Constant.COSTO_TOTAL + ": $ " + response.cost;
+        }
+        return response;
+    }
+
+    public boolean validatePlate(String plate) {
+        return validation.isValid(plate);
     }
 }

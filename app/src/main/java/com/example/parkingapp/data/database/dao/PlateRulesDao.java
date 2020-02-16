@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface PlateRulesDao {
 
-    @Query("SELECT * FROM PlateRulesEntity WHERE PlateRulesEntity.state = 1")
+    @Query("SELECT * FROM plate_rule WHERE plate_rule.state = 1")
     List<PlateRulesEntity> getPlateRuleActive();
 
     @Insert

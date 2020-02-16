@@ -11,18 +11,18 @@ import java.util.List;
 @Dao
 public interface CarDao {
 
-    @Query("SELECT * FROM CarEntity")
+    @Query("SELECT * FROM car")
     List<CarEntity> getAll();
 
     @Insert
     void insertCar(CarEntity cars);
 
-    @Query("SELECT * FROM CarEntity WHERE CarEntity.plate_id = :id")
+    @Query("SELECT * FROM car WHERE car.plate_id = :id")
     CarEntity getCar(String id);
 
-    @Query("DELETE FROM CarEntity WHERE CarEntity.plate_id = :plate")
+    @Query("DELETE FROM car WHERE car.plate_id = :plate")
     void delete(String plate);
 
-    @Query("DELETE FROM CarEntity")
+    @Query("DELETE FROM car")
     void deleteAll();
 }

@@ -1,30 +1,5 @@
 package com.example.parkingapp.conversions;
 
-import com.example.parkingapp.data.database.entity.CarEntity;
-import com.example.parkingapp.data.database.entity.MotorcycleEntity;
-import com.example.parkingapp.data.database.entity.ParkingEntity;
-import com.example.parkingapp.data.database.entity.ParkingSpaceEntitiy;
-import com.example.parkingapp.data.database.entity.TariffEntity;
-import com.example.parkingapp.data.repository.CilindrajeImpl;
-import com.example.parkingapp.data.repository.ParkingImpl;
-import com.example.parkingapp.data.repository.ParkingSpaceImpl;
-import com.example.parkingapp.data.repository.TariffRepositoryImpl;
-import com.example.parkingapp.data.repository.VehicleRepositoryImpl;
-import com.example.parkingapp.data.database.entity.CilindrajeRulesEntity;
-import com.example.parkingapp.domain.model.Domain;
-import com.example.parkingapp.domain.services.VehicleOperations;
-import com.example.parkingapp.domain.model.CylindricalRules;
-import com.example.parkingapp.domain.model.Parking;
-import com.example.parkingapp.domain.model.Tariff;
-import com.example.parkingapp.domain.model.Car;
-import com.example.parkingapp.domain.model.Motorcycle;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.annotation.CheckForNull;
-
 public class ConversionType {
 
     public static final int IS_A_MOTO = 1;
@@ -35,6 +10,7 @@ public class ConversionType {
         return instanceConversionType;
     }
 
+    /*
     public List<Parking> getParkingFromDomainToRepository(ParkingImpl parkingImpl) {
         List<ParkingEntity> parkingEntityList = parkingImpl.getParking();
         List<Parking> listParking = new ArrayList<>();
@@ -78,7 +54,7 @@ public class ConversionType {
 
 
     @CheckForNull
-    public Date getTimeFromDomainToRepository(Domain domain, ParkingSpaceImpl parkingSpaceImpl) {
+    public Date getTimeFromDomainToRepository(Domain domain, ParkingSpaceRepositoryImpl parkingSpaceImpl) {
         ParkingSpaceEntitiy parkingSpaceEntitiy = null;
         if (domain.getType() == IS_A_CAR) {
            // parkingSpaceEntitiy = parkingSpaceImpl.getTimeCar(domain.getPlate());
@@ -124,5 +100,5 @@ public class ConversionType {
         TariffEntity tariffEntity = tariffRepositoryImpl.getTariff();
         domainTariff = new Tariff(tariffEntity.getValueHorCar(), tariffEntity.getValueHorMoto(), tariffEntity.getValueDayCar(), tariffEntity.getValueDayMoto(), tariffEntity.getValueCilindrajeMoto());
         return domainTariff;
-    }
+    }*/
 }

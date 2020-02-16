@@ -1,18 +1,21 @@
 package com.example.parkingapp.data.repository;
 
 import com.example.parkingapp.BaseApplication;
-
+import com.example.parkingapp.data.database.entity.ParkingSpaceEntitiy;
+import com.example.parkingapp.domain.model.ParkingSpace;
 
 import java.util.Date;
 import java.util.List;
 
-public class ParkingSpaceImpl implements ParkingSpace {
+public class ParkingSpaceRepositoryImpl implements ParkingSpaceRepository {
 
+    ParkingSpaceEntitiy parkingSpaceEntitiy;
+    ParkingSpace parkingSpace;
 
-     public ParkingSpaceImpl() {
+    public ParkingSpaceRepositoryImpl() {
     }
 
-    public boolean updateParkingSpace(int id, Date date) {
+    public boolean updateParkingSpace(int id, Date date, boolean state) {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
         try {
             db.parkingSpaceDao().setUpdateStateParking(true, id, date);
@@ -22,22 +25,19 @@ public class ParkingSpaceImpl implements ParkingSpace {
         return true;
     }
 
-    public int getFree() {
+    public int getFreeSpace() {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
-        return db.parkingSpaceDao().getSpaceFree();
+        return db.parkingSpaceDao().getFreeSpace();
     }
 
-    public ParkingSpace getTime(String plate) {
-         return null;
-         /*
+    public Date getTime(String plate) {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
-        return db.parkingSpaceDao().getTime(plate);*/
+        return  db.parkingSpaceDao().getTime(plate).getStartOcupation();
     }
 
-    public ParkingSpace getTimeCar(String plate) {
-         return null;
-        /*final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
-        return db.parkingSpaceDao().getTimeCar(plate);*/
+    public Date getTimeCar(String plate) {
+        final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
+        return db.parkingSpaceDao().getTimeCar(plate).getStartOcupation();
     }
 
     public void freeSpace(int fk_space) {
@@ -45,14 +45,14 @@ public class ParkingSpaceImpl implements ParkingSpace {
         db.parkingSpaceDao().setUpdateStateParking(false, fk_space, null);
     }
 
-    public List<ParkingSpace> getParkingSpace() {
-         return null;
+    public List<ParkingSpaceRepository> getParkingSpace() {
+        return null;
         /*final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
         return db.parkingSpaceDao().getAll();*/
     }
 
-    public ParkingSpace getOneParkingSpace(int id) {
-         return null;
+    public ParkingSpaceRepository getOneParkingSpace(int id) {
+        return null;
         /*final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
         return db.parkingSpaceDao().getOneParkingSpace(id);*/
     }

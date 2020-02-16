@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface ParkingRepository {
 
-     List<ParkingEntity> getParking() ;
+    List<ParkingEntity> getParking();
 
 }

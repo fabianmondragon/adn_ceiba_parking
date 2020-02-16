@@ -23,27 +23,27 @@ public class TariffEntityTest {
 
     @Test
     public void verify_SetAndGet_getValueHorCar() {
-        assertTrue(tariffEntity.getValueHorCar() == 1000.0);
+        assertTrue(tariffEntity.getCarHourCost() == 1000.0);
     }
 
     @Test
     public void verify_SetAndGet_getValueHorMoto() {
-        assertTrue(tariffEntity.getValueHorMoto() == 500.0);
+        assertTrue(tariffEntity.getMotorcycleHourCost() == 500.0);
     }
 
     @Test
     public void verify_SetAndGet_getValueDayCar() {
-        assertTrue(tariffEntity.getValueDayCar() == 8000.0);
+        assertTrue(tariffEntity.getCarDayCost() == 8000.0);
     }
 
     @Test
     public void verify_SetAndGet_getValueDayMotor() {
-        assertTrue(tariffEntity.getValueDayMoto() == 5000.0);
+        assertTrue(tariffEntity.getMotorcycleDayCost() == 5000.0);
     }
 
     @Test
     public void verify_SetAndGet_getValueCilindrajeMOto() {
-        assertTrue(tariffEntity.getValueCilindrajeMoto() == 2000.0);
+        assertTrue(tariffEntity.getMotorcycleCilindricalCost() == 2000.0);
     }
 
 }

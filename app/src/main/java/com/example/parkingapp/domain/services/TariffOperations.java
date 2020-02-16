@@ -14,9 +14,9 @@ public class TariffOperations {
         this.tariffRepository = new TariffRepositoryImpl();
     }
 
-    public Tariff getTariff (){
+    public Tariff getTariff() {
         tariffEntity = tariffRepository.getTariff();
-        tariff = new Tariff(tariffEntity.getValueHorCar(), tariffEntity.getValueHorMoto(), tariffEntity.getValueDayCar(),tariffEntity.getValueDayMoto(), tariffEntity.getValueCilindrajeMoto());
+        tariff = new Tariff(tariffEntity.getCarHourCost(), tariffEntity.getMotorcycleHourCost(), tariffEntity.getCarDayCost(), tariffEntity.getMotorcycleDayCost(), tariffEntity.getMotorcycleCilindricalCost());
         return tariff;
     }
 }

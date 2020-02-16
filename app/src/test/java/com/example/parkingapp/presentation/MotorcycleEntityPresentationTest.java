@@ -12,7 +12,7 @@ public class MotorcycleEntityPresentationTest {
     public void validate_Constructor_WithParams() {
         Motorcycle motorcycle = new Motorcycle("lmo", 100);
         assertTrue(motorcycle.getPlate().equals("lmo"));
-        assertTrue(motorcycle.getCilindraje() == 100);
+        assertTrue(motorcycle.getCylindrical() == 100);
     }
 
     @Test
@@ -24,8 +24,8 @@ public class MotorcycleEntityPresentationTest {
     @Test
     public void validate_SetCilindraje() {
         Motorcycle motorcycle = new Motorcycle("lmo", 100);
-        motorcycle.setCilindraje(200);
-        assertTrue(motorcycle.getCilindraje() == 200);
+        motorcycle.setCylindrical(200);
+        assertTrue(motorcycle.getCylindrical() == 200);
     }
 
     @Test

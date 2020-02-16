@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class ParkingSpaceOperations {
 
-    private  ParkingSpaceRepository parkingSpaceRepository = new ParkingSpaceRepositoryImpl();
+    private ParkingSpaceRepository parkingSpaceRepository = new ParkingSpaceRepositoryImpl();
 
     public int getFreeSpace() {
         return parkingSpaceRepository.getFreeSpace();
@@ -21,7 +21,7 @@ public class ParkingSpaceOperations {
         return parkingSpaceRepository.updateParkingSpace(spaceIdentifier, null, false);
     }
 
-    public Date getTimeMotorcycle (String plateMotorcycle){
+    public Date getTimeMotorcycle(String plateMotorcycle) {
         return parkingSpaceRepository.getTime(plateMotorcycle);
     }
 

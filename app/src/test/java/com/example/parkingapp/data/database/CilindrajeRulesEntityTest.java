@@ -17,15 +17,15 @@ public class CilindrajeRulesEntityTest {
     @Test
     public void validate_Construct_CilindrajeRules_getCilindraje() {
         CilindrajeRulesEntity cilindrajeRulesEntity = new CilindrajeRulesEntity(500, 0);
-        assertTrue(cilindrajeRulesEntity.getCilindraje_moto() == 500);
+        assertTrue(cilindrajeRulesEntity.getCylindricalMotorcycleta() == 500);
 
     }
 
     @Test
     public void validate_Construct_CilindrajeRules_setCilindraje() {
         CilindrajeRulesEntity cilindrajeRulesEntity = new CilindrajeRulesEntity(500, 0);
-        cilindrajeRulesEntity.setCilindraje_moto(700);
-        assertTrue(cilindrajeRulesEntity.getCilindraje_moto() == 700);
+        cilindrajeRulesEntity.setCylindricalMotorcycleta(700);
+        assertTrue(cilindrajeRulesEntity.getCylindricalMotorcycleta() == 700);
     }
 
 

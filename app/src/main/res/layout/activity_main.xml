@@ -51,7 +51,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@={parkingViewModel.motoPlate}"
+                    android:text="@={parkingViewModel.motorcyclePlate}"
                     android:hint="@string/enter_plate"></EditText>
 
                 <EditText
@@ -59,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_cilindraje"
                     android:inputType="number"
-                    android:text="@={parkingViewModel.motoCilindraje}"></EditText>
+                    android:text="@={parkingViewModel.motorcycleCilindraje}"></EditText>
 
                 <LinearLayout
                     android:layout_width="match_parent"

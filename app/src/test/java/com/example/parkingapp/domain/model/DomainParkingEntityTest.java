@@ -8,13 +8,13 @@ public class DomainParkingEntityTest {
     @Test
     public void validate_ConstructWitParmas() {
         Parking parking = new Parking(5, 6);
-        assertTrue(parking.getNumMotorcycle() == 6);
+        assertTrue(parking.getNumbersMotorcycle() == 6);
     }
 
     @Test
     public void validate_ConstructWitParmas_getNumberCars() {
         Parking parking = new Parking(5, 6);
-        assertTrue(parking.getNumCars() == 5);
+        assertTrue(parking.getNumbersCars() == 5);
     }
 
 

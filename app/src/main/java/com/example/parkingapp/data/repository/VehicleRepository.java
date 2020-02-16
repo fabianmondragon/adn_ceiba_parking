@@ -15,7 +15,7 @@ public interface VehicleRepository {
 
     boolean setMotorcycle(Motorcycle motorcycle, int space);
 
-    Motorcycle getMotoCycle(String plateId);
+    Motorcycle getMotorcycle(String plateId);
 
     boolean deleteMotorcycle(String plate);
 

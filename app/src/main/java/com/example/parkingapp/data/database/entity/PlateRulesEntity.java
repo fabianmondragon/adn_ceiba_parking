@@ -11,15 +11,15 @@ public class PlateRulesEntity {
     @ColumnInfo(name = "plate_rules_id")
     int plateRulesId;
 
-    @ColumnInfo(name = "letter_plate_rule")
-    String letter_plate_rule;
+    @ColumnInfo(name = "letterPlateRules")
+    String letterPlateRules;
 
     @ColumnInfo(name = "state")
     Boolean state;
 
-    public PlateRulesEntity(String letter_plate_rule, Boolean state) {
+    public PlateRulesEntity(String letterPlateRules, Boolean state) {
         this.plateRulesId = plateRulesId;
-        this.letter_plate_rule = letter_plate_rule;
+        this.letterPlateRules = letterPlateRules;
         this.state = state;
     }
 
@@ -31,12 +31,12 @@ public class PlateRulesEntity {
         this.plateRulesId = plateRulesId;
     }
 
-    public String getLetter_plate_rule() {
-        return letter_plate_rule;
+    public String getLetterPlateRules() {
+        return letterPlateRules;
     }
 
-    public void setLetter_plate_rule(String letter_plate_rule) {
-        this.letter_plate_rule = letter_plate_rule;
+    public void setLetterPlateRules(String letterPlateRules) {
+        this.letterPlateRules = letterPlateRules;
     }
 
     public Boolean getState() {

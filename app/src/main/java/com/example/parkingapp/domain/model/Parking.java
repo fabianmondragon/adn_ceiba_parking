@@ -2,20 +2,20 @@ package com.example.parkingapp.domain.model;
 
 public class Parking {
 
-    private int numCars;
-    private int numMotorcycle;
+    private int numbersCars;
+    private int numbersMotorcycle;
 
-    public Parking(int numCars, int numMotorcycle) {
-        this.numCars = numCars;
-        this.numMotorcycle = numMotorcycle;
+    public Parking(int numbersCars, int numbersMotorcycle) {
+        this.numbersCars = numbersCars;
+        this.numbersMotorcycle = numbersMotorcycle;
     }
 
-    public int getNumCars() {
-        return numCars;
+    public int getNumbersCars() {
+        return numbersCars;
     }
 
-    public int getNumMotorcycle() {
-        return numMotorcycle;
+    public int getNumbersMotorcycle() {
+        return numbersMotorcycle;
     }
 
 }

@@ -2,16 +2,16 @@ package com.example.parkingapp.domain.model;
 
 public class CylindricalRules {
 
-    private int cilindraje_moto;
+    private int motorcycleCylindrical;
     private int state;
 
-    public CylindricalRules(int cilindraje_moto, int state) {
-        this.cilindraje_moto = cilindraje_moto;
+    public CylindricalRules(int motorcycleCylindrical, int state) {
+        this.motorcycleCylindrical = motorcycleCylindrical;
         this.state = state;
     }
 
-    public CylindricalRules(int cilindraje_moto) {
-        this.cilindraje_moto = cilindraje_moto;
+    public CylindricalRules(int motorcycleCylindrical) {
+        this.motorcycleCylindrical = motorcycleCylindrical;
     }
 
     public int getState() {
@@ -23,7 +23,7 @@ public class CylindricalRules {
     }
 
     public int getCilindrage() {
-        return cilindraje_moto;
+        return motorcycleCylindrical;
     }
 
 }

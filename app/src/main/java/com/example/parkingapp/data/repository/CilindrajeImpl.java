@@ -13,7 +13,7 @@ public class CilindrajeImpl implements CilindrajeRepository {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
         try {
             cilindrajeRulesEntity =  db.cilindrajeRulesDao().getActivo();
-            cilindricalRules = new CylindricalRules (cilindrajeRulesEntity.getCilindraje_moto());
+            cilindricalRules = new CylindricalRules (cilindrajeRulesEntity.getCylindricalMotorcycleta());
            return  cilindricalRules;
         } catch (Exception e) {
             return null;

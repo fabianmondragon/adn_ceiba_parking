@@ -12,7 +12,7 @@ public class ParkingEntityTest {
     public void validateConstruct_WihtParmas() {
         ParkingEntity parkingEntity = new ParkingEntity(10, 5);
         assertTrue(parkingEntity.getNumberCar() == 10);
-        assertTrue(parkingEntity.getNumberMoto() == 5);
+        assertTrue(parkingEntity.getNumberMotorcycle() == 5);
     }
 
     @Test
@@ -25,8 +25,8 @@ public class ParkingEntityTest {
     @Test
     public void validateSetNumberMotos_WihtParmas() {
         ParkingEntity parkingEntity = new ParkingEntity(10, 5);
-        parkingEntity.setNumberMoto(1);
-        assertTrue(parkingEntity.getNumberMoto() == 1);
+        parkingEntity.setNumberMotorcycle(1);
+        assertTrue(parkingEntity.getNumberMotorcycle() == 1);
     }
 
 }

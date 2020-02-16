@@ -15,11 +15,11 @@ public class ParkingEntity {
     private int numberCar;
 
     @ColumnInfo(name = "number_moto")
-    private int numberMoto;
+    private int numberMotorcycle;
 
-    public ParkingEntity(int numberCar, int numberMoto) {
+    public ParkingEntity(int numberCar, int numberMotorcycle) {
         this.numberCar = numberCar;
-        this.numberMoto = numberMoto;
+        this.numberMotorcycle = numberMotorcycle;
     }
 
     public int getParkinId() {
@@ -38,11 +38,11 @@ public class ParkingEntity {
         this.numberCar = numberCar;
     }
 
-    public int getNumberMoto() {
-        return numberMoto;
+    public int getNumberMotorcycle() {
+        return numberMotorcycle;
     }
 
-    public void setNumberMoto(int numberMoto) {
-        this.numberMoto = numberMoto;
+    public void setNumberMotorcycle(int numberMotorcycle) {
+        this.numberMotorcycle = numberMotorcycle;
     }
 }

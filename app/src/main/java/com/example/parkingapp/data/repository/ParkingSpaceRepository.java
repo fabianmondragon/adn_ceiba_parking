@@ -1,7 +1,7 @@
 package com.example.parkingapp.data.repository;
 
 import java.util.Date;
-import java.util.List;
+
 
 public interface ParkingSpaceRepository {
 
@@ -14,10 +14,5 @@ public interface ParkingSpaceRepository {
     Date getTimeCar(String plate);
 
     void freeSpace(int fk_space);
-
-    List<ParkingSpaceRepository> getParkingSpace();
-
-    ParkingSpaceRepository getOneParkingSpace(int id);
-
 
 }

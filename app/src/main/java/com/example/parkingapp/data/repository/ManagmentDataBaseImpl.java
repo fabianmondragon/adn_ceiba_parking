@@ -35,26 +35,12 @@ public class ManagmentDataBaseImpl implements ManagmentDataBaseRepository {
         Response response = new Response();
         response.state = true;
         return response;
-
-
     }
 
     public void freeUpSpace() {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                db.parkingSpaceDao().setUpdateAllStateParking(false);
-                db.carDao().deleteAll();
-                db.motorCycleDao().deleteAll();
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-            }
-        }.execute();
-
+        db.parkingSpaceDao().setUpdateAllStateParking(false);
+        db.carDao().deleteAll();
+        db.motorCycleDao().deleteAll();
     }
 }

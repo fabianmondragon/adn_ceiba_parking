@@ -9,10 +9,10 @@ public class DomainRespondTest {
     @Test
     public void validate_GettersAndSetter() {
         DomainRespond domainRespond = new DomainRespond();
-        domainRespond.setTipeTransaction(1);
+        domainRespond.setTransactionType(1);
         domainRespond.setMsg("success");
         domainRespond.setState(true);
-        assertTrue(domainRespond.getTipeTransaction() == 1);
+        assertTrue(domainRespond.getTransactionType() == 1);
         assertTrue(domainRespond.isState() == true);
     }
 

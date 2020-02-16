@@ -1,6 +1,5 @@
 package com.example.parkingapp.domain;
 
-import com.example.parkingapp.domain.model.Domain;
 import com.example.parkingapp.domain.services.VehicleOperations;
 
 import org.junit.Before;
@@ -23,7 +22,7 @@ public class DomainVehicleOperationsTest {
        /* DomainRespond domainRespond = new DomainRespond();
         domainRespond.setMsg(Constant.REGISTER_SUCCESSFULL);
         domainRespond.setState(true);
-        domainRespond.setTipeTransaction(Constant.SET_MOTORCYCLE);*/
+        domainRespond.setTransactionType(Constant.SET_MOTORCYCLE);*/
 
         // Assert.assertEquals(domainRespond, vehicleOperations.registerVehicle(domain));
     }

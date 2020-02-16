@@ -22,18 +22,18 @@ public class MotorcycleEntity {
     @NotNull
     private String plateID;
 
-    @ColumnInfo(name = "cilindraje")
-    private int cilindraje;
+    @ColumnInfo(name = "cylindrical")
+    private int cylindrical;
 
     @ColumnInfo(name = "fk_parking_space")
     @NotNull
     private int fkParkingSpace;
 
     @Ignore
-    public MotorcycleEntity(String plateID, int cilindraje, int fkParkingSpace) {
+    public MotorcycleEntity(String plateID, int cylindrical, int fkParkingSpace) {
         this.fkParkingSpace = fkParkingSpace;
         this.plateID = plateID;
-        this.cilindraje = cilindraje;
+        this.cylindrical = cylindrical;
     }
 
     public MotorcycleEntity(String plateID) {
@@ -48,12 +48,12 @@ public class MotorcycleEntity {
         this.plateID = plateID;
     }
 
-    public int getCilindraje() {
-        return cilindraje;
+    public int getCylindrical() {
+        return cylindrical;
     }
 
-    public void setCilindraje(int cilindraje) {
-        this.cilindraje = cilindraje;
+    public void setCylindrical(int cylindrical) {
+        this.cylindrical = cylindrical;
     }
 
     public int getFkParkingSpace() {

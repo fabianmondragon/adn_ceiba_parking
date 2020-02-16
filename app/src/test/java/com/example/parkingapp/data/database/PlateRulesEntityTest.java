@@ -13,7 +13,7 @@ public class PlateRulesEntityTest {
     @Before
     public void config() {
         plateRulesEntity = new PlateRulesEntity("A", true);
-        assertTrue(plateRulesEntity.getLetter_plate_rule().equals("A"));
+        assertTrue(plateRulesEntity.getLetterPlateRules().equals("A"));
         assertTrue(plateRulesEntity.getState() == true);
     }
 
@@ -25,9 +25,9 @@ public class PlateRulesEntityTest {
 
     @Test
     public void validateGetAndSetter_Letter() {
-        plateRulesEntity.setLetter_plate_rule("B");
+        plateRulesEntity.setLetterPlateRules("B");
 
-        assertTrue(plateRulesEntity.getLetter_plate_rule().equals("B"));
+        assertTrue(plateRulesEntity.getLetterPlateRules().equals("B"));
     }
 
     @Test

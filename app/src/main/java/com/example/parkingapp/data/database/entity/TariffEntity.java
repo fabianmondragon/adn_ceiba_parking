@@ -11,27 +11,27 @@ public class TariffEntity {
     @ColumnInfo(name = "tarif_id")
     private int tariffId;
 
-    @ColumnInfo(name = "value_hour_car")
-    private Double valueHorCar;
+    @ColumnInfo(name = "car_hour_cost")
+    private Double carHourCost;
 
-    @ColumnInfo(name = "value_hour_moto")
-    private Double valueHorMoto;
+    @ColumnInfo(name = "motorcycle_hour_cost")
+    private Double motorcycleHourCost;
 
-    @ColumnInfo(name = "value_day_car")
-    private Double valueDayCar;
+    @ColumnInfo(name = "car_day_cost")
+    private Double carDayCost;
 
-    @ColumnInfo(name = "value_day_moto")
-    private Double valueDayMoto;
+    @ColumnInfo(name = "motorcycle_day_cost")
+    private Double motorcycleDayCost;
 
-    @ColumnInfo(name = "value_cilindraje_moto")
-    private Double valueCilindrajeMoto;
+    @ColumnInfo(name = "moto_cylindrical_cost")
+    private Double motorcycleCilindricalCost;
 
-    public TariffEntity(Double valueHorCar, Double valueHorMoto, Double valueDayCar, Double valueDayMoto, Double valueCilindrajeMoto) {
-        this.valueHorCar = valueHorCar;
-        this.valueHorMoto = valueHorMoto;
-        this.valueDayCar = valueDayCar;
-        this.valueDayMoto = valueDayMoto;
-        this.valueCilindrajeMoto = valueCilindrajeMoto;
+    public TariffEntity(Double carHourCost, Double motorcycleHourCost, Double carDayCost, Double motorcycleDayCost, Double motorcycleCilindricalCost) {
+        this.carHourCost = carHourCost;
+        this.motorcycleHourCost = motorcycleHourCost;
+        this.carDayCost = carDayCost;
+        this.motorcycleDayCost = motorcycleDayCost;
+        this.motorcycleCilindricalCost = motorcycleCilindricalCost;
     }
 
     public int getTariffId() {
@@ -42,24 +42,24 @@ public class TariffEntity {
         this.tariffId = tariffId;
     }
 
-    public Double getValueHorCar() {
-        return valueHorCar;
+    public Double getCarHourCost() {
+        return carHourCost;
     }
 
-    public Double getValueHorMoto() {
-        return valueHorMoto;
+    public Double getMotorcycleHourCost() {
+        return motorcycleHourCost;
     }
 
-    public Double getValueDayCar() {
-        return valueDayCar;
+    public Double getCarDayCost() {
+        return carDayCost;
     }
 
-    public Double getValueDayMoto() {
-        return valueDayMoto;
+    public Double getMotorcycleDayCost() {
+        return motorcycleDayCost;
     }
 
-    public Double getValueCilindrajeMoto() {
-        return valueCilindrajeMoto;
+    public Double getMotorcycleCilindricalCost() {
+        return motorcycleCilindricalCost;
     }
 
 }

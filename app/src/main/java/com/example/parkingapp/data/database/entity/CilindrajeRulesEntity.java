@@ -12,16 +12,16 @@ public class CilindrajeRulesEntity {
     @NotNull
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "cilindraje_rules_id")
-    private int cilindraje_rulesId;
+    private int cylindricalRulesId;
 
-    @ColumnInfo(name = "cilindraje_moto")
-    private int cilindraje_moto;
+    @ColumnInfo(name = "cylindricalMotorcycleta")
+    private int cylindricalMotorcycleta;
 
     @ColumnInfo(name = "state")
     private int state;
 
-    public CilindrajeRulesEntity(int cilindraje_moto, int state) {
-        this.cilindraje_moto = cilindraje_moto;
+    public CilindrajeRulesEntity(int cylindricalMotorcycleta, int state) {
+        this.cylindricalMotorcycleta = cylindricalMotorcycleta;
         this.state = state;
     }
 
@@ -33,19 +33,19 @@ public class CilindrajeRulesEntity {
         this.state = state;
     }
 
-    public int getCilindraje_rulesId() {
-        return cilindraje_rulesId;
+    public int getCylindricalRulesId() {
+        return cylindricalRulesId;
     }
 
-    public void setCilindraje_rulesId(int cilindraje_rulesId) {
-        this.cilindraje_rulesId = cilindraje_rulesId;
+    public void setCylindricalRulesId(int cylindricalRulesId) {
+        this.cylindricalRulesId = cylindricalRulesId;
     }
 
-    public int getCilindraje_moto() {
-        return cilindraje_moto;
+    public int getCylindricalMotorcycleta() {
+        return cylindricalMotorcycleta;
     }
 
-    public void setCilindraje_moto(int cilindraje_moto) {
-        this.cilindraje_moto = cilindraje_moto;
+    public void setCylindricalMotorcycleta(int cylindricalMotorcycleta) {
+        this.cylindricalMotorcycleta = cylindricalMotorcycleta;
     }
 }

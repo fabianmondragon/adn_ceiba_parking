@@ -3,18 +3,18 @@ package com.example.parkingapp.domain.model;
 public class Motorcycle {
 
     private String plate;
-    private int cilindraje;
+    private int cylindrical;
     private int fkParkingSpace;
 
-    public Motorcycle(String plate, int cilindraje, int fkParkingSpace) {
+    public Motorcycle(String plate, int cylindrical, int fkParkingSpace) {
         this.plate = plate;
-        this.cilindraje = cilindraje;
+        this.cylindrical = cylindrical;
         this.fkParkingSpace = fkParkingSpace;
     }
 
-    public Motorcycle(String plate, int cilindraje) {
+    public Motorcycle(String plate, int cylindrical) {
         this.plate = plate;
-        this.cilindraje = cilindraje;
+        this.cylindrical = cylindrical;
     }
 
     public Motorcycle(String plate) {
@@ -29,12 +29,12 @@ public class Motorcycle {
         this.plate = plate;
     }
 
-    public int getCilindraje() {
-        return cilindraje;
+    public int getCylindrical() {
+        return cylindrical;
     }
 
-    public void setCilindraje(int cilindraje) {
-        this.cilindraje = cilindraje;
+    public void setCylindrical(int cylindrical) {
+        this.cylindrical = cylindrical;
     }
 
     public int getFkParkingSpace() {

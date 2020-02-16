@@ -8,7 +8,7 @@ public class Validation {
         return true;
     }
 
-    public boolean validateFieldMotorcycle(String carPlate, String cilindraje) {
+    public boolean validateMotorcycleFields(String carPlate, String cilindraje) {
         if (carPlate.equals(""))
             return false;
         if (cilindraje.equals(""))

@@ -1,16 +1,10 @@
 package com.example.parkingapp.data.repository;
 
 import com.example.parkingapp.BaseApplication;
-import com.example.parkingapp.data.database.entity.ParkingSpaceEntitiy;
-import com.example.parkingapp.domain.model.ParkingSpace;
 
 import java.util.Date;
-import java.util.List;
 
 public class ParkingSpaceRepositoryImpl implements ParkingSpaceRepository {
-
-    ParkingSpaceEntitiy parkingSpaceEntitiy;
-    ParkingSpace parkingSpace;
 
     public ParkingSpaceRepositoryImpl() {
     }
@@ -45,15 +39,4 @@ public class ParkingSpaceRepositoryImpl implements ParkingSpaceRepository {
         db.parkingSpaceDao().setUpdateStateParking(false, fk_space, null);
     }
 
-    public List<ParkingSpaceRepository> getParkingSpace() {
-        return null;
-        /*final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
-        return db.parkingSpaceDao().getAll();*/
-    }
-
-    public ParkingSpaceRepository getOneParkingSpace(int id) {
-        return null;
-        /*final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
-        return db.parkingSpaceDao().getOneParkingSpace(id);*/
-    }
 }

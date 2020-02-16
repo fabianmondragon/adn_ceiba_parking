@@ -2,9 +2,7 @@ package com.example.parkingapp.domain;
 
 import com.example.parkingapp.TransactionResponse;
 import com.example.parkingapp.data.repository.ManagmentDataBaseImpl;
-import com.example.parkingapp.data.repository.RequestListener;
 import com.example.parkingapp.data.repository.VehicleRepositoryImpl;
-import com.example.parkingapp.domain.model.Domain;
 import com.example.parkingapp.domain.services.DataBaseAdministration;
 import com.example.parkingapp.domain.services.VehicleOperations;
 

@@ -9,8 +9,8 @@ import java.util.Calendar;
 
 public class Validation {
 
-    VehicleRepository vehicleRepository = new VehicleRepositoryImpl();
-    ParkingRepository parkingRepository = new ParkingImpl();
+    private VehicleRepository vehicleRepository = new VehicleRepositoryImpl();
+    private ParkingRepository parkingRepository = new ParkingImpl();
     private int numberMotorcycles;
     private int numberCars;
 
@@ -27,7 +27,7 @@ public class Validation {
     }
 
     public boolean isLessThanMotorCycleLimit() {
-        numberMotorcycles = parkingRepository.getParking().get(0).getNumberMoto();
+        numberMotorcycles = parkingRepository.getParking().get(0).getNumberMotorcycle();
         if (vehicleRepository.getListMotorCycle().size() < numberMotorcycles) {
             return true;
         } else {
@@ -36,7 +36,7 @@ public class Validation {
     }
 
     public boolean isLessThanCarLimit() {
-        numberCars = parkingRepository.getParking().get(0).getNumberMoto();
+        numberCars = parkingRepository.getParking().get(0).getNumberMotorcycle();
         if (vehicleRepository.getListCar().size() < numberCars) {
             return true;
         }

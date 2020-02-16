@@ -1,16 +1,33 @@
 package com.example.parkingapp.domain.services;
 
+import androidx.room.ColumnInfo;
+
+import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.domain.model.CylindricalRules;
 import com.example.parkingapp.domain.model.Tariff;
+import com.example.parkingapp.util.Constant;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+
 public class BillOperations {
 
+    @Inject
+    CylindricalRulesOperations cylindricalRulesOperations;
+    @Inject
+    TariffOperations tariffOperations;
+    CylindricalRules cylindricalRules;
+    Tariff tariff;
     private long hours;
     private long days;
     private long cost;
+
+    @Inject
+    public BillOperations() {
+        BaseApplication.appComponent.inject(this);
+    }
 
     long calculateTime(Date dateActual, Date date) {
         long diffInMillies = Math.abs(dateActual.getTime() - date.getTime());
@@ -18,8 +35,11 @@ public class BillOperations {
         return minuts;
     }
 
-    public Long calculateCost(Long numberMinuts, Tariff tariff, CylindricalRules cilindrajeRules, int cilindraje) {
+    public Long calculateCost(Long numberMinuts, int cilindraje, int type) {
         long horaAux = 0;
+        cylindricalRules = cylindricalRulesOperations.getRules();
+        tariff = tariffOperations.getTariff();
+
         if (numberMinuts > 0) {
             hours = (numberMinuts / 60);
             days = (hours / 24);
@@ -28,7 +48,7 @@ public class BillOperations {
                 days = days + 1;
                 hours = 0;
             }
-            if (cilindrajeRules != null) {
+            if (type == Constant.IS_A_MOTO) {
                 if (cilindraje > 650)
                     cost = (long) ((days * tariff.getMotorcycleDayCost() + (hours * tariff.getMotorcycleHourCost()) + tariff.getMotorcycleCylindrical()));
                 else

@@ -4,7 +4,7 @@ import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.database.entity.CilindrajeRulesEntity;
 import com.example.parkingapp.domain.model.CylindricalRules;
 
-public class CilindrajeImpl implements CilindrajeRepository {
+public class CiylindricalImpl implements CiylindricalRepository {
 
     CilindrajeRulesEntity cilindrajeRulesEntity;
     CylindricalRules cilindricalRules;

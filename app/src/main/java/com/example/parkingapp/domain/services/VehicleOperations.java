@@ -1,43 +1,35 @@
 package com.example.parkingapp.domain.services;
 
+import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.repository.VehicleRepository;
 import com.example.parkingapp.data.repository.VehicleRepositoryImpl;
 import com.example.parkingapp.domain.model.Car;
-import com.example.parkingapp.domain.model.CylindricalRules;
 import com.example.parkingapp.domain.model.Motorcycle;
 import com.example.parkingapp.domain.model.Response;
-import com.example.parkingapp.domain.model.Tariff;
 import com.example.parkingapp.util.Constant;
 
 import java.util.Calendar;
 import java.util.Date;
+
+import javax.inject.Inject;
 
 import static com.example.parkingapp.util.Constant.SET_CAR;
 import static com.example.parkingapp.util.Constant.SET_MOTORCYCLE;
 
 public class VehicleOperations {
 
-    private ParkingSpaceOperations parkingSpaceOperations;
-    private Validation validation;
-    private DataBaseAdministration dataBaseAdministration;
-    private VehicleRepository vehicleRepository;
-    private BillOperations billOperations;
-    private CilindrajeRulesOperations cilindrajeRulesOperations;
-    private CylindricalRules cilindricalRules;
-    private TariffOperations tariffOperations;
-    private Tariff tariff;
-    private Long numberMinuts;
     private int idSpaceParking;
+    @Inject Validation validation;
+    @Inject ParkingSpaceOperations parkingSpaceOperations;
+    @Inject DataBaseAdministration dataBaseAdministration;
+    @Inject BillOperations billOperations;
+    long numberMinuts;
+    private VehicleRepository vehicleRepository;
 
+    @Inject
     public VehicleOperations() {
-        validation = new Validation();
+        BaseApplication.appComponent.inject(this);
         vehicleRepository = new VehicleRepositoryImpl();
-        dataBaseAdministration = new DataBaseAdministration();
-        vehicleRepository = new VehicleRepositoryImpl();
-        parkingSpaceOperations = new ParkingSpaceOperations();
-        billOperations = new BillOperations();
-        cilindrajeRulesOperations = new CilindrajeRulesOperations();
-        tariffOperations = new TariffOperations();
     }
 
     public Response fillDataBase() {
@@ -97,8 +89,7 @@ public class VehicleOperations {
         Date currentDate = Calendar.getInstance().getTime();
         Date previosDate = parkingSpaceOperations.getTimeCar(car.getPlate());
         numberMinuts = billOperations.calculateTime(currentDate, previosDate);
-        tariff = tariffOperations.getTariff();
-        response.cost = billOperations.calculateCost(numberMinuts, tariff, null, 0);
+        response.cost = billOperations.calculateCost(numberMinuts, 0, Constant.IS_A_CAR);
         if (vehicleRepository.deleteCar(car.getPlate()) == true && parkingSpaceOperations.freeUpSpace(car.getFkParkingSpace()) == true) {
             response.state = true;
             response.typeTransaction = Constant.CHECKOUT_CAR_MOTORCYCLE;
@@ -113,9 +104,7 @@ public class VehicleOperations {
         Date currentDate = Calendar.getInstance().getTime();
         Date previosDate = parkingSpaceOperations.getTimeMotorcycle(motorcycle.getPlate());
         numberMinuts = billOperations.calculateTime(currentDate, previosDate);
-        tariff = tariffOperations.getTariff();
-        cilindricalRules = cilindrajeRulesOperations.getRules();
-        response.cost = billOperations.calculateCost(numberMinuts, tariff, cilindricalRules, motorcycle.getCylindrical());
+        response.cost = billOperations.calculateCost(numberMinuts, motorcycle.getCylindrical(), Constant.IS_A_MOTO);
         if (vehicleRepository.deleteMotorcycle(motorcycle.getPlate()) == true && parkingSpaceOperations.freeUpSpace(motorcycle.getFkParkingSpace()) == true) {
             response.state = true;
             response.typeTransaction = Constant.CHECKOUT_CAR_MOTORCYCLE;

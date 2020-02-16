@@ -1,7 +1,7 @@
 package com.example.parkingapp.data;
 
 import com.example.parkingapp.data.database.entity.CilindrajeRulesEntity;
-import com.example.parkingapp.data.repository.CilindrajeImpl;
+import com.example.parkingapp.data.repository.CiylindricalImpl;
 import com.example.parkingapp.domain.services.DataBaseAdministration;
 
 import org.junit.Assert;
@@ -10,12 +10,12 @@ import org.junit.Test;
 
 public class CilindrajeImplTest {
     DataBaseAdministration dataBaseAdministration;
-    CilindrajeImpl cilindrajeImpl;
+    CiylindricalImpl cilindrajeImpl;
 
     @Before
     public void config() {
         dataBaseAdministration = new DataBaseAdministration();
-        cilindrajeImpl = new CilindrajeImpl();
+        cilindrajeImpl = new CiylindricalImpl();
         dataBaseAdministration.fillDataBase();
     }
 

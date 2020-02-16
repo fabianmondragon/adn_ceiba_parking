@@ -5,9 +5,16 @@ import com.example.parkingapp.data.repository.ParkingSpaceRepositoryImpl;
 
 import java.util.Date;
 
+import javax.inject.Inject;
+
 public class ParkingSpaceOperations {
 
     private ParkingSpaceRepository parkingSpaceRepository = new ParkingSpaceRepositoryImpl();
+
+    @Inject
+    public ParkingSpaceOperations() {
+
+    }
 
     public int getFreeSpace() {
         return parkingSpaceRepository.getFreeSpace();

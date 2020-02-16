@@ -11,10 +11,13 @@ import com.example.parkingapp.domain.model.Response;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class DataBaseAdministration {
 
     private ManagmentDataBaseImpl managmentDataBaseImpl;
 
+    @Inject
     public DataBaseAdministration() {
         managmentDataBaseImpl = new ManagmentDataBaseImpl();
     }

@@ -11,6 +11,8 @@ public abstract class Constant {
 
 
     //Transacciones
+    final public static int IS_A_MOTO = 1;
+    final public static int IS_A_CAR = 2;
     final public static int SET_CAR = 1;
     final public static int SET_MOTORCYCLE = 2;
     final public static int SET_COST = 3;

@@ -1,7 +1,5 @@
 package com.example.parkingapp.domain.services;
 
-import androidx.room.ColumnInfo;
-
 import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.domain.model.CylindricalRules;
 import com.example.parkingapp.domain.model.Tariff;
@@ -18,6 +16,7 @@ public class BillOperations {
     CylindricalRulesOperations cylindricalRulesOperations;
     @Inject
     TariffOperations tariffOperations;
+
     CylindricalRules cylindricalRules;
     Tariff tariff;
     private long hours;

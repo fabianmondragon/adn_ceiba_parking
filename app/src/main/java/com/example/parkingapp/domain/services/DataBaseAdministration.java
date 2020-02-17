@@ -5,7 +5,7 @@ import com.example.parkingapp.data.database.entity.ParkingEntity;
 import com.example.parkingapp.data.database.entity.ParkingSpaceEntitiy;
 import com.example.parkingapp.data.database.entity.PlateRulesEntity;
 import com.example.parkingapp.data.database.entity.TariffEntity;
-import com.example.parkingapp.data.repository.ManagmentDataBaseImpl;
+import com.example.parkingapp.data.repository.ManagmentDataBaseRepository;
 import com.example.parkingapp.domain.model.Response;
 
 import java.util.ArrayList;
@@ -15,11 +15,12 @@ import javax.inject.Inject;
 
 public class DataBaseAdministration {
 
-    private ManagmentDataBaseImpl managmentDataBaseImpl;
+    @Inject
+    private ManagmentDataBaseRepository managmentDataBaseRepository;
 
     @Inject
     public DataBaseAdministration() {
-        managmentDataBaseImpl = new ManagmentDataBaseImpl();
+
     }
 
     public Response fillDataBase() {
@@ -60,13 +61,12 @@ public class DataBaseAdministration {
 
         final TariffEntity tariffEntity = new TariffEntity(1000.0, 500.0, 8000.0, 4000.0, 2000.0);
         final PlateRulesEntity plateRulesEntity = new PlateRulesEntity("b", true);
-        return managmentDataBaseImpl.fillDataBase(parkingEntity, parkingSpaceEntitiyList, cilindrajeRulesEntity, tariffEntity, plateRulesEntity);
+        return managmentDataBaseRepository.fillDataBase(parkingEntity, parkingSpaceEntitiyList, cilindrajeRulesEntity, tariffEntity, plateRulesEntity);
 
     }
 
 
     public void freeUpDataBaseSpace() {
-        managmentDataBaseImpl.freeUpSpace();
-
+        managmentDataBaseRepository.freeUpSpace();
     }
 }

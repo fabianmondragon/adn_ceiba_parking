@@ -1,9 +1,7 @@
 package com.example.parkingapp.domain.services;
 
-import com.example.parkingapp.data.repository.ParkingImpl;
 import com.example.parkingapp.data.repository.ParkingRepository;
 import com.example.parkingapp.data.repository.VehicleRepository;
-import com.example.parkingapp.data.repository.VehicleRepositoryImpl;
 
 import java.util.Calendar;
 
@@ -11,8 +9,12 @@ import javax.inject.Inject;
 
 public class Validation {
 
-    private VehicleRepository vehicleRepository = new VehicleRepositoryImpl();
-    private ParkingRepository parkingRepository = new ParkingImpl();
+    @Inject
+    VehicleRepository vehicleRepository;
+
+    @Inject
+    ParkingRepository parkingRepository;
+
     private int numberMotorcycles;
     private int numberCars;
 

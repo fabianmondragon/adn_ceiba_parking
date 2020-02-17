@@ -1,5 +1,6 @@
 package com.example.parkingapp.di;
 
+import com.example.parkingapp.domain.model.Response;
 import com.example.parkingapp.domain.model.Validation;
 import com.example.parkingapp.domain.services.BillOperations;
 import com.example.parkingapp.domain.services.CylindricalRulesOperations;
@@ -15,44 +16,44 @@ import dagger.Provides;
 public class DomainModule {
 
     @Provides
-    TariffOperations getInstanceTariffOperations (){
+    TariffOperations getInstanceTariffOperations() {
         return new TariffOperations();
     }
 
     @Provides
-    public CylindricalRulesOperations getInstanceCylindricalRulesOperations (){
+    public CylindricalRulesOperations getInstanceCylindricalRulesOperations() {
         return new CylindricalRulesOperations();
     }
 
     @Provides
-    public BillOperations getInstanceBillOperations (){
+    public BillOperations getInstanceBillOperations() {
         return new BillOperations();
     }
 
     @Provides
-    public DataBaseAdministration getInstanceDataBaseAdministration(){
+    public DataBaseAdministration getInstanceDataBaseAdministration() {
         return new DataBaseAdministration();
     }
 
     @Provides
-    public ParkingSpaceOperations getInstanceParkingSpaceOperations (){
+    public ParkingSpaceOperations getInstanceParkingSpaceOperations() {
         return new ParkingSpaceOperations();
     }
 
     @Provides
-    public Validation getInstanceValidation(){
+    public Validation getInstanceValidation() {
         return new Validation();
     }
 
     @Provides
-    public VehicleOperations getInstanceVehicleOperations(){
-        return  new VehicleOperations();
+    public VehicleOperations getInstanceVehicleOperations() {
+        return new VehicleOperations();
     }
 
-
-
-
-
+    @Provides
+    public Response getInstanceResponse() {
+        return new Response();
+    }
 
 
 }

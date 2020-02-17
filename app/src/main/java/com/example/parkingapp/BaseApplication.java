@@ -19,7 +19,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         this.context = getApplicationContext();
 
-        appComponent  = DaggerApplicationComponent
+        appComponent = DaggerApplicationComponent
                 .builder()
                 .domainModule(new DomainModule())
                 .appModule(new AppModule(this))

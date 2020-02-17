@@ -26,7 +26,7 @@ public class ParkingSpaceRepositoryImpl implements ParkingSpaceRepository {
 
     public Date getTime(String plate) {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
-        return  db.parkingSpaceDao().getTime(plate).getStartOcupation();
+        return db.parkingSpaceDao().getTime(plate).getStartOcupation();
     }
 
     public Date getTimeCar(String plate) {

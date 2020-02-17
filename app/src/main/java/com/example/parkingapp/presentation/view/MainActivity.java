@@ -12,10 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.R;
 import com.example.parkingapp.databinding.ActivityMainBinding;
-import com.example.parkingapp.di.AppModule;
 import com.example.parkingapp.di.DaggerApplicationComponent;
-import com.example.parkingapp.di.DomainModule;
-import com.example.parkingapp.domain.model.Validation;
 import com.example.parkingapp.domain.services.VehicleOperations;
 import com.example.parkingapp.presentation.viewmodel.ParkingViewModel;
 
@@ -35,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         parkingViewModel = ViewModelProviders.of(this).get(ParkingViewModel.class);
         binding.setParkingViewModel(parkingViewModel);
         binding.setLifecycleOwner(this);
-        ((BaseApplication)getApplication()).getAppComponent().inject(this);
+        ((BaseApplication) getApplication()).getAppComponent().inject(this);
         setObservers();
         filldatabase();
 

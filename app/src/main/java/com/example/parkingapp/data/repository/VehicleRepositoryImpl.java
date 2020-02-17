@@ -9,6 +9,8 @@ import com.example.parkingapp.domain.model.Motorcycle;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class VehicleRepositoryImpl implements VehicleRepository {
 
     private List<Motorcycle> motorcycleList;
@@ -18,6 +20,10 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     private CarEntity carEntity;
     private MotorcycleEntity motorcycleEntity;
     private Car car;
+
+    @Inject
+    public VehicleRepositoryImpl() {
+    }
 
     public List<Motorcycle> getListMotorCycle() {
         motorcycleList = new ArrayList<>();

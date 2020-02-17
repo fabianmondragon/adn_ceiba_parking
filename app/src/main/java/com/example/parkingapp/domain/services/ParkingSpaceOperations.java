@@ -1,7 +1,6 @@
 package com.example.parkingapp.domain.services;
 
 import com.example.parkingapp.data.repository.ParkingSpaceRepository;
-import com.example.parkingapp.data.repository.ParkingSpaceRepositoryImpl;
 
 import java.util.Date;
 
@@ -9,7 +8,8 @@ import javax.inject.Inject;
 
 public class ParkingSpaceOperations {
 
-    private ParkingSpaceRepository parkingSpaceRepository = new ParkingSpaceRepositoryImpl();
+    @Inject
+    ParkingSpaceRepository parkingSpaceRepository;
 
     @Inject
     public ParkingSpaceOperations() {

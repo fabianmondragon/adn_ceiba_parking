@@ -6,7 +6,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.parkingapp.BaseApplication;
-import com.example.parkingapp.data.repository.VehicleRepository;
 import com.example.parkingapp.domain.model.Car;
 import com.example.parkingapp.domain.model.Motorcycle;
 import com.example.parkingapp.domain.model.Response;
@@ -38,13 +37,15 @@ public class ParkingViewModel extends AndroidViewModel {
     private Observable<Response> motorcycleCheckOutObservable;
     private Observable<Response> carCheckoutObservable;
 
-    @Inject VehicleOperations vehicleOperations;
-    @Inject Validation validation;
+    @Inject
+    VehicleOperations vehicleOperations;
+    @Inject
+    Validation validation;
 
 
     public ParkingViewModel(Application application) {
         super(application);
-        ((BaseApplication)getApplication()).getAppComponent().inject(this);
+        ((BaseApplication) getApplication()).getAppComponent().inject(this);
     }
 
     public void fillDataBaseWithInfo() {

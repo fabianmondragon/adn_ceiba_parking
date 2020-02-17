@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 public class MotorcycleEntityTest {
 
+    /*
     @Test
     public void validateConstruct_MOtorcycle_WithParamsn() {
         MotorcycleEntity motorcycleEntity = new MotorcycleEntity("lmo", 500, 1);
@@ -35,5 +36,5 @@ public class MotorcycleEntityTest {
         MotorcycleEntity motorcycleEntity = new MotorcycleEntity("lmo", 500, 1);
         motorcycleEntity.setFkParkingSpace(0);
         assertTrue(motorcycleEntity.getFkParkingSpace() == 0);
-    }
+    }*/
 }

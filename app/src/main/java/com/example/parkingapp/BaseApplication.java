@@ -5,13 +5,14 @@ import android.content.Context;
 
 import com.example.parkingapp.di.AppModule;
 import com.example.parkingapp.di.ApplicationComponent;
+
 import com.example.parkingapp.di.DaggerApplicationComponent;
 import com.example.parkingapp.di.DomainModule;
 
 public class BaseApplication extends Application {
 
     public static Context context;
-    public static ApplicationComponent appComponent;
+    public  ApplicationComponent appComponent;
 
 
     @Override

@@ -16,7 +16,7 @@ import javax.inject.Inject;
 public class DataBaseAdministration {
 
     @Inject
-    private ManagmentDataBaseRepository managmentDataBaseRepository;
+    ManagmentDataBaseRepository managmentDataBaseRepository;
 
     @Inject
     public DataBaseAdministration() {

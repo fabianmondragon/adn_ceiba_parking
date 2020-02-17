@@ -1,5 +1,8 @@
 package com.example.parkingapp.domain.services;
 
+import android.app.Application;
+import android.content.Context;
+
 import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.repository.VehicleRepository;
 import com.example.parkingapp.domain.model.Car;
@@ -34,8 +37,14 @@ public class VehicleOperations {
 
     @Inject
     public VehicleOperations() {
-        BaseApplication.appComponent.inject(this);
+        if (BaseApplication.getAppContext() != null){
+            ((BaseApplication) (BaseApplication.getAppContext().getApplicationContext())).getAppComponent().inject(this);
+        }
     }
+
+    public VehicleOperations(int i) {
+    }
+
 
     public Response fillDataBase() {
         return dataBaseAdministration.fillDataBase();
@@ -47,7 +56,7 @@ public class VehicleOperations {
 
     public Response registerMotorCycle(Motorcycle motorcycle) {
         Date currentDate = Calendar.getInstance().getTime();
-        response.typeTransaction = SET_MOTORCYCLE;
+       response.typeTransaction = SET_MOTORCYCLE;
         if (validation.isValid(motorcycle.getPlate()) && validation.isLessThanMotorCycleLimit()) {
             idSpaceParking = parkingSpaceOperations.getFreeSpace();
             if (vehicleRepository.setMotorcycle(motorcycle, idSpaceParking)) {

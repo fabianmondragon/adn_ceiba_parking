@@ -1,5 +1,7 @@
 package com.example.parkingapp.domain.services;
 
+import android.content.Context;
+
 import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.domain.model.CylindricalRules;
 import com.example.parkingapp.domain.model.Tariff;
@@ -25,7 +27,7 @@ public class BillOperations {
 
     @Inject
     public BillOperations() {
-        BaseApplication.appComponent.inject(this);
+        ((BaseApplication)(BaseApplication.getAppContext().getApplicationContext())).getAppComponent().inject(this);
     }
 
     long calculateTime(Date dateActual, Date date) {

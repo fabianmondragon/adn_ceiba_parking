@@ -15,8 +15,6 @@ import dagger.Component;
 @Component(modules = {DomainModule.class, AppModule.class, DataBaseModule.class})
 public interface ApplicationComponent {
 
-
-
     void inject(MainActivity mainActivity);
 
     void inject(ParkingViewModel parkingViewModel);

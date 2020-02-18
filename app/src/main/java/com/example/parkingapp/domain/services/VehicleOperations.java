@@ -42,9 +42,6 @@ public class VehicleOperations {
         }
     }
 
-    public VehicleOperations(int i) {
-    }
-
 
     public Response fillDataBase() {
         return dataBaseAdministration.fillDataBase();
@@ -56,12 +53,13 @@ public class VehicleOperations {
 
     public Response registerMotorCycle(Motorcycle motorcycle) {
         Date currentDate = Calendar.getInstance().getTime();
-       response.typeTransaction = SET_MOTORCYCLE;
+        boolean resultOcupySpace;
+        response.typeTransaction = SET_MOTORCYCLE;
         if (validation.isValid(motorcycle.getPlate()) && validation.isLessThanMotorCycleLimit()) {
             idSpaceParking = parkingSpaceOperations.getFreeSpace();
             if (vehicleRepository.setMotorcycle(motorcycle, idSpaceParking)) {
-                parkingSpaceOperations.occupySpace(idSpaceParking, currentDate);
-                response.state = true;
+                resultOcupySpace = parkingSpaceOperations.occupySpace(idSpaceParking, currentDate);
+                response.state = resultOcupySpace;
                 response.msg = Constant.REGISTER_SUCCESSFULL;
             } else {
                 response.state = false;
@@ -80,10 +78,10 @@ public class VehicleOperations {
         if (validation.isLessThanCarLimit()) {
             idSpaceParking = parkingSpaceOperations.getFreeSpace();
             if (vehicleRepository.setCar(car, idSpaceParking)) {
-                parkingSpaceOperations.occupySpace(idSpaceParking, currentDate);
-                response.state = true;
+                response.state = parkingSpaceOperations.occupySpace(idSpaceParking, currentDate);
                 response.msg = Constant.REGISTER_SUCCESSFULL;
                 response.typeTransaction = SET_CAR;
+                response.state = true;
             } else {
                 response.state = false;
                 response.msg = Constant.REGISTER_UNSUCCEFULL;
@@ -105,8 +103,13 @@ public class VehicleOperations {
             response.state = true;
             response.typeTransaction = Constant.CHECKOUT_CAR_MOTORCYCLE;
             response.msg = Constant.COSTO_TOTAL + ": $ " + response.cost;
+            return response;
         }
+        response.state = false;
+        response.typeTransaction = Constant.CHECKOUT_CAR_MOTORCYCLE;
         return response;
+
+
     }
 
     public Response checkOutMotorcycle(Motorcycle motorcycle) {
@@ -119,7 +122,10 @@ public class VehicleOperations {
             response.state = true;
             response.typeTransaction = Constant.CHECKOUT_CAR_MOTORCYCLE;
             response.msg = Constant.COSTO_TOTAL + ": $ " + response.cost;
+            return response;
         }
+        response.state = false;
+        response.typeTransaction = Constant.CHECKOUT_CAR_MOTORCYCLE;
         return response;
     }
 }

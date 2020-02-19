@@ -8,6 +8,7 @@ public class Motorcycle {
 
 
     public Motorcycle() {
+        //Se utiliza por la libreria del maper
     }
 
     public Motorcycle(String plate, int cylindrical, int fkParkingSpace) {

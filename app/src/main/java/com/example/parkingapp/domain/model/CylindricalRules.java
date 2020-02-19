@@ -5,11 +5,6 @@ public class CylindricalRules {
     private int motorcycleCylindrical;
     private int state;
 
-    public CylindricalRules(int motorcycleCylindrical, int state) {
-        this.motorcycleCylindrical = motorcycleCylindrical;
-        this.state = state;
-    }
-
     public CylindricalRules(int motorcycleCylindrical) {
         this.motorcycleCylindrical = motorcycleCylindrical;
     }

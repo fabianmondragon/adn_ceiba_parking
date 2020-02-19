@@ -15,7 +15,6 @@ public class ParkingSpaceOperations {
     @Inject
     public ParkingSpaceOperations() {
         ((BaseApplication) (BaseApplication.getAppContext().getApplicationContext())).getAppComponent().inject(this);
-
     }
 
     public int getFreeSpace() {

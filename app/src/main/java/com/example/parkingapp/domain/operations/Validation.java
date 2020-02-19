@@ -19,27 +19,24 @@ public class Validation {
     @Inject
     ParkingRepository parkingRepository;
 
-    private int numberMotorcycles;
-    private int numberCars;
-
     @Inject
     public Validation() {
+        // se utiliza de esta manera para Dagger y para las pruebas unitarias
     }
 
     public boolean isValid(String plateId) {
         int day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+        boolean valDay;
+
         if (plateId.startsWith("A")) {
-            if (day == 1 || day == 4) {
-                return true;
-            } else {
-                return false;
-            }
+            valDay = (day == 1 || day == 4);
+            return valDay;
         }
         return true;
     }
 
     public boolean isLessThanMotorCycleLimit() {
-        numberMotorcycles = parkingRepository.getParking().get(0).getNumberMotorcycle();
+        int numberMotorcycles = parkingRepository.getParking().get(0).getNumberMotorcycle();
         try {
             if (vehicleRepository.getListMotorCycle().size() < numberMotorcycles) {
                 return true;
@@ -51,10 +48,7 @@ public class Validation {
     }
 
     public boolean isLessThanCarLimit() {
-        numberCars = parkingRepository.getParking().get(0).getNumberMotorcycle();
-        if (vehicleRepository.getListCar().size() < numberCars) {
-            return true;
-        }
-        return false;
+        int numberCars = parkingRepository.getParking().get(0).getNumberMotorcycle();
+        return (vehicleRepository.getListCar().size() < numberCars);
     }
 }

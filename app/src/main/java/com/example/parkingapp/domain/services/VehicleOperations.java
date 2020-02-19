@@ -7,7 +7,6 @@ import com.example.parkingapp.domain.interfaces_repository.VehicleRepository;
 import com.example.parkingapp.domain.model.Car;
 import com.example.parkingapp.domain.model.Motorcycle;
 import com.example.parkingapp.domain.model.Response;
-import com.example.parkingapp.domain.model.Tariff;
 import com.example.parkingapp.domain.operations.BillOperations;
 import com.example.parkingapp.domain.operations.DataBaseAdministration;
 import com.example.parkingapp.domain.operations.ParkingSpaceOperations;
@@ -38,7 +37,7 @@ public class VehicleOperations {
     VehicleRepository vehicleRepository;
     @Inject
     Response response;
-    private long numberMinuts;
+    private long numberMinutes;
     private int idSpaceParking;
 
     @Inject
@@ -48,16 +47,11 @@ public class VehicleOperations {
         }
     }
 
-
     public Response fillDataBase() {
         return dataBaseAdministration.fillDataBase();
     }
 
-    public void freeUpSpace() {
-        dataBaseAdministration.freeUpDataBaseSpace();
-    }
-
-    public Response registerMotorCycle(Motorcycle motorcycle) {
+    public Response registermotorcycle(Motorcycle motorcycle) {
         Date currentDate = Calendar.getInstance().getTime();
         boolean resultOcupySpace;
         response.typeTransaction = SET_MOTORCYCLE;
@@ -66,14 +60,14 @@ public class VehicleOperations {
             if (vehicleRepository.setMotorcycle(motorcycle, idSpaceParking)) {
                 resultOcupySpace = parkingSpaceOperations.occupySpace(idSpaceParking, currentDate);
                 response.state = resultOcupySpace;
-                response.msg = Constant.REGISTER_SUCCESSFULL;
+                response.msg = Constant.SUCESSFUL_REGISTRATION;
             } else {
                 response.state = false;
-                response.msg = Constant.REGISTER_UNSUCCEFULL;
+                response.msg = Constant.UNSUCESSFUL_REGISTRATION;
             }
         } else {
             response.state = false;
-            response.msg = Constant.REGISTER_UNSUCCEFULL;
+            response.msg = Constant.UNSUCESSFUL_REGISTRATION;
         }
         return response;
     }
@@ -86,16 +80,16 @@ public class VehicleOperations {
                 idSpaceParking = parkingSpaceOperations.getFreeSpace();
                 if (vehicleRepository.setCar(car, idSpaceParking)) {
                     response.state = parkingSpaceOperations.occupySpace(idSpaceParking, currentDate);
-                    response.msg = Constant.REGISTER_SUCCESSFULL;
+                    response.msg = Constant.SUCESSFUL_REGISTRATION;
                     response.typeTransaction = SET_CAR;
                     response.state = true;
                 } else {
                     response.state = false;
-                    response.msg = Constant.REGISTER_UNSUCCEFULL;
+                    response.msg = Constant.UNSUCESSFUL_REGISTRATION;
                 }
             } else {
                 response.state = false;
-                response.msg = Constant.REGISTER_SUCCESSFULL;
+                response.msg = Constant.SUCESSFUL_REGISTRATION;
             }
         }catch (NullPointerException e){
             Log.e(TAG, e.getMessage());
@@ -108,17 +102,17 @@ public class VehicleOperations {
             car = vehicleRepository.getCar(car.getPlate());
             if (car == null) {
                 response.state = false;
-                response.msg = Constant.REGISTER_UNSUCCEFULL;
+                response.msg = Constant.UNSUCESSFUL_REGISTRATION;
                 return response;
             }
             Date currentDate = Calendar.getInstance().getTime();
             Date previosDate = parkingSpaceOperations.getTimeCar(car.getPlate());
-            numberMinuts = billOperations.calculateTime(currentDate, previosDate);
-            response.cost = billOperations.calculateCost(numberMinuts, 0, Constant.IS_A_CAR);
+            numberMinutes = billOperations.calculateTime(currentDate, previosDate);
+            response.cost = billOperations.calculateCost(numberMinutes, 0, Constant.IS_A_CAR);
             if (vehicleRepository.deleteCar(car.getPlate()) && parkingSpaceOperations.freeUpSpace(car.getFkParkingSpace())) {
                 response.state = true;
                 response.typeTransaction = Constant.CHECKOUT_CAR_MOTORCYCLE;
-                response.msg = Constant.COSTO_TOTAL + ": $ " + response.cost;
+                response.msg = Constant.TOTAL_COST + ": $ " + response.cost;
                 return response;
             }
             response.state = false;
@@ -136,17 +130,17 @@ public class VehicleOperations {
             motorcycle = vehicleRepository.getMotorcycle(motorcycle.getPlate());
             if (motorcycle== null){
                 response.state = false;
-                response.msg = Constant.REGISTER_UNSUCCEFULL;
+                response.msg = Constant.UNSUCESSFUL_REGISTRATION;
                 return  response;
             }
             Date currentDate = Calendar.getInstance().getTime();
             Date previosDate = parkingSpaceOperations.getTimeMotorcycle(motorcycle.getPlate());
-            numberMinuts = billOperations.calculateTime(currentDate, previosDate);
-            response.cost = billOperations.calculateCost(numberMinuts, motorcycle.getCylindrical(), Constant.IS_A_MOTO);
+            numberMinutes = billOperations.calculateTime(currentDate, previosDate);
+            response.cost = billOperations.calculateCost(numberMinutes, motorcycle.getCylindrical(), Constant.IS_A_MOTORCYCLE);
             if (vehicleRepository.deleteMotorcycle(motorcycle.getPlate()) && parkingSpaceOperations.freeUpSpace(motorcycle.getFkParkingSpace())) {
                 response.state = true;
                 response.typeTransaction = Constant.CHECKOUT_CAR_MOTORCYCLE;
-                response.msg = Constant.COSTO_TOTAL + ": $ " + response.cost;
+                response.msg = Constant.TOTAL_COST + ": $ " + response.cost;
                 return response;
             }
             response.state = false;

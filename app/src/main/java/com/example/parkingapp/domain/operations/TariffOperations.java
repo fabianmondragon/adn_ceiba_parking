@@ -6,6 +6,7 @@ import com.example.parkingapp.data.repository.TariffRepositoryImpl;
 import com.example.parkingapp.domain.model.Tariff;
 
 public class TariffOperations {
+
     TariffRepository tariffRepository;
     Tariff tariff;
     TariffEntity tariffEntity;

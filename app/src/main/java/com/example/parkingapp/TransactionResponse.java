@@ -4,19 +4,19 @@ public class TransactionResponse {
 
     private boolean state;
     private int transactionId;
-    private String msg;
+    private String message;
     private long cost;
 
-    public TransactionResponse(boolean state, int transactionId, String msg) {
+    public TransactionResponse(boolean state, int transactionId, String message) {
         this.state = state;
         this.transactionId = transactionId;
-        this.msg = msg;
+        this.message = message;
     }
 
-    public TransactionResponse(boolean state, int transactionId, String msg, long cost) {
+    public TransactionResponse(boolean state, int transactionId, String message, long cost) {
         this.state = state;
         this.transactionId = transactionId;
-        this.msg = msg;
+        this.message = message;
         this.cost = cost;
     }
 
@@ -28,8 +28,8 @@ public class TransactionResponse {
         return transactionId;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 
     public long getCost() {

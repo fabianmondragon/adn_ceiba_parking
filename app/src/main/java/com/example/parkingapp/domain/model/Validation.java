@@ -6,6 +6,7 @@ public class Validation {
 
     @Inject
     public Validation() {
+        //Solo se utilizar para Dagger
     }
 
     public boolean validateFieldCar(String carPlate) {

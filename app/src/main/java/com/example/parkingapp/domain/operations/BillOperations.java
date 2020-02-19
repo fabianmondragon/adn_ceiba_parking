@@ -1,7 +1,6 @@
 package com.example.parkingapp.domain.operations;
 
 import com.example.parkingapp.BaseApplication;
-import com.example.parkingapp.domain.model.CylindricalRules;
 import com.example.parkingapp.domain.model.Tariff;
 import com.example.parkingapp.util.Constant;
 
@@ -17,12 +16,6 @@ public class BillOperations {
     @Inject
     TariffOperations tariffOperations;
 
-    CylindricalRules cylindricalRules;
-    Tariff tariff;
-    private long hours;
-    private long days;
-    private long cost;
-
     @Inject
     public BillOperations() {
         ((BaseApplication)(BaseApplication.getAppContext().getApplicationContext())).getAppComponent().inject(this);
@@ -30,15 +23,15 @@ public class BillOperations {
 
     public long calculateTime(Date dateActual, Date date) {
         long diffInMillies = Math.abs(dateActual.getTime() - date.getTime());
-        long minuts = TimeUnit.MINUTES.convert(diffInMillies, TimeUnit.MILLISECONDS);
-        return minuts;
+        return TimeUnit.MINUTES.convert(diffInMillies, TimeUnit.MILLISECONDS);
     }
 
     public Long calculateCost(Long numberMinuts, int cilindraje, int type) {
         long horaAux = 0;
-        cylindricalRules = cylindricalRulesOperations.getRules();
-        tariff = tariffOperations.getTariff();
-
+        long hours;
+        long cost=0;
+        long days;
+        Tariff tariff = tariffOperations.getTariff();
         if (numberMinuts > 0) {
             hours = (numberMinuts / 60);
             days = (hours / 24);
@@ -47,13 +40,14 @@ public class BillOperations {
                 days = days + 1;
                 hours = 0;
             }
-            if (type == Constant.IS_A_MOTO) {
+            if (type == Constant.IS_A_MOTORCYCLE) {
                 if (cilindraje > 650)
-                    cost = (long) ((days * tariff.getMotorcycleDayCost() + (hours * tariff.getMotorcycleHourCost()) + tariff.getMotorcycleCylindrical()));
+
+                    cost = (long) ((days * tariff.getMotorcycleDayCost()) + (hours * tariff.getMotorcycleHourCost()) + tariff.getMotorcycleCylindrical());
                 else
-                    cost = (long) ((days * tariff.getMotorcycleDayCost() + (hours * tariff.getMotorcycleHourCost())));
+                    cost = (long) ((days * tariff.getMotorcycleDayCost()) + (hours * tariff.getMotorcycleHourCost()));
             } else {
-                cost = (long) ((days * tariff.getCarDayCost() + (hours * tariff.getCarHourCost())));
+                cost = (long) ((days * tariff.getCarDayCost()) + (hours * tariff.getCarHourCost()));
             }
         }
         return cost;

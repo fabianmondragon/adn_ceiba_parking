@@ -1,6 +1,7 @@
 package com.example.parkingapp.presentation.viewmodel;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
@@ -26,10 +27,12 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ParkingViewModel extends AndroidViewModel {
 
+    private static final String TAG = ParkingViewModel.class.getName();
+
     public MutableLiveData<String> motorcyclePlate = new MutableLiveData();
     public MutableLiveData<String> carPlate = new MutableLiveData();
-    public MutableLiveData<String> motorcycleCilindraje = new MutableLiveData();
-    public MutableLiveData<String> msg = new MutableLiveData<>();
+    public MutableLiveData<String> motorcycleCylindrical = new MutableLiveData();
+    public MutableLiveData<String> message = new MutableLiveData<>();
 
     private Observable<Response> registrationObservable;
     private Observable<Response> dataBaseObserver;
@@ -61,38 +64,38 @@ public class ParkingViewModel extends AndroidViewModel {
 
             @Override
             public void onSubscribe(Disposable d) {
-
+                // no se requiere debido a que solo requerimos conocer el momento de la respuesta
             }
 
             @Override
             public void onNext(Response response) {
                 if (response.state == true) {
-                    msg.setValue(Constant.SUCCESSFULL_LOAD_DATA_BASE);
+                    message.setValue(Constant.SUCESFUL_LOAD_DATA_BASE);
                 } else {
-                    msg.setValue(Constant.REGISTER_UNSUCCEFULL);
+                    message.setValue(Constant.UNSUCESSFUL_REGISTRATION);
                 }
             }
 
             @Override
             public void onError(Throwable e) {
-                System.out.println("onError!");
+                Log.e(TAG, e.getMessage());
             }
 
             @Override
             public void onComplete() {
-                System.out.println("Complete!");
+                // No se requiere el manejo de este metodo, solo se requiere conocer la respuesta
             }
         });
 
     }
 
     public Response registerMotorcycle() {
-        final Motorcycle motorcycle = new Motorcycle(motorcyclePlate.getValue(), Integer.parseInt(motorcycleCilindraje.getValue()));
-        return vehicleOperations.registerMotorCycle(motorcycle);
+        final Motorcycle motorcycle = new Motorcycle(motorcyclePlate.getValue(), Integer.parseInt(motorcycleCylindrical.getValue()));
+        return vehicleOperations.registermotorcycle(motorcycle);
     }
 
     public void onClickRegisterMotorCycle() {
-        if (validation.validateMotorcycleFields(motorcyclePlate.getValue(), motorcycleCilindraje.getValue())) {
+        if (validation.validateMotorcycleFields(motorcyclePlate.getValue(), motorcycleCylindrical.getValue())) {
             registrationObservable = Observable.create(new ObservableOnSubscribe<Response>() {
                 @Override
                 public void subscribe(ObservableEmitter<Response> emitter) throws Exception {
@@ -104,7 +107,7 @@ public class ParkingViewModel extends AndroidViewModel {
 
                 @Override
                 public void onSubscribe(Disposable d) {
-
+                    // no se requiere debido a que solo requerimos conocer el momento de la respuesta
                 }
 
                 @Override
@@ -114,21 +117,22 @@ public class ParkingViewModel extends AndroidViewModel {
 
                 @Override
                 public void onError(Throwable e) {
-
+                    Log.e(TAG, e.getMessage());
                 }
 
                 @Override
                 public void onComplete() {
+                    // No se requiere el manejo de este metodo, solo se requiere conocer la respuesta
 
                 }
             });
         } else {
-            msg.setValue(Constant.INCOMPLETED_INFORMATION);
+            message.setValue(Constant.INCOMPLETE_INFORMATION);
         }
     }
 
     public void typeTransaction(Response response) {
-        msg.setValue(response.msg);
+        message.setValue(response.msg);
     }
 
     public void onClickRegisterCar() {
@@ -144,7 +148,7 @@ public class ParkingViewModel extends AndroidViewModel {
 
                 @Override
                 public void onSubscribe(Disposable d) {
-
+                    // no se requiere debido a que solo requerimos conocer el momento de la respuesta
                 }
 
                 @Override
@@ -154,16 +158,16 @@ public class ParkingViewModel extends AndroidViewModel {
 
                 @Override
                 public void onError(Throwable e) {
-
+                    Log.e(TAG, e.getMessage());
                 }
 
                 @Override
                 public void onComplete() {
-
+                    // No se requiere el manejo de este metodo, solo se requiere conocer la respuesta
                 }
             });
         } else {
-            msg.setValue(Constant.INCOMPLETED_INFORMATION);
+            message.setValue(Constant.INCOMPLETE_INFORMATION);
         }
     }
 
@@ -184,7 +188,7 @@ public class ParkingViewModel extends AndroidViewModel {
 
             @Override
             public void onSubscribe(Disposable d) {
-
+                // no se requiere debido a que solo requerimos conocer el momento de la respuesta
             }
 
             @Override
@@ -194,12 +198,12 @@ public class ParkingViewModel extends AndroidViewModel {
 
             @Override
             public void onError(Throwable e) {
-
+                Log.e(TAG, e.getMessage());
             }
 
             @Override
             public void onComplete() {
-
+                // No se requiere el manejo de este metodo, solo se requiere conocer la respuesta
             }
         });
     }
@@ -225,7 +229,7 @@ public class ParkingViewModel extends AndroidViewModel {
 
             @Override
             public void onSubscribe(Disposable d) {
-
+                // no se requiere debido a que solo requerimos conocer el momento de la respuesta
             }
 
             @Override
@@ -234,17 +238,14 @@ public class ParkingViewModel extends AndroidViewModel {
             }
 
             @Override
-            public void onError(Throwable e) {
-
+            public void onError(Throwable e) { Log.e(TAG, e.getMessage());
             }
 
             @Override
             public void onComplete() {
-
+                // No se requiere el manejo de este metodo, solo se requiere conocer la respuesta
             }
         });
-
-
     }
 
     public Response setDataBase() {
@@ -252,6 +253,6 @@ public class ParkingViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<String> getMsg() {
-        return msg;
+        return message;
     }
 }

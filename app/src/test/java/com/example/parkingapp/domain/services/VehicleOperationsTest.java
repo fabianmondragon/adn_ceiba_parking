@@ -84,7 +84,7 @@ public class VehicleOperationsTest {
         when (vehicleRepository.setMotorcycle(motorcycle, 10)).thenReturn(true);
         when (parkingSpaceOperations.occupySpace(10, Calendar.getInstance().getTime())).thenReturn(true);
 
-        Assert.assertTrue(vehicleOperations.registerMotorCycle(motorcycle).state);
+        Assert.assertTrue(vehicleOperations.registermotorcycle(motorcycle).state);
     }
 
     @Test
@@ -95,7 +95,7 @@ public class VehicleOperationsTest {
         when (parkingSpaceRepository.getFreeSpace()).thenReturn(0);
         when (vehicleRepository.setMotorcycle(motorcycle, 0)).thenReturn(false);
         when (parkingSpaceOperations.occupySpace(motorcycle.getFkParkingSpace(), currentDate)).thenReturn(true)  ;
-        Assert.assertFalse(vehicleOperations.registerMotorCycle(motorcycle).state);
+        Assert.assertFalse(vehicleOperations.registermotorcycle(motorcycle).state);
     }
 
     @Test
@@ -106,7 +106,7 @@ public class VehicleOperationsTest {
         when (parkingSpaceRepository.getFreeSpace()).thenReturn(0);
         when (vehicleRepository.setMotorcycle(motorcycle, 0)).thenReturn(true);
         when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(true)  ;
-        Assert.assertFalse(vehicleOperations.registerMotorCycle(motorcycle).state);
+        Assert.assertFalse(vehicleOperations.registermotorcycle(motorcycle).state);
     }
 
     @Test
@@ -117,7 +117,7 @@ public class VehicleOperationsTest {
         when (parkingSpaceRepository.getFreeSpace()).thenReturn(0);
         when (vehicleRepository.setMotorcycle(motorcycle, 0)).thenReturn(true);
         when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(false)  ;
-        Assert.assertFalse(vehicleOperations.registerMotorCycle(motorcycle).state);
+        Assert.assertFalse(vehicleOperations.registermotorcycle(motorcycle).state);
     }
 
     @Test
@@ -128,7 +128,7 @@ public class VehicleOperationsTest {
         when (parkingSpaceRepository.getFreeSpace()).thenReturn(0);
         when (vehicleRepository.setMotorcycle(motorcycle, 0)).thenReturn(false);
         when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(false)  ;
-        Assert.assertFalse(vehicleOperations.registerMotorCycle(motorcycle).state);
+        Assert.assertFalse(vehicleOperations.registermotorcycle(motorcycle).state);
     }
 
     @Test

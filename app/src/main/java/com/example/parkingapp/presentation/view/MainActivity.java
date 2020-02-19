@@ -20,7 +20,7 @@ import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
 
-    ParkingViewModel parkingViewModel;
+    private ParkingViewModel parkingViewModel;
     @Inject
     VehicleOperations vehicleOperations;
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         binding.setLifecycleOwner(this);
         ((BaseApplication) getApplication()).getAppComponent().inject(this);
         setObservers();
-        filldatabase();
+        fillDatabase();
 
     }
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void filldatabase() {
+    private void fillDatabase() {
         parkingViewModel.fillDataBaseWithInfo();
     }
 }

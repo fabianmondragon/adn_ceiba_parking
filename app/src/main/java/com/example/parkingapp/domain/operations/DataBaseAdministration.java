@@ -18,7 +18,7 @@ import javax.inject.Inject;
 
 public class DataBaseAdministration {
 
-    private static final String TAG = "DataBaseAdministration";
+    private static final String TAG = DataBaseAdministration.class.getName();
 
     @Inject
     ManagmentDataBaseRepository managmentDataBaseRepository;
@@ -31,43 +31,42 @@ public class DataBaseAdministration {
     public Response fillDataBase() {
         final ParkingEntity parkingEntity = new ParkingEntity(20, 10);
         final CilindrajeRulesEntity cilindrajeRulesEntity = new CilindrajeRulesEntity(150, 1);
-        final List<ParkingSpaceEntitiy> parkingSpaceEntitiyList = new ArrayList() {{
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-            add(new ParkingSpaceEntitiy(false, null, 0));
-        }};
-
+        final List<ParkingSpaceEntitiy> parkingSpaceEntityList = new ArrayList();
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
+        parkingSpaceEntityList.add(new ParkingSpaceEntitiy(false, null, 0));
         final TariffEntity tariffEntity = new TariffEntity(1000.0, 500.0, 8000.0, 4000.0, 2000.0);
         final PlateRulesEntity plateRulesEntity = new PlateRulesEntity("b", true);
         try {
-            return managmentDataBaseRepository.fillDataBase(parkingEntity, parkingSpaceEntitiyList, cilindrajeRulesEntity, tariffEntity, plateRulesEntity);
+            return managmentDataBaseRepository.fillDataBase(parkingEntity, parkingSpaceEntityList, cilindrajeRulesEntity, tariffEntity, plateRulesEntity);
         }catch (NullPointerException e){
             Log.e(TAG, e.getMessage());
         }

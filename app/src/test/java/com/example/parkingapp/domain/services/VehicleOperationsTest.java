@@ -1,10 +1,15 @@
 package com.example.parkingapp.domain.services;
 
-import com.example.parkingapp.data.repository.ParkingSpaceRepository;
-import com.example.parkingapp.data.repository.VehicleRepository;
+import com.example.parkingapp.domain.interfaces_repository.ParkingSpaceRepository;
+import com.example.parkingapp.domain.interfaces_repository.VehicleRepository;
 import com.example.parkingapp.domain.model.Car;
 import com.example.parkingapp.domain.model.Motorcycle;
 import com.example.parkingapp.domain.model.Response;
+import com.example.parkingapp.domain.operations.BillOperations;
+import com.example.parkingapp.domain.operations.CylindricalRulesOperations;
+import com.example.parkingapp.domain.operations.ParkingSpaceOperations;
+import com.example.parkingapp.domain.operations.TariffOperations;
+import com.example.parkingapp.domain.operations.Validation;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,8 +22,6 @@ import org.mockito.junit.MockitoRule;
 
 import java.util.Calendar;
 import java.util.Date;
-
-import javax.inject.Inject;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;

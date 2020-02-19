@@ -6,6 +6,10 @@ public class Motorcycle {
     private int cylindrical;
     private int fkParkingSpace;
 
+
+    public Motorcycle() {
+    }
+
     public Motorcycle(String plate, int cylindrical, int fkParkingSpace) {
         this.plate = plate;
         this.cylindrical = cylindrical;

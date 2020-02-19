@@ -5,6 +5,10 @@ public class Car {
     private String plate;
     private int fkParkingSpace;
 
+    public Car (){
+
+    }
+
     public Car(String plate) {
         this.plate = plate;
     }

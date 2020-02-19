@@ -6,29 +6,28 @@ import com.example.parkingapp.data.database.entity.ParkingEntity;
 import com.example.parkingapp.data.database.entity.ParkingSpaceEntitiy;
 import com.example.parkingapp.data.database.entity.PlateRulesEntity;
 import com.example.parkingapp.data.database.entity.TariffEntity;
+import com.example.parkingapp.domain.interfaces_repository.ManagmentDataBaseRepository;
 import com.example.parkingapp.domain.model.Response;
 
 import java.util.List;
 
-public class ManagmentDataBaseImpl implements ManagmentDataBaseRepository {
+import javax.inject.Inject;
 
+public class ManagmentDataBaseImpl implements ManagmentDataBaseRepository {
+    @Inject
     public ManagmentDataBaseImpl() {
 
     }
 
     public Response fillDataBase(final ParkingEntity parkingEntity, final List<ParkingSpaceEntitiy> parkingSpaceEntitiyList, final CilindrajeRulesEntity cilindrajeRulesEntity, final TariffEntity tariffEntity, final PlateRulesEntity plateRulesEntity) {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
-        try {
-            if (db.parkingDao().getAllParkinList().size() == 0) {
-                db.parkingDao().inserParking(parkingEntity);
-                db.parkingSpaceDao().insertParkingAll(parkingSpaceEntitiyList);
-                db.cilindrajeRulesDao().insertCilindrajeRules(cilindrajeRulesEntity);
-                db.tariffDao().insertTarif(tariffEntity);
-                db.plateRulesDao().insetPlateRulse(plateRulesEntity);
+        if (db.parkingDao().getAllParkinList().size() == 0) {
+            db.parkingDao().inserParking(parkingEntity);
+            db.parkingSpaceDao().insertParkingAll(parkingSpaceEntitiyList);
+            db.cilindrajeRulesDao().insertCilindrajeRules(cilindrajeRulesEntity);
+            db.tariffDao().insertTarif(tariffEntity);
+            db.plateRulesDao().insetPlateRulse(plateRulesEntity);
 
-            }
-        } catch (NullPointerException e) {
-            return null;
         }
         Response response = new Response();
         response.state = true;

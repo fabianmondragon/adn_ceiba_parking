@@ -1,6 +1,4 @@
-package com.example.parkingapp.domain.services;
-
-import android.content.Context;
+package com.example.parkingapp.domain.operations;
 
 import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.domain.model.CylindricalRules;
@@ -30,7 +28,7 @@ public class BillOperations {
         ((BaseApplication)(BaseApplication.getAppContext().getApplicationContext())).getAppComponent().inject(this);
     }
 
-    long calculateTime(Date dateActual, Date date) {
+    public long calculateTime(Date dateActual, Date date) {
         long diffInMillies = Math.abs(dateActual.getTime() - date.getTime());
         long minuts = TimeUnit.MINUTES.convert(diffInMillies, TimeUnit.MILLISECONDS);
         return minuts;

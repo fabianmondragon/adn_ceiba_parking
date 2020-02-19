@@ -1,16 +1,12 @@
 package com.example.parkingapp.domain;
 
-import androidx.transition.Transition;
-
-import com.example.parkingapp.data.database.entity.MotorcycleEntity;
 import com.example.parkingapp.data.database.entity.ParkingEntity;
-import com.example.parkingapp.data.repository.ManagmentDataBaseRepository;
-import com.example.parkingapp.data.repository.ParkingRepository;
-import com.example.parkingapp.data.repository.VehicleRepository;
+import com.example.parkingapp.domain.interfaces_repository.ManagmentDataBaseRepository;
+import com.example.parkingapp.domain.interfaces_repository.ParkingRepository;
+import com.example.parkingapp.domain.interfaces_repository.VehicleRepository;
 import com.example.parkingapp.domain.model.Car;
 import com.example.parkingapp.domain.model.Motorcycle;
-import com.example.parkingapp.domain.model.Parking;
-import com.example.parkingapp.domain.services.Validation;
+import com.example.parkingapp.domain.operations.Validation;
 
 import org.junit.Assert;
 import org.junit.Before;

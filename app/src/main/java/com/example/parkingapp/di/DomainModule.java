@@ -1,15 +1,12 @@
 package com.example.parkingapp.di;
 
-import android.app.Application;
-import android.content.Context;
-
 import com.example.parkingapp.domain.model.Response;
 import com.example.parkingapp.domain.model.Validation;
-import com.example.parkingapp.domain.services.BillOperations;
-import com.example.parkingapp.domain.services.CylindricalRulesOperations;
-import com.example.parkingapp.domain.services.DataBaseAdministration;
-import com.example.parkingapp.domain.services.ParkingSpaceOperations;
-import com.example.parkingapp.domain.services.TariffOperations;
+import com.example.parkingapp.domain.operations.BillOperations;
+import com.example.parkingapp.domain.operations.CylindricalRulesOperations;
+import com.example.parkingapp.domain.operations.DataBaseAdministration;
+import com.example.parkingapp.domain.operations.ParkingSpaceOperations;
+import com.example.parkingapp.domain.operations.TariffOperations;
 import com.example.parkingapp.domain.services.VehicleOperations;
 
 import dagger.Module;

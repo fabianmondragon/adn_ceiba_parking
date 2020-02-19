@@ -3,6 +3,7 @@ package com.example.parkingapp.data.repository;
 
 import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.database.entity.ParkingEntity;
+import com.example.parkingapp.domain.interfaces_repository.ParkingRepository;
 
 import java.util.List;
 

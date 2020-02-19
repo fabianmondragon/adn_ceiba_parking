@@ -1,6 +1,7 @@
 package com.example.parkingapp.data.repository;
 
 import com.example.parkingapp.BaseApplication;
+import com.example.parkingapp.domain.interfaces_repository.ParkingSpaceRepository;
 
 import java.util.Date;
 
@@ -11,11 +12,7 @@ public class ParkingSpaceRepositoryImpl implements ParkingSpaceRepository {
 
     public boolean updateParkingSpace(int id, Date date, boolean state) {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
-        try {
-            db.parkingSpaceDao().setUpdateStateParking(true, id, date);
-        } catch (Exception e) {
-            return false;
-        }
+        db.parkingSpaceDao().setUpdateStateParking(true, id, date);
         return true;
     }
 

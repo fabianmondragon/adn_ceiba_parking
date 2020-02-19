@@ -1,7 +1,7 @@
-package com.example.parkingapp.domain.services;
+package com.example.parkingapp.domain.operations;
 
 import com.example.parkingapp.data.database.entity.TariffEntity;
-import com.example.parkingapp.data.repository.TariffRepository;
+import com.example.parkingapp.domain.interfaces_repository.TariffRepository;
 import com.example.parkingapp.data.repository.TariffRepositoryImpl;
 import com.example.parkingapp.domain.model.Tariff;
 

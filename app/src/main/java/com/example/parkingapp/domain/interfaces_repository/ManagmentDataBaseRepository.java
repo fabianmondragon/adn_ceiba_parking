@@ -1,4 +1,4 @@
-package com.example.parkingapp.data.repository;
+package com.example.parkingapp.domain.interfaces_repository;
 
 import com.example.parkingapp.data.database.entity.CilindrajeRulesEntity;
 import com.example.parkingapp.data.database.entity.ParkingEntity;

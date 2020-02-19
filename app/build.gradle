@@ -131,5 +131,9 @@ dependencies {
     //Rxjava
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
+    //library for mapper
+    implementation group: 'org.modelmapper', name: 'modelmapper', version: '0.7.5'
+
+
 
 }

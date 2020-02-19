@@ -9,12 +9,16 @@ public class Validation {
     }
 
     public boolean validateFieldCar(String carPlate) {
+        if (carPlate == null)
+            return false;
         if (carPlate.equals(""))
             return false;
         return true;
     }
 
     public boolean validateMotorcycleFields(String carPlate, String cilindraje) {
+        if (carPlate == null || cilindraje == null)
+            return false;
         if (carPlate.equals(""))
             return false;
         if (cilindraje.equals(""))

@@ -1,6 +1,7 @@
-package com.example.parkingapp.domain.services;
+package com.example.parkingapp.domain.operations;
 
-import com.example.parkingapp.data.repository.ParkingSpaceRepository;
+import com.example.parkingapp.BaseApplication;
+import com.example.parkingapp.domain.interfaces_repository.ParkingSpaceRepository;
 
 import java.util.Date;
 
@@ -13,6 +14,7 @@ public class ParkingSpaceOperations {
 
     @Inject
     public ParkingSpaceOperations() {
+        ((BaseApplication) (BaseApplication.getAppContext().getApplicationContext())).getAppComponent().inject(this);
 
     }
 

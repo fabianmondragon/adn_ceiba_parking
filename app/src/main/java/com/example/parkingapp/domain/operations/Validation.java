@@ -1,13 +1,17 @@
-package com.example.parkingapp.domain.services;
+package com.example.parkingapp.domain.operations;
 
-import com.example.parkingapp.data.repository.ParkingRepository;
-import com.example.parkingapp.data.repository.VehicleRepository;
+import android.util.Log;
+
+import com.example.parkingapp.domain.interfaces_repository.ParkingRepository;
+import com.example.parkingapp.domain.interfaces_repository.VehicleRepository;
 
 import java.util.Calendar;
 
 import javax.inject.Inject;
 
 public class Validation {
+
+    private static final String TAG = Validation.class.getName();
 
     @Inject
     VehicleRepository vehicleRepository;
@@ -36,11 +40,14 @@ public class Validation {
 
     public boolean isLessThanMotorCycleLimit() {
         numberMotorcycles = parkingRepository.getParking().get(0).getNumberMotorcycle();
-        if (vehicleRepository.getListMotorCycle().size() < numberMotorcycles) {
-            return true;
-        } else {
-            return false;
+        try {
+            if (vehicleRepository.getListMotorCycle().size() < numberMotorcycles) {
+                return true;
+            }
+        }catch (NullPointerException e){
+            Log.e(TAG, e.getMessage());
         }
+        return false;
     }
 
     public boolean isLessThanCarLimit() {

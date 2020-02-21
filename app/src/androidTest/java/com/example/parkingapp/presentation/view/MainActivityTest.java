@@ -12,13 +12,10 @@ import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.closeSoftKeyboard;
 
-@RunWith(AndroidJUnit4.class)
-@LargeTest
+
 public class MainActivityTest {
 
-    @Rule
-    public ActivityTestRule<MainActivity> activityRule =
-            new ActivityTestRule<>(MainActivity.class);
+
 
     /*
     @Test

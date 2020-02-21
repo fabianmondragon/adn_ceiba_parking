@@ -2,16 +2,14 @@ package com.example.parkingapp.domain.operations;
 
 import android.util.Log;
 
-import com.example.parkingapp.domain.interfaces_repository.ParkingRepository;
-import com.example.parkingapp.domain.interfaces_repository.VehicleRepository;
+import com.example.parkingapp.domain.repository.ParkingRepository;
+import com.example.parkingapp.domain.repository.VehicleRepository;
 
 import java.util.Calendar;
 
 import javax.inject.Inject;
 
 public class Validation {
-
-    private static final String TAG = Validation.class.getName();
 
     @Inject
     VehicleRepository vehicleRepository;
@@ -29,7 +27,7 @@ public class Validation {
         boolean valDay;
 
         if (plateId.startsWith("A")) {
-            valDay = (day == 1 || day == 4);
+            valDay = (day == 1 || day == 6);
             return valDay;
         }
         return true;
@@ -42,7 +40,7 @@ public class Validation {
                 return true;
             }
         }catch (NullPointerException e){
-            Log.e(TAG, e.getMessage());
+
         }
         return false;
     }

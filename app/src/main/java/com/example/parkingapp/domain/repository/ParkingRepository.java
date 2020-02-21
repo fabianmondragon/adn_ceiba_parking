@@ -1,4 +1,4 @@
-package com.example.parkingapp.domain.interfaces_repository;
+package com.example.parkingapp.domain.repository;
 
 import com.example.parkingapp.data.database.entity.ParkingEntity;
 

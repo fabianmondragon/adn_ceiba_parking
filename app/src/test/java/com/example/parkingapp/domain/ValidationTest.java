@@ -1,9 +1,8 @@
 package com.example.parkingapp.domain;
 
 import com.example.parkingapp.data.database.entity.ParkingEntity;
-import com.example.parkingapp.domain.interfaces_repository.ManagmentDataBaseRepository;
-import com.example.parkingapp.domain.interfaces_repository.ParkingRepository;
-import com.example.parkingapp.domain.interfaces_repository.VehicleRepository;
+import com.example.parkingapp.domain.repository.ParkingRepository;
+import com.example.parkingapp.domain.repository.VehicleRepository;
 import com.example.parkingapp.domain.model.Car;
 import com.example.parkingapp.domain.model.Motorcycle;
 import com.example.parkingapp.domain.operations.Validation;
@@ -40,9 +39,6 @@ public class ValidationTest {
     VehicleRepository vehicleRepository;
 
     @Mock
-    ManagmentDataBaseRepository managmentDataBaseRepository;
-
-    @Mock
     ParkingEntity parkingEntity;
 
     @InjectMocks
@@ -59,7 +55,6 @@ public class ValidationTest {
 
     @Test
     public void isPlateValid_WithValidPlate_Success (){
-        Boolean b = validation.isValid("A");
         Assert.assertEquals(true, validation.isValid("A"));
     }
 
@@ -70,41 +65,55 @@ public class ValidationTest {
 
     @Test
     public void thereIsFreeSpace_WithNumberOfMotorcyclesLowerThanRegistered_True (){
+        //Arrange
         when (parkingRepository.getParking()).thenReturn(parkingList);
         when (vehicleRepository.getListMotorCycle()).thenReturn(motorcycleList);
-        Assert.assertTrue (validation.isLessThanMotorCycleLimit());
+        //Act
+        boolean result = validation.isLessThanMotorCycleLimit();
+        //Assert
+        Assert.assertTrue (result);
     }
 
     @Test
     public void thereIsFreeSpace_WithNumberOfMotorcyclesEqualThanRegister_False(){
+        //Arrange
         motorcycleList = new ArrayList<>();
         parkingList = new ArrayList<>();
         motorcycleList.add(new Motorcycle("a", 100, 1));
         parkingList.add(new ParkingEntity(10,1));
         when (parkingRepository.getParking()).thenReturn(parkingList);
         when (vehicleRepository.getListMotorCycle()).thenReturn(motorcycleList);
-        Assert.assertFalse(validation.isLessThanMotorCycleLimit());
+        //Act
+        boolean result = validation.isLessThanMotorCycleLimit();
+        //Assert
+        Assert.assertFalse(result);
     }
 
     @Test
     public void thereIsFreeSpace_WithNumberOfCarsEqualThanRegister_False(){
+        //Arrange
         carsList = new ArrayList<>();
         parkingList = new ArrayList<>();
         carsList.add(new Car("a"));
         parkingList.add(new ParkingEntity(1,1));
+        //Act
         when (parkingRepository.getParking()).thenReturn(parkingList);
         when (vehicleRepository.getListCar()).thenReturn(carsList);
+        //Assert
         Assert.assertFalse(validation.isLessThanCarLimit());
     }
 
     @Test
     public void thereIsFreeSpace_WithNumberOfCarLowerThanRegistered_False(){
+        //Arrange
         carsList = new ArrayList<>();
         parkingList = new ArrayList<>();
         carsList.add(new Car("a"));
         parkingList.add(new ParkingEntity(10,1));
+        //Act
         when (parkingRepository.getParking()).thenReturn(parkingList);
         when (vehicleRepository.getListCar()).thenReturn(carsList);
+        //Assert
         Assert.assertFalse(validation.isLessThanCarLimit());
     }
 

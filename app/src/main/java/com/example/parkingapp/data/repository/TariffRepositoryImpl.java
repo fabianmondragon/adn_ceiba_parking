@@ -2,7 +2,7 @@ package com.example.parkingapp.data.repository;
 
 import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.database.entity.TariffEntity;
-import com.example.parkingapp.domain.interfaces_repository.TariffRepository;
+import com.example.parkingapp.domain.repository.TariffRepository;
 
 public class TariffRepositoryImpl implements TariffRepository {
 

@@ -4,7 +4,7 @@ import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.database.entity.CarEntity;
 import com.example.parkingapp.data.database.entity.MotorcycleEntity;
 import com.example.parkingapp.data.mappers.MapperParking;
-import com.example.parkingapp.domain.interfaces_repository.VehicleRepository;
+import com.example.parkingapp.domain.repository.VehicleRepository;
 import com.example.parkingapp.domain.model.Car;
 import com.example.parkingapp.domain.model.Motorcycle;
 
@@ -61,10 +61,11 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 
     public Motorcycle getMotorcycle(String plateId) {
         MotorcycleEntity motorcycleEntity;
-        Motorcycle motorcycle;
+        Motorcycle motorcycle = null;
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
         motorcycleEntity = db.motorCycleDao().getMotoCycle(plateId);
-        motorcycle = mapperParking.convertToMotorcicle(motorcycleEntity);
+        if (motorcycleEntity != null )
+            motorcycle = mapperParking.convertToMotorcycle(motorcycleEntity);
         return motorcycle;
     }
 
@@ -77,7 +78,8 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     public Car getCar(String plate) {
         final CeibaDataBase db = CeibaDataBase.getDatabase(BaseApplication.getAppContext());
         carEntity = db.carDao().getCar(plate);
-        car = mapperParking.convertToCar(carEntity);
+        if (carEntity!=null)
+            car = mapperParking.convertToCar(carEntity);
         return car;
     }
 

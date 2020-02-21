@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         binding.setLifecycleOwner(this);
         ((BaseApplication) getApplication()).getAppComponent().inject(this);
         setObservers();
-        fillDatabase();
+
 
     }
 
@@ -50,7 +50,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void fillDatabase() {
-        parkingViewModel.fillDataBaseWithInfo();
-    }
 }

@@ -1,7 +1,7 @@
 package com.example.parkingapp.data.repository;
 
 import com.example.parkingapp.BaseApplication;
-import com.example.parkingapp.domain.interfaces_repository.ParkingSpaceRepository;
+import com.example.parkingapp.domain.repository.ParkingSpaceRepository;
 
 import java.util.Date;
 

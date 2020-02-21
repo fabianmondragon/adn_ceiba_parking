@@ -1,5 +1,6 @@
-package com.example.parkingapp.domain.interfaces_repository;
+package com.example.parkingapp.domain.repository;
 
+import com.example.parkingapp.domain.exceptions.ParkingException;
 import com.example.parkingapp.domain.model.Car;
 import com.example.parkingapp.domain.model.Motorcycle;
 

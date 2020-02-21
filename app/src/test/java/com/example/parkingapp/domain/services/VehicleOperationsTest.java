@@ -1,7 +1,7 @@
 package com.example.parkingapp.domain.services;
 
-import com.example.parkingapp.domain.interfaces_repository.ParkingSpaceRepository;
-import com.example.parkingapp.domain.interfaces_repository.VehicleRepository;
+import com.example.parkingapp.domain.repository.ParkingSpaceRepository;
+import com.example.parkingapp.domain.repository.VehicleRepository;
 import com.example.parkingapp.domain.model.Car;
 import com.example.parkingapp.domain.model.Motorcycle;
 import com.example.parkingapp.domain.model.Response;
@@ -23,7 +23,6 @@ import org.mockito.junit.MockitoRule;
 import java.util.Calendar;
 import java.util.Date;
 
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class VehicleOperationsTest {
@@ -69,6 +68,7 @@ public class VehicleOperationsTest {
     @Before
     public void config(){
         motorcycle = new Motorcycle("l", 100, 0);
+        car = new Car("lmo23");
         currentDate = Calendar.getInstance().getTime();
         previosDate = Calendar.getInstance().getTime();
         minuts = (long)10;
@@ -76,155 +76,208 @@ public class VehicleOperationsTest {
 
 
     @Test
-    public void registerMotorcycle_ValidMotocycle_Success (){
-        int identificador =10;
+    public void registerMotorcycle_ValidMotorcycle_Success (){
+        //Arrange
+        int parkingIdentifier =10;
         when (validation.isValid(motorcycle.getPlate())).thenReturn(true);
         when(validation.isLessThanMotorCycleLimit()).thenReturn(true);
-        when (parkingSpaceOperations.getFreeSpace()).thenReturn(identificador);
+        when (parkingSpaceOperations.getFreeSpace()).thenReturn(parkingIdentifier);
         when (vehicleRepository.setMotorcycle(motorcycle, 10)).thenReturn(true);
         when (parkingSpaceOperations.occupySpace(10, Calendar.getInstance().getTime())).thenReturn(true);
-
-        Assert.assertTrue(vehicleOperations.registermotorcycle(motorcycle).state);
+        //Act
+        boolean result = vehicleOperations.registerMotorcycle(motorcycle).state;
+        //Assert
+        Assert.assertTrue(result);
     }
 
     @Test
-    public void registerMotorcycle_ValidMotocycle_Fail (){
+    public void registerMotorcycle_ValidMotorcycle_Fail (){
+        //Arrange
         Date currentDate = Calendar.getInstance().getTime();
         when (validation.isValid(motorcycle.getPlate())).thenReturn(true);
         when(validation.isLessThanMotorCycleLimit()).thenReturn(true);
         when (parkingSpaceRepository.getFreeSpace()).thenReturn(0);
         when (vehicleRepository.setMotorcycle(motorcycle, 0)).thenReturn(false);
         when (parkingSpaceOperations.occupySpace(motorcycle.getFkParkingSpace(), currentDate)).thenReturn(true)  ;
-        Assert.assertFalse(vehicleOperations.registermotorcycle(motorcycle).state);
+        //Act
+        boolean result = vehicleOperations.registerMotorcycle(motorcycle).state;
+        //Assert
+        Assert.assertFalse(result);
     }
 
     @Test
     public void registerMotorcycle_EqualLimitAllowed_ThereIsNotSpace_Fail (){
+        //Arrange
         Date currentDate = Calendar.getInstance().getTime();
         when (validation.isValid("a")).thenReturn(true);
         when(validation.isLessThanMotorCycleLimit()).thenReturn(false);
         when (parkingSpaceRepository.getFreeSpace()).thenReturn(0);
         when (vehicleRepository.setMotorcycle(motorcycle, 0)).thenReturn(true);
-        when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(true)  ;
-        Assert.assertFalse(vehicleOperations.registermotorcycle(motorcycle).state);
+        when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(true);
+        //Act
+        boolean result = vehicleOperations.registerMotorcycle(motorcycle).state;
+        //Assert
+        Assert.assertFalse(result);
     }
 
     @Test
     public void registerMotorcycle_ProblemWithSpace_ThereIsNotSpace_Fail (){
+        //Arrange
         Date currentDate = Calendar.getInstance().getTime();
         when (validation.isValid("a")).thenReturn(true);
         when(validation.isLessThanMotorCycleLimit()).thenReturn(true);
         when (parkingSpaceRepository.getFreeSpace()).thenReturn(0);
         when (vehicleRepository.setMotorcycle(motorcycle, 0)).thenReturn(true);
-        when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(false)  ;
-        Assert.assertFalse(vehicleOperations.registermotorcycle(motorcycle).state);
+        when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(false);
+        //Act
+        boolean result = vehicleOperations.registerMotorcycle(motorcycle).state;
+        //Assert
+        Assert.assertFalse(result);
     }
 
     @Test
     public void registerMotorcycle_ValidMotorcicle_FailInDataBase (){
+        //Arrange
         Date currentDate = Calendar.getInstance().getTime();
         when (validation.isValid("E")).thenReturn(false);
         when(validation.isLessThanMotorCycleLimit()).thenReturn(false);
         when (parkingSpaceRepository.getFreeSpace()).thenReturn(0);
         when (vehicleRepository.setMotorcycle(motorcycle, 0)).thenReturn(false);
-        when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(false)  ;
-        Assert.assertFalse(vehicleOperations.registermotorcycle(motorcycle).state);
+        when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(false);
+        //Act
+        boolean result = vehicleOperations.registerMotorcycle(motorcycle).state;
+        //Assert
+        Assert.assertFalse(result);
     }
 
     @Test
     public void registerCar_ValidCar_Success (){
+        //Arrange
         Date currentDate = Calendar.getInstance().getTime();
         when(validation.isLessThanCarLimit()).thenReturn(true);
         when (parkingSpaceRepository.getFreeSpace()).thenReturn(0);
         when (vehicleRepository.setCar(car, 0)).thenReturn(true);
-        when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(true)  ;
-        Assert.assertTrue(vehicleOperations.registerCar(car).state);
+        when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(true);
+        //Act
+        boolean result = vehicleOperations.registerCar(car).state;
+        //Assert
+        Assert.assertTrue(result);
     }
 
     @Test
     public void registerCar_ValidCar_Fail (){
+        //Arrange
         Date currentDate = Calendar.getInstance().getTime();
         when(validation.isLessThanCarLimit()).thenReturn(true);
         when (parkingSpaceRepository.getFreeSpace()).thenReturn(0);
         when (vehicleRepository.setCar(car, 0)).thenReturn(false);
-        when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(true)  ;
-        Assert.assertFalse(vehicleOperations.registerCar(car).state);
+        when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(true);
+        //Act
+        boolean result = vehicleOperations.registerCar(car).state;
+        //Assert
+        Assert.assertFalse(result);
     }
 
     @Test
     public void registerCar_EqualLimitAllowed_ThereIsNotSpace_Fail (){
+        //Arrange
         Date currentDate = Calendar.getInstance().getTime();
         when (validation.isValid("a")).thenReturn(true);
         when(validation.isLessThanCarLimit()).thenReturn(false);
         when (parkingSpaceRepository.getFreeSpace()).thenReturn(0);
         when (vehicleRepository.setCar(car, 0)).thenReturn(true);
-        when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(true)  ;
-        Assert.assertFalse(vehicleOperations.registerCar(car).state);
+        when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(true);
+        //Act
+        boolean result = vehicleOperations.registerCar(car).state;
+        //Assert
+        Assert.assertFalse(result);
     }
 
     @Test
     public void registerCar_ValidCar_FailInDataBase (){
+        //Arrange
         Date currentDate = Calendar.getInstance().getTime();
         when (validation.isValid("E")).thenReturn(false);
         when(validation.isLessThanCarLimit()).thenReturn(false);
         when (parkingSpaceRepository.getFreeSpace()).thenReturn(0);
         when (vehicleRepository.setCar(car, 0)).thenReturn(false);
-        when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(false)  ;
-        Assert.assertFalse(vehicleOperations.registerCar(car).state);
+        when (parkingSpaceOperations.occupySpace(1, currentDate)).thenReturn(false);
+        //Act
+        boolean result = vehicleOperations.registerCar(car).state;
+        //Assert
+        Assert.assertFalse(result);
     }
 
     @Test
     public void checkoutMotorcycle_WithMotorcycleRegister_Success (){
+        //Arrange
         when (vehicleRepository.getMotorcycle(motorcycle.getPlate())).thenReturn(motorcycle);
         when(parkingSpaceOperations.getTimeMotorcycle(motorcycle.getPlate())).thenReturn(previosDate);
         when (billOperations.calculateTime(currentDate, currentDate)).thenReturn(minuts);
         when (billOperations.calculateCost(minuts, 100, 1)).thenReturn((long) 10);
         when(vehicleRepository.deleteMotorcycle(motorcycle.getPlate())).thenReturn(true);
         when (parkingSpaceOperations.freeUpSpace(motorcycle.getFkParkingSpace())).thenReturn(true);
-        Assert.assertTrue(vehicleOperations.checkOutMotorcycle(motorcycle).state);
+        //Act
+        boolean result = vehicleOperations.checkOutMotorcycle(motorcycle).state;
+        //Assert
+        Assert.assertTrue(result);
     }
     @Test
     public void checkoutMotorcycle_WithMotorcycleRegister_Fail (){
+        //Arrange
         when (vehicleRepository.getMotorcycle(motorcycle.getPlate())).thenReturn(motorcycle);
         when(parkingSpaceOperations.getTimeMotorcycle(motorcycle.getPlate())).thenReturn(previosDate);
         when (billOperations.calculateTime(currentDate, currentDate)).thenReturn(minuts);
         when (billOperations.calculateCost(minuts, 100, 1)).thenReturn((long) 10);
         when(vehicleRepository.deleteMotorcycle(motorcycle.getPlate())).thenReturn(false);
         when (parkingSpaceOperations.freeUpSpace(motorcycle.getFkParkingSpace())).thenReturn(true);
-        Assert.assertFalse(vehicleOperations.checkOutMotorcycle(motorcycle).state);
+        //Act
+        boolean result = vehicleOperations.checkOutMotorcycle(motorcycle).state;
+        //Assert
+        Assert.assertFalse(result);
     }
 
     @Test
     public void checkoutMotorcycle_ProblemWithDeleteMotorcycleFromDatabase_False (){
+        //Arrange
         when (vehicleRepository.getMotorcycle(motorcycle.getPlate())).thenReturn(motorcycle);
         when(parkingSpaceOperations.getTimeMotorcycle(motorcycle.getPlate())).thenReturn(previosDate);
         when (billOperations.calculateTime(currentDate, currentDate)).thenReturn(minuts);
         when (billOperations.calculateCost(minuts, motorcycle.getCylindrical(), 1)).thenReturn((long) 10);
         when(vehicleRepository.deleteMotorcycle(motorcycle.getPlate())).thenReturn(false);
         when (parkingSpaceOperations.freeUpSpace(motorcycle.getFkParkingSpace())).thenReturn(true);
-        Assert.assertFalse(vehicleOperations.checkOutMotorcycle(motorcycle).state);
+        //Act
+        boolean result = vehicleOperations.checkOutMotorcycle(motorcycle).state;
+        //Assert
+        Assert.assertFalse(result);
     }
 
     @Test
     public void checkoutCar_ProblemWithDeleteCarFromDatabase_False (){
+        //Arrange
         when (vehicleRepository.getCar(car.getPlate())).thenReturn(car);
         when(parkingSpaceOperations.getTimeCar(car.getPlate())).thenReturn(previosDate);
         when (billOperations.calculateTime(currentDate, currentDate)).thenReturn(minuts);
         when (billOperations.calculateCost(minuts, 100, 1)).thenReturn((long) 10);
         when(vehicleRepository.deleteCar(car.getPlate())).thenReturn(false);
         when (parkingSpaceOperations.freeUpSpace(car.getFkParkingSpace())).thenReturn(true);
-        Assert.assertFalse(vehicleOperations.checkoutCar(car).state);
+        //Act
+        boolean result = vehicleOperations.checkoutCar(car).state;
+        //Assert
+        Assert.assertFalse(result);
     }
 
     @Test
     public void checkoutCar_DeleteFromDataBase_Success (){
+        //Arrange
         when (vehicleRepository.getCar(car.getPlate())).thenReturn(car);
         when(parkingSpaceOperations.getTimeCar(car.getPlate())).thenReturn(previosDate);
         when (billOperations.calculateTime(currentDate, currentDate)).thenReturn(minuts);
         when (billOperations.calculateCost(minuts, 100, 1)).thenReturn((long) 10);
         when(vehicleRepository.deleteCar(car.getPlate())).thenReturn(true);
         when (parkingSpaceOperations.freeUpSpace(car.getFkParkingSpace())).thenReturn(true);
-        Assert.assertTrue(vehicleOperations.checkoutCar(car).state);
+        boolean result = vehicleOperations.checkoutCar(car).state;
+        Assert.assertTrue(result);
     }
 
 

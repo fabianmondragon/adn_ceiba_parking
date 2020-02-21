@@ -12,8 +12,7 @@ import java.util.List;
 
 public class MapperParking {
 
-
-    public Motorcycle convertToMotorcicle(MotorcycleEntity motorcycleEntity) {
+    public Motorcycle convertToMotorcycle(MotorcycleEntity motorcycleEntity) {
         ModelMapper modelMapper = new ModelMapper();
         Motorcycle motorcycle = modelMapper.map(motorcycleEntity, Motorcycle.class);
         return motorcycle;

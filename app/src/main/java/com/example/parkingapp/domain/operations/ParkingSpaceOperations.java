@@ -1,7 +1,8 @@
 package com.example.parkingapp.domain.operations;
 
 import com.example.parkingapp.BaseApplication;
-import com.example.parkingapp.domain.interfaces_repository.ParkingSpaceRepository;
+import com.example.parkingapp.domain.exceptions.ParkingException;
+import com.example.parkingapp.domain.repository.ParkingSpaceRepository;
 
 import java.util.Date;
 
@@ -17,7 +18,7 @@ public class ParkingSpaceOperations {
         ((BaseApplication) (BaseApplication.getAppContext().getApplicationContext())).getAppComponent().inject(this);
     }
 
-    public int getFreeSpace() {
+    public int getFreeSpace()  {
         return parkingSpaceRepository.getFreeSpace();
     }
 

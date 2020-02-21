@@ -36,4 +36,24 @@ public class Tariff {
     public Double getMotorcycleCylindrical() {
         return motorcycleCylindrical;
     }
+
+    public void setCarHourCost(Double carHourCost) {
+        this.carHourCost = carHourCost;
+    }
+
+    public void setMotorcycleHourCost(Double motorcycleHourCost) {
+        this.motorcycleHourCost = motorcycleHourCost;
+    }
+
+    public void setCarDayCost(Double carDayCost) {
+        this.carDayCost = carDayCost;
+    }
+
+    public void setMotorcycleDayCost(Double motorcycleDayCost) {
+        this.motorcycleDayCost = motorcycleDayCost;
+    }
+
+    public void setMotorcycleCylindrical(Double motorcycleCylindrical) {
+        this.motorcycleCylindrical = motorcycleCylindrical;
+    }
 }

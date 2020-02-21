@@ -1,11 +1,12 @@
 package com.example.parkingapp.di;
 
-import com.example.parkingapp.domain.interfaces_repository.VehicleRepository;
+import com.example.parkingapp.domain.repository.VehicleRepository;
 
 import com.example.parkingapp.domain.operations.BillOperations;
 import com.example.parkingapp.domain.operations.CylindricalRulesOperations;
-import com.example.parkingapp.domain.operations.DataBaseAdministration;
+import com.example.parkingapp.data.database.DataBaseAdministration;
 import com.example.parkingapp.domain.operations.ParkingSpaceOperations;
+import com.example.parkingapp.domain.operations.TariffOperations;
 import com.example.parkingapp.domain.operations.Validation;
 import com.example.parkingapp.domain.services.VehicleOperations;
 import com.example.parkingapp.presentation.view.MainActivity;
@@ -30,9 +31,15 @@ public interface ApplicationComponent {
 
     void inject (CylindricalRulesOperations cylindricalRulesOperations);
 
+    void inject (TariffOperations tariffOperations);
+
     VehicleRepository vehicleRepository();
 
     Validation validation ();
+
+    BillOperations billOperations();
+
+    TariffOperations tariffOperations();
 
 
 

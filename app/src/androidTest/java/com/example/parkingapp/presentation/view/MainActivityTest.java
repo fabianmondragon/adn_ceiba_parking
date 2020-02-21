@@ -20,6 +20,7 @@ public class MainActivityTest {
     public ActivityTestRule<MainActivity> activityRule =
             new ActivityTestRule<>(MainActivity.class);
 
+    /*
     @Test
     public void registerMotorcycle_DataValid_ShouldShowSuccess() {
         PageObjectParking.enterMotorcyclePlate("LM021");
@@ -46,5 +47,7 @@ public class MainActivityTest {
         closeSoftKeyboard();
         PageObjectParking.billCar();
     }
+
+     */
 
 }

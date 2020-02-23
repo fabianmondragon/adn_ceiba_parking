@@ -25,7 +25,7 @@ public class Validation {
         boolean valDay;
 
         if (plateId.startsWith("A")) {
-            valDay = (day == 1 || day == 6);
+            valDay = (day == 1 || day == 2);
             return valDay;
         }
         return true;

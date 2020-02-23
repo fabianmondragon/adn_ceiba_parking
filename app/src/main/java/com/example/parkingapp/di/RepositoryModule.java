@@ -11,7 +11,7 @@ import dagger.Provides;
 class RepositoryModule {
 
     @Provides
-    public VehicleRepositoryImpl provideVehiculoRepository() {
+    public VehicleRepositoryImpl provideVehicleRepository() {
         return new VehicleRepositoryImpl();
     }
 

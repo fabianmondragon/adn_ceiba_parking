@@ -1,8 +1,8 @@
 package com.example.parkingapp.domain.operations;
 
 import com.example.parkingapp.BaseApplication;
-import com.example.parkingapp.domain.repository.CylindricalRepository;
 import com.example.parkingapp.domain.model.CylindricalRules;
+import com.example.parkingapp.domain.repository.CylindricalRepository;
 
 import javax.inject.Inject;
 

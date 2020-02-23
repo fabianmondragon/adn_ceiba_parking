@@ -2,8 +2,8 @@ package com.example.parkingapp.domain.operations;
 
 import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.database.entity.TariffEntity;
-import com.example.parkingapp.domain.repository.TariffRepository;
 import com.example.parkingapp.domain.model.Tariff;
+import com.example.parkingapp.domain.repository.TariffRepository;
 
 import javax.inject.Inject;
 

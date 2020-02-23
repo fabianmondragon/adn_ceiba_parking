@@ -1,7 +1,6 @@
 package com.example.parkingapp.domain.operations;
 
 import com.example.parkingapp.BaseApplication;
-import com.example.parkingapp.domain.exceptions.ParkingException;
 import com.example.parkingapp.domain.repository.ParkingSpaceRepository;
 
 import java.util.Date;

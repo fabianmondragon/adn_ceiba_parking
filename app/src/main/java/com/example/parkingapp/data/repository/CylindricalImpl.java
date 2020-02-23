@@ -2,8 +2,8 @@ package com.example.parkingapp.data.repository;
 
 import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.database.entity.CilindrajeRulesEntity;
-import com.example.parkingapp.domain.repository.CylindricalRepository;
 import com.example.parkingapp.domain.model.CylindricalRules;
+import com.example.parkingapp.domain.repository.CylindricalRepository;
 
 public class CylindricalImpl implements CylindricalRepository {
 

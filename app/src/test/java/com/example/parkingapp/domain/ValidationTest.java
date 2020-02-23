@@ -1,11 +1,11 @@
 package com.example.parkingapp.domain;
 
 import com.example.parkingapp.data.database.entity.ParkingEntity;
-import com.example.parkingapp.domain.repository.ParkingRepository;
-import com.example.parkingapp.domain.repository.VehicleRepository;
 import com.example.parkingapp.domain.model.Car;
 import com.example.parkingapp.domain.model.Motorcycle;
 import com.example.parkingapp.domain.operations.Validation;
+import com.example.parkingapp.domain.repository.ParkingRepository;
+import com.example.parkingapp.domain.repository.VehicleRepository;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,7 +19,6 @@ import org.mockito.junit.MockitoRule;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 

@@ -35,7 +35,6 @@ public class ParkingViewModel extends AndroidViewModel {
     public MutableLiveData<String> message = new MutableLiveData<>();
 
     private Observable<Response> registrationObservable;
-    private Observable<Response> dataBaseObserver;
     private Observable<Response> carObservable;
     private Observable<Response> motorcycleCheckOutObservable;
     private Observable<Response> carCheckoutObservable;

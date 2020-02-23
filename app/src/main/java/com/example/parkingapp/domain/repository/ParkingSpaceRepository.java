@@ -13,6 +13,6 @@ public interface ParkingSpaceRepository {
 
     Date getTimeCar(String plate);
 
-    void freeSpace(int fk_space);
+    void freeSpace(int fkSpace);
 
 }

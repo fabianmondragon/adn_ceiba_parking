@@ -1,7 +1,5 @@
 package com.example.parkingapp.data.database;
 
-import android.util.Log;
-
 import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.database.entity.CilindrajeRulesEntity;
 import com.example.parkingapp.data.database.entity.ParkingEntity;

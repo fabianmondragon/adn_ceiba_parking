@@ -1,10 +1,10 @@
 package com.example.parkingapp.di;
 
+import com.example.parkingapp.data.database.DataBaseAdministration;
 import com.example.parkingapp.domain.model.Response;
 import com.example.parkingapp.domain.model.Validation;
 import com.example.parkingapp.domain.operations.BillOperations;
 import com.example.parkingapp.domain.operations.CylindricalRulesOperations;
-import com.example.parkingapp.data.database.DataBaseAdministration;
 import com.example.parkingapp.domain.operations.ParkingSpaceOperations;
 import com.example.parkingapp.domain.operations.TariffOperations;
 import com.example.parkingapp.domain.services.VehicleOperations;

@@ -1,21 +1,17 @@
 package com.example.parkingapp.domain.services;
 
-import android.util.Log;
-
 import com.example.parkingapp.BaseApplication;
-import com.example.parkingapp.data.repository.ManagmentDataBaseImpl;
+import com.example.parkingapp.data.database.DataBaseAdministration;
 import com.example.parkingapp.domain.ConstantDomain;
 import com.example.parkingapp.domain.exceptions.ConstantException;
 import com.example.parkingapp.domain.exceptions.ParkingException;
-import com.example.parkingapp.domain.repository.VehicleRepository;
 import com.example.parkingapp.domain.model.Car;
 import com.example.parkingapp.domain.model.Motorcycle;
 import com.example.parkingapp.domain.model.Response;
 import com.example.parkingapp.domain.operations.BillOperations;
-import com.example.parkingapp.data.database.DataBaseAdministration;
 import com.example.parkingapp.domain.operations.ParkingSpaceOperations;
 import com.example.parkingapp.domain.operations.Validation;
-import com.example.parkingapp.presentation.Constant;
+import com.example.parkingapp.domain.repository.VehicleRepository;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -46,14 +42,12 @@ public class VehicleOperations {
     public VehicleOperations() {
         if (BaseApplication.getAppContext() != null){
             ((BaseApplication) (BaseApplication.getAppContext().getApplicationContext())).getAppComponent().inject(this);
-            ManagmentDataBaseImpl managmentDataBase = new ManagmentDataBaseImpl();
         }
     }
 
 
     public Response registerMotorcycle(Motorcycle motorcycle)  {
         Date currentDate = Calendar.getInstance().getTime();
-        boolean resultOcupySpace;
         response.typeTransaction = SET_MOTORCYCLE;
         try {
             if (validation.isValid(motorcycle.getPlate()) && validation.isLessThanMotorCycleLimit()) {
@@ -133,7 +127,7 @@ public class VehicleOperations {
             Date previousDate = parkingSpaceOperations.getTimeCar(car.getPlate());
             numberMinutes = billOperations.calculateTime(currentDate, previousDate);
             if (numberMinutes < 0 ){
-                throw new ParkingException(ConstantException.MINUTS_ERROR);
+                throw new ParkingException(ConstantException.MINUTES_ERROR);
             }
             response.cost = billOperations.calculateCost(numberMinutes, 0, ConstantDomain.IS_A_CAR);
             if (response.cost < 0){
@@ -169,7 +163,7 @@ public class VehicleOperations {
             Date previousDate = parkingSpaceOperations.getTimeMotorcycle(motorcycle.getPlate());
             numberMinutes = billOperations.calculateTime(currentDate, previousDate);
             if (numberMinutes < 0 ){
-                throw new ParkingException(ConstantException.MINUTS_ERROR);
+                throw new ParkingException(ConstantException.MINUTES_ERROR);
             }
             response.cost = billOperations.calculateCost(numberMinutes, motorcycle.getCylindrical(), ConstantDomain.IS_A_MOTORCYCLE);
             if (response.cost < 0){

@@ -10,7 +10,6 @@ import com.example.parkingapp.data.database.entity.ParkingSpaceEntitiy;
 import com.example.parkingapp.data.database.entity.PlateRulesEntity;
 import com.example.parkingapp.data.database.entity.TariffEntity;
 
-
 import java.util.List;
 
 import javax.inject.Inject;

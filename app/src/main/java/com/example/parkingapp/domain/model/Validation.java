@@ -12,18 +12,16 @@ public class Validation {
     public boolean validateFieldCar(String carPlate) {
         if (carPlate == null)
             return false;
-        if (carPlate.equals(""))
-            return false;
-        return true;
+        return !carPlate.equals("");
     }
 
-    public boolean validateMotorcycleFields(String carPlate, String cilindraje) {
-        if (carPlate == null || cilindraje == null)
+    public boolean validateMotorcycleFields(String carPlate, String cylindrical) {
+        if (carPlate == null || cylindrical == null)
             return false;
-        if (carPlate.equals(""))
-            return false;
-        if (cilindraje.equals(""))
-            return false;
-        return true;
+        boolean emptyPlate = !carPlate.equals("");
+        if (emptyPlate){
+            return !cylindrical.equals("");
+        }
+        return false;
     }
 }

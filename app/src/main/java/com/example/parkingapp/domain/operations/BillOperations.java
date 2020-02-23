@@ -28,7 +28,6 @@ public class BillOperations {
     }
 
     public Long calculateCost(Long numberMinuts, int cylindrical, int type) {
-        long hoursAux = 0;
         long hours;
         long cost=0;
         long days;

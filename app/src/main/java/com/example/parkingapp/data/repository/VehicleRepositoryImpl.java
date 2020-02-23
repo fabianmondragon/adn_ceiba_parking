@@ -4,9 +4,9 @@ import com.example.parkingapp.BaseApplication;
 import com.example.parkingapp.data.database.entity.CarEntity;
 import com.example.parkingapp.data.database.entity.MotorcycleEntity;
 import com.example.parkingapp.data.mappers.MapperParking;
-import com.example.parkingapp.domain.repository.VehicleRepository;
 import com.example.parkingapp.domain.model.Car;
 import com.example.parkingapp.domain.model.Motorcycle;
+import com.example.parkingapp.domain.repository.VehicleRepository;
 
 import java.util.ArrayList;
 import java.util.List;

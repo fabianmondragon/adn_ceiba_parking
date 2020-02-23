@@ -1,7 +1,5 @@
 package com.example.parkingapp.domain.operations;
 
-import android.util.Log;
-
 import com.example.parkingapp.domain.repository.ParkingRepository;
 import com.example.parkingapp.domain.repository.VehicleRepository;
 
@@ -35,14 +33,7 @@ public class Validation {
 
     public boolean isLessThanMotorCycleLimit() {
         int numberMotorcycles = parkingRepository.getParking().get(0).getNumberMotorcycle();
-        try {
-            if (vehicleRepository.getListMotorCycle().size() < numberMotorcycles) {
-                return true;
-            }
-        }catch (NullPointerException e){
-
-        }
-        return false;
+        return vehicleRepository.getListMotorCycle().size() < numberMotorcycles;
     }
 
     public boolean isLessThanCarLimit() {

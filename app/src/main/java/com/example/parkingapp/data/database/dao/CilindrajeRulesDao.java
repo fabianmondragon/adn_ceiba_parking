@@ -18,6 +18,6 @@ public interface CilindrajeRulesDao {
     void insertCilindrajeRules(CilindrajeRulesEntity cilindrajeRulesEntity);
 
     @Query("SELECT * FROM cilindraje_rules WHERE cilindraje_rules.state = 1")
-    CilindrajeRulesEntity getActivo();
+    CilindrajeRulesEntity  getActivo();
 
 }

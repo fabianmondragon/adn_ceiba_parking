@@ -70,6 +70,9 @@ public class ParkingViewModel extends AndroidViewModel {
                 }
             }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
 
+
+
+
             registrationObservable.subscribe(new Observer<Response>() {
 
                 @Override

@@ -1,10 +1,13 @@
 package com.example.parkingapp.presentation.view;
 
+import com.example.parkingapp.PageObjectParking;
+
+import org.junit.Test;
+
+import static androidx.test.espresso.Espresso.closeSoftKeyboard;
+
 public class MainActivityTest {
 
-
-
-    /*
     @Test
     public void registerMotorcycle_DataValid_ShouldShowSuccess() {
         PageObjectParking.enterMotorcyclePlate("LM021");
@@ -31,7 +34,4 @@ public class MainActivityTest {
         closeSoftKeyboard();
         PageObjectParking.billCar();
     }
-
-     */
-
 }

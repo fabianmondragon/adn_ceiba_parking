@@ -44,7 +44,7 @@ public class BillOperationsTest {
         long result = billOperations.calculateTime(currentDate, dateMinusTwoHours);
         long hours = result/60;
         //Assert
-        Assert.assertTrue(hours == 2 );
+        Assert.assertEquals(2, hours );
     }
 
     @Test
@@ -58,7 +58,9 @@ public class BillOperationsTest {
         long result = billOperations.calculateTime(currentDate, dateLessThanTwoHours);
         long hours = result/60;
         //Assert
-        Assert.assertTrue(hours == 3 );
+        Assert.assertEquals(3, hours);
+
+
     }
 
     @Test
@@ -70,9 +72,9 @@ public class BillOperationsTest {
         dateMinusTwoHours.setTime(minusTwoHours);
         when (tariffOperations.getTariff()).thenReturn(tariff);
         //Act
-        Long cost = billOperations.calculateCost(120L, 100, 1);
+        long cost = billOperations.calculateCost(120L, 100, 1);
         //Assert
-        Assert.assertTrue(cost == 1000L);
+        Assert.assertEquals(1000L, cost);
     }
 
     @Test
@@ -81,9 +83,9 @@ public class BillOperationsTest {
         long numberMinuts = 27*60;
         when (tariffOperations.getTariff()).thenReturn(tariff);
         //Act
-        Long cost = billOperations.calculateCost(numberMinuts, 100, 1);
+        long cost = billOperations.calculateCost(numberMinuts, 100, 1);
         //Assert
-        Assert.assertTrue(cost == 5500L);
+        Assert.assertEquals(5500L, cost);
     }
 
     @Test
@@ -92,9 +94,9 @@ public class BillOperationsTest {
         long numberMinuts = 10*60;
         when (tariffOperations.getTariff()).thenReturn(tariff);
         //Act
-        Long cost = billOperations.calculateCost(numberMinuts, 650, 1);
+        long cost = billOperations.calculateCost(numberMinuts, 650, 1);
         //Assert
-        Assert.assertTrue(cost == 6000L);
+        Assert.assertEquals(6000L, cost );
     }
 
     @Test
@@ -103,9 +105,9 @@ public class BillOperationsTest {
         long numberMinuts = 27*60;
         when (tariffOperations.getTariff()).thenReturn(tariff);
         //Act
-        Long cost = billOperations.calculateCost(numberMinuts, 100, 2);
+        long cost = billOperations.calculateCost(numberMinuts, 100, 2);
         //Assert
-        Assert.assertTrue(cost == 11000L);
+        Assert.assertEquals( 11000L, cost);
     }
 
 
